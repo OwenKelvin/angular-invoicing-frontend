@@ -1,0 +1,84 @@
+<h1>New Staff Creation
+  <ng-container *ngIf='staffType$ | async as staffType'>
+    <span class="icon-right-dir"></span>
+  <span>{{ staffType.name | titlecase }}</span>
+  </ng-container>
+</h1>
+<form [formGroup]='newStaffForm' (submit)='submitNewStaffForm()'>
+  <div class="card p-2 mt-1 pb-4">
+    <fieldset>
+      <legend>
+        <h2>Email</h2>
+      </legend>
+      <section>
+        <section class="col-lg-5">
+
+          <app-input [triggerValidation]="triggerValidation" label='Email' id="email" type="email"
+            placeholder="Please Enter Email" formControlName="email"></app-input>
+        </section>
+        <section aria-atomic="true" aria-live="polite" class="col-sm-12 col-md-12 col-lg-7" *ngIf="confirmData">
+          <span id='email-confirm'>User with the email Exists. Do You wish to Use this Email?</span>
+          <button aria-label="Yes" aria-describedby='email-confirm' (click)="updateFieldsForEmail()"
+            style="margin-left: 15px" type="button" class="btn btn-outline-primary">Yes</button>
+          <button aria-describedby='email-confirm' (click)="clearEmail()" style="margin-left: 15px" type="button"
+            class="btn btn-outline-warning">No</button>
+        </section>
+      </section>
+    </fieldset>
+  </div>
+  <div class="card p-2 mt-1 pb-4">
+    <fieldset>
+      <legend>
+        <h2>Name</h2>
+      </legend>
+      <section class='d-flex flex-wrap'>
+        <section class='col-lg-4 col-sm-6 col-xs-12'>
+          <app-input [triggerValidation]='triggerValidation' placeholder='Enter First Name' id='firstName'
+            label='First Name' formControlName='firstName'>
+          </app-input>
+        </section>
+        <section class='col-lg-4 col-sm-6 col-xs-12'>
+          <app-input [triggerValidation]='triggerValidation' placeholder='Enter Last Name' id='lastName'
+            label='Last Name' formControlName='lastName'>
+          </app-input>
+        </section>
+        <section class='col-lg-4 col-sm-6 col-xs-12'>
+          <app-input id='middleName' placeholder='Enter Middle Name' label='middle Name' formControlName='middleName'>
+          </app-input>
+        </section>
+        <section class='col-lg-4 col-sm-6 col-xs-12'>
+          <app-input id='otherNames' placeholder='Enter Other Names' label='Other Names' formControlName='otherNames'>
+          </app-input>
+        </section>
+      </section>
+    </fieldset>
+  </div>
+  <div class="card p-2 mt-1 pb-4">
+    <fieldset>
+      <legend>
+        <h2>Other Details</h2>
+      </legend>
+      <section class='d-flex flex-wrap'>
+        <section class='col-lg-5 col-md-6 col-sm-12 col-xs-12'>
+          <app-input labelClass='col-lg-5' inputClass='col-md-6 col-lg-7' type='date'
+            [triggerValidation]='triggerValidation' placeholder='Enter Date Of Birth' id='dateOfBirth'
+            label='Date Of Birth' formControlName='dateOfBirth'>
+          </app-input>
+        </section>
+        <section class='col-lg-6 col-md-6 col-sm-6 col-xs-12 d-flex flex-wrap mt-xs-1 mt-sm-0 p-0'>
+          <app-tel-input id='tel' labelClass='col-lg-4' inputClass='col-lg-8' formControlName='phone'
+            [triggerValidation]='triggerValidation' label='Phone' placeholder='Enter Phone Number' type='tel'>
+          </app-tel-input>
+        </section>
+
+      </section>
+    </fieldset>
+  </div>
+
+  <section class="p-2">
+    <app-validate-submit-buttons [isSubmitting]='submittingAction$ | async'
+      (validationButtonClicked)='triggerValidation = !triggerValidation' [formItem]='newStaffForm'>
+      <!-- Create Staff -->
+    </app-validate-submit-buttons>
+  </section>
+</form>

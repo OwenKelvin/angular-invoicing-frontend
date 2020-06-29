@@ -1,0 +1,57 @@
+<section class="bg-dark">
+  <form [formGroup]='productSoldForm' (submit)='productSoldFormSubmit()'>
+    <section class="card">
+      <section class="card-header">
+        <h2>Edit Sold Product Details</h2>
+      </section>
+      <section *ngIf='soldProduct$ | async as soldProduct; else loading'>
+        <div class="d-flex flex-wrap m-1 mt-2">
+          <div class="label-name col-lg-3 mt-1 col-sm-6">Transaction Ref</div>
+          <div class="label-value col-lg-3 mt-1 col-sm-6">#{{ soldProduct.productId }}/{{ soldProduct.saleId}}-{{ soldProduct.id }}
+          </div>
+          <div class="label-name col-lg-3 mt-1 col-sm-6">Product</div>
+          <div class="label-value col-lg-3 mt-1 col-sm-6">{{ soldProduct.productName | titlecase }}</div>
+          <div class="label-name col-lg-3 mt-1 col-sm-6">Transaction Time</div>
+          <div class="label-value col-lg-3 mt-1 col-sm-6">{{ soldProduct.time }}</div>
+          <div class="label-name col-lg-3 mt-1 col-sm-6">Currency</div>
+          <div class="label-value col-lg-3 mt-1 col-sm-6">{{ soldProduct.sellingPriceCurrency }}</div>
+        </div>
+        <div class="d-flex flex-wrap m-1 mt-4">
+          <div class="col-lg-6">
+            <app-input type='number' labelClass='col-lg-6 col-md-12' inputClass='col-lg-6' label='Purchase Price'
+              placeholder='eg 200.00' id='purchasePrice' formControlName='price'>
+            </app-input>
+          </div>
+          <div class="col-lg-6">
+            <app-input type='number' labelClass='col-lg-6 col-md-12' inputClass='col-lg-6' label='Selling Price'
+              placeholder='eg 500.00' id='sellingPrice' formControlName='sellingPrice'>
+            </app-input>
+          </div>
+          <div class="col-lg-6">
+            <app-input type='number' labelClass='col-lg-6 col-md-12' inputClass='col-lg-6' label='Quantity'
+              placeholder='eg 50' id='quantity' formControlName='quantity'>
+            </app-input>
+          </div>
+
+        </div>
+      </section>
+      <ng-template #loading>
+        <section class="p-2">
+          <app-loading-bubble></app-loading-bubble>
+        </section>
+      </ng-template>
+
+      <section class="card-footer d-flex justify-content-between">
+        <button [disabled]='productSoldForm.invalid || !productSoldForm.dirty' class="btn btn-success">
+          Save
+          <i *ngIf='((submitInProgressAction$ | async) === false)' class='icon-ok'></i>
+          <i *ngIf='(submitInProgressAction$ | async)' class='icon-spin3 animate-spin'></i>
+        </button>
+        <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
+            class="icon-cancel"></span>Cancel</button>
+
+      </section>
+    </section>
+  </form>
+
+</section>

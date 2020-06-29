@@ -1,0 +1,41 @@
+h1 {
+  font-size: 2rem;
+  border: none;
+  line-height: 2rem;
+}
+
+a {
+  background: green;
+}
+section {
+  text-align: center;
+}
+.quote {
+  margin-top: 50px;
+  color: lightblue;
+}
+.quote span {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .card-section section:first-child {
+    border-right: 10px solid lightblue;
+  }
+}
+@media (max-width: 768px) {
+  .card-section section:first-child {
+    border-bottom: 10px solid lightblue;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+   h1 {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+}

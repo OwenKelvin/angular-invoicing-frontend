@@ -1,0 +1,28 @@
+<h1>All Users Management</h1>
+<section class="text-right">
+  <app-print selector='.printable'></app-print>
+</section>
+<section class="printable">
+  <table class="table table-dark" *ngIf='users$ | async as users'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th class="d-none d-sm-inline-block">Phone</th>
+        <th class="d-print-none">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let user of users'>
+        <td>#{{ user.id }}</td>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td class="d-none d-sm-inline-block">{{ user.phone }}</td>
+        <td class="d-print-none">
+          <a [routerLink]='["/users", user.id, "info"]' class="btn btn-info btn-sm" aria-label="User Details"><span class="icon-eye"></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

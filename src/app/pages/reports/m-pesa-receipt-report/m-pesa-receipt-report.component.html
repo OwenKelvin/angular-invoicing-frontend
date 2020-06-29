@@ -1,0 +1,59 @@
+<h1>M Pesa Receipt Report</h1>
+<form (submit)='getReport()' [formGroup]='itemForm'>
+  <section class="d-flex align-items-end flex-wrap">
+    <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+      <label class="control-label" for="startDate">From</label>
+      <input formControlName='startDate' type="date" id="startDate" class="form-control">
+    </section>
+    <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+      <label class="control-label" for="endDate">To</label>
+      <input formControlName='endDate' type="date" id="endDate" class="form-control">
+    </section>
+    <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-md-2 mt-sm-2">
+      <button [disabled]='itemForm.invalid' class="btn btn-primary">
+        Generate Report
+        <i *ngIf='itemForm.valid && (submitInProgressAction$ | async) === false' class='icon-ok'></i>
+        <i *ngIf='submitInProgressAction$ | async' class='icon-spin3 animate-spin'></i>
+      </button>
+    </section>
+  </section>
+</form>
+
+<section class="text-right">
+  <app-print selector='.printable'></app-print>
+</section>
+<section class="printable">
+  
+  <table class="table table-dark mt-3" *ngIf='(receipts$ | async) as receipts'>
+    <thead>
+      <tr>
+        <th>Date Time</th>
+        <th>Tran Ref</th>
+        <th>Mobile Number</th>
+        <th>Name</th>
+        <th>Amount Received</th>
+        <th>Status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let receipt of receipts'>
+        
+        <td>{{ receipt.dateTime }}</td>
+        <td>{{ receipt.ref }}</td>
+        <td>{{ receipt.mobileNumber }}</td>
+        <td>{{ receipt.name | titlecase }}</td>
+        <td>{{ receipt.amount | currency: ' ' }}</td>
+        <td>{{ receipt.status }}</td>
+        <!-- <pre class="text-light">{{ receipt | json }}</pre> -->
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr *ngIf='receipts.length < 1'>
+        <td colspan="5">
+          <section class="alert alert-info">No Data Found</section>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+

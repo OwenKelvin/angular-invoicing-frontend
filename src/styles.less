@@ -1,0 +1,344 @@
+@import "~@ng-select/ng-select/themes/ant.design.theme.css";
+@import './vendor/fontello/css/fontello.css';
+@import './vendor/fontello/css/animation.css';
+@import './vendor/daneden/animate.css';
+@import 'flag-icon-css/css/flag-icon.css';
+
+label {
+  margin-bottom: 0.1rem;
+}
+
+.ng-select .ng-select-container  {
+  min-height: 38px;
+}
+
+.ng-select-container, .ng-value-container, .ng-input, .ng-value .ng-value-container {
+  
+  height: 100%;
+  margin: 0;
+}
+.ng-select .ng-select-container {
+  padding: 0;
+}
+.ng-input input {
+  width: 100%;
+}
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    padding: 4px;
+    text-align: center;
+    color: black;
+}
+
+.ng-select.ng-select-multiple .ng-select-container {
+  min-height: 100px ;
+}
+.ng-select .ng-value {
+  // background-color: rgb(68, 68, 68) !important;
+  // color: white !important;
+  color: black;
+  background-color: rgba(226, 226, 226, 0.5);
+  font-weight: bold;
+  border-radius: 3px !important;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 0px;
+  margin-left: 4px;
+}
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  min-height: 30px;
+}
+.ng-dropdown-panel {
+  min-width: 150px !important;
+  width: 150px !important;
+}
+.ng-select .ng-select-container .ng-value-container .ng-placeholder  {
+  margin-left: 10px;
+  color: gray;
+}
+
+.ng-dropdown-panel.ng-select-bottom {
+  width: 100% !important;
+  font-size: 15px;
+}
+
+
+.ng-select .ng-clear-wrapper .ng-clear {
+    color: rgb(255, 82, 82);
+    font-size: 18px;
+    line-height: 18px;
+    top: -1px;
+    left: 3px;
+    font-weight: bold;
+}
+
+.ng-select.ng-select-clearable .ng-select-container.ng-has-value:hover .ng-clear-wrapper {
+    width: 18px !important;
+    height: 18px !important;
+    background-color: rgb(246, 200, 200);
+    opacity: 1;
+}
+.ng-select .ng-arrow-wrapper .ng-arrow{
+  margin-right: 5px;
+  display: none;
+}
+.ng-select span.ng-arrow-wrapper:before {
+  content: "\e82c" !important;
+  font-family: "fontello";
+}
+.ng-select.ng-select-opened>.ng-select-container .ng-arrow-wrapper {
+  margin-right: 5px;
+}
+html, body {
+  background: rgb(49, 49, 49);
+  color: white;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+h1, h2, h3, h4 {
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  margin-top: 2px;
+  border-left: 3px solid lightblue;
+  padding: 0px 0px 5px 5px;
+  font-weight: 500;
+  color: aqua;
+}
+h2 {
+  font-size: 1.2rem;
+  /* margin-left: 10px; */
+  line-height: 1.2rem;
+  font-weight: 500;
+  border-left: 6px solid lightblue;
+}
+h3 {
+  font-size: 1.1rem;
+  /* margin-left: 13px; */
+  line-height: 1.1rem;
+  font-weight: 400;
+  border-left: 9px solid lightblue;
+}
+h4 {
+  font-size: 1.0rem;
+  /* margin-left: 13px; */
+  line-height: 1.0rem;
+  font-weight: 300;
+  border-left: 12px solid lightblue;
+}
+legend {
+  font-size: 1.0rem;
+  font-weight: bold;
+}
+.full-height {
+  height: 100%;
+}
+.card {
+  width: 100%;
+  background-color: rgb(67, 67, 67);
+  border: 1px solid lightblue;
+}
+.card-header {
+  border-bottom: 1px solid lightblue;
+}
+a {
+  color: lightblue;
+  box-shadow: white;
+}
+a:hover {
+  color: greenyellow;
+  text-decoration: underline;
+}
+
+.btn-success {
+  background: green;
+}
+.btn-primary {
+  background: rgb(0, 61, 66);
+}
+.btn-primary:hover {
+  background: rgb(0, 117, 128);
+}
+.invalid-feedback {
+  
+  color: rgb(240, 68, 68);
+}
+@media (max-width: 768px) {
+  .hidden-sm {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .hidden-sm-up {
+    display: none;
+  }
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  position: sticky;
+  z-index: 1;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+#sidebar-wrapper .list-group-item-action {
+  color: lightblue;
+}
+#sidebar-wrapper .list-group-item-action:hover {
+  color: yellowgreen;
+}
+
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.label-value {
+  border: rgba(211, 211, 211, 0.3) solid 2px;
+}
+.label-value, .label-name {
+ line-height: 2em;
+}
+.label-name{
+  font-weight: bold;
+}
+.modal-container {
+   border: rgba(165, 165, 165, 0.8) solid 2px;
+   border-radius: 5px;
+}
+
+.height-0 {
+  height: 0;
+}
+.btn-xs {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 0.9rem;;
+}
+.text-success {
+  color: rgb(129, 211, 82) !important ;
+}
+.text-danger {
+  color: #F88A99 !important;
+}
+.btn-info {
+  background-color: #178192; 
+  
+}
+:focus {
+    outline-style: ridge;
+    outline-color: rgba(153, 205, 50, 0.5);
+    outline-width: 2px;
+}
+#main {
+  padding-left: 10px;
+}
+#main:focus, #main:focus-within{
+  outline: none;
+  border-left: 3px solid rgba(172, 255, 47, 0.3);
+  padding-left: 7px;
+  min-height: calc(100%-120px);
+}
+
+.aquamarine {
+  color: aquamarine;
+}
+.upload-profile-pic {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+}
+.upload-profile-pic:hover {
+  color: blue;
+   background-color: rgba(128, 128, 128, 0.7);
+}
+.upload-profile-pic button{
+ 
+  width: 95%;
+  height: 95%;
+}
+.upload-profile-pic button:hover span, .upload-profile-pic button:hover span{
+  border-radius: 20px;
+  border: 2px solid;
+}
+.prof-pic-loading{
+  width: 95%;
+  height: 95%;
+  font-size: 1.5rem; color: rgba(115, 136, 74, 0.8); position: absolute;
+  padding: 0.1rem;
+}
+.custom-control-label, .custom-control-input{
+ cursor: pointer !important; 
+}
+@media (max-width: 400px) {
+  .container {
+    padding:0 !important;
+    margin:0.5rem !important;
+  }
+}
+@media (max-width: 500px) {
+  .card-body {
+    padding: 0.5rem;
+  }
+
+}
+.app-error {
+  position: absolute; width: 80%;
+  z-index: 2;
+  left: 10%;
+  right: 10%;
+}
+@media (max-width: 500px) {
+  .app-error .alert {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
+
+}
+a.disabled {
+  text-decoration: none !important;
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+tbody tr:hover {
+  background-color: rgba(172, 255, 47, 0.219);
+}
+.bs-datepicker-body table td:not(.disabled):not(.week) span:not(.disabled):not(.is-other-month) {
+  font-weight: bold;
+  border: 1px solid;
+}

@@ -1,0 +1,83 @@
+<section class="bg-dark">
+  <form [formGroup]='productForm' (submit)='productFormSubmit()'>
+  <section class="card">
+    <section class="card-header">
+      <h2>{{ id === 0 ? 'New' : 'Edit'}} Product</h2>
+    </section>
+    <section class="card-body">
+        <section class="d-flex flex-wrap">
+          <section class="col-lg-6">
+              <app-input label='Product Name' placeholder="e.g XYZ Bolt No. 55" id="productName"
+                formControlName='name'></app-input>
+          </section>
+          <section class="col-lg-6">
+            <label class="control-label" for="productBuyingPrice">Buying Price</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <div class="btn-group" dropdown>
+                  <button type="button"class="btn bg-light text-dark">{{ selectedBuyingPriceCurrency.value }}</button>
+                  <button id="button-split" type="button" dropdownToggle class="btn bg-light text-dark dropdown-toggle dropdown-toggle-split"
+                    aria-controls="dropdown-split">
+                    <span class="caret"></span>
+                    <span class="sr-only">Change Currency</span>
+                  </button>
+                  <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
+                    <li 
+                      *ngFor='let currency of currencies$ | async'
+                      (click)='selectedBuyingPriceCurrency.setValue(currency)'
+                      role="menuitem"><span class="dropdown-item">{{ currency }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <input class="form-control" id='productBuyingPrice' formControlName='buyingPrice' type="number" />
+            </div>
+          </section>
+          <section class="col-lg-6">
+            <label class="control-label" for="productSellingPrice">Selling Price</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <div class="btn-group" dropdown>
+                  <button type="button" class="btn bg-light text-dark">{{ selectedSellingPriceCurrency.value }}</button>
+                  <button id="button-split-1" type="button" dropdownToggle
+                    class="btn bg-light text-dark dropdown-toggle dropdown-toggle-split" aria-controls="dropdown-split">
+                    <span class="caret"></span>
+                    <span class="sr-only">Change Currency</span>
+                  </button>
+                  <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split-1">
+                    <li *ngFor='let currency of currencies$ | async' (click)='selectedSellingPriceCurrency.setValue(currency)'
+                      role="menuitem"><span class="dropdown-item">{{ currency }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <input class="form-control" id='productSellingPrice' formControlName='sellingPrice' type="number" />
+            </div>
+          </section>
+          <section class="col-lg-6">
+            <div class="d-flex">
+              <div class="col-6 col-lg-6 p-0 m-0">
+                <app-input label='Min Threshold' type='number' id="minThreshold" formControlName='minAmountCheck'></app-input>
+              </div>
+              <div class="col-6 col-lg-6 p-0 m-0 ml-1">
+                <app-input label='Max Threshold' type='number' id="maxThreshold" formControlName='maxAmountCheck'></app-input>
+              </div>
+            </div>
+            
+           
+          </section>
+        </section>
+    </section>
+    <section class="card-footer d-flex justify-content-between">
+      <button [disabled]='productForm.invalid || !productForm.dirty' class="btn btn-success">
+        Save
+        <i *ngIf='productForm.valid && ((submitInProgressAction$ | async) === false)' class='icon-ok'></i>
+        <i *ngIf='(submitInProgressAction$ | async)' class='icon-spin3 animate-spin'></i>
+      </button>
+      <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
+          class="icon-cancel"></span>Cancel</button>
+
+    </section>
+  </section>
+  </form>
+</section>

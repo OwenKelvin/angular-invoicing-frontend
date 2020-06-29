@@ -1,0 +1,27 @@
+<div class='bg-dark border-right' id='sidebar-wrapper'>
+  <div>
+    <div class='sidebar-heading d-flex justify-content-between'>
+      <span style="position: fixed;">Furaha IMS {{ appVersion }} </span>
+      <button *ngIf='!isMenuClosed' style="position: fixed; left: 200px;" aria-label='Toggle Menu'
+        (click)='toggleMenu()' class='hidden-sm-up btn btn-secondary btn-sm' type='button'>
+        <span class='icon-indent-right'></span>
+      </button>
+
+    </div>
+  </div>
+  <div class='list-group list-group-flush'>
+  </div>
+  <div role="menu" id='accordion' class='list-group list-group-flush' style="position: fixed; top: 70px">
+    <a (click)='handleLinkClick()' routerLink='/dashboard' class='list-group-item list-group-item-action bg-dark'
+      routerLinkActive='activated'><span class='icon-home'></span>Dashboard</a>
+    <ng-container *ngFor='let item of listItems$ | async; let i = index'>
+      <a (click)='handleLinkClick()' role='menuitem' [routerLink]='"/" + item.link' routerLinkActive='activated'
+        data-toggle='collapse' [attr.data-target]='"#collapse" + i'
+        class='list-group-item list-group-item-action bg-dark'>
+        <span [class]='item.icon'> {{ item.name }}</span>
+
+      </a>
+    </ng-container>
+
+  </div>
+</div>

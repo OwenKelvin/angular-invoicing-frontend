@@ -1,0 +1,19 @@
+<section class='d-flex flex-wrap name-field  mt-4' *ngIf='(userProfile$ | async) as profile; else content_loading'>
+  <section class='col-md-7 col-lg-5 col-sm-12 mb-3'>
+    <app-name-item type='email' (valueChanged)='changeProfile("email", $event)' [userId]='profile.id' label='Email'
+      [name]='profile.email'></app-name-item>
+  </section>
+
+  <section class='col-md-7 col-lg-5 col-sm-12 mb-3'>
+    <app-name-item type='tel' (valueChanged)='changeProfile("Phone", $event)' [userId]='profile.id' label='Phone'
+      [name]='profile.phone'></app-name-item>
+  </section>
+
+  <section class='col-md-7 col-lg-5 col-sm-12 mb-3'>
+    <app-name-item type='date' (valueChanged)='changeProfile("dateOfBirth", $event)' [userId]='profile.id'
+      label='Date of Birth' [name]='profile.dateOfBirth'></app-name-item>
+  </section>
+</section>
+<ng-template #content_loading>
+  <app-loading-bubble></app-loading-bubble>
+</ng-template>

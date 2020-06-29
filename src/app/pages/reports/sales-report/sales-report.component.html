@@ -1,0 +1,86 @@
+<h1>Sales Report</h1>
+<form (submit)='getSalesReport()' [formGroup]='salesReportForm'>
+  <section class="d-flex align-items-end flex-wrap">
+    <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+      <label class="control-label" for="startDate">From</label>
+      <input formControlName='startDate' type="date" id="startDate" class="form-control">
+    </section>
+    <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+      <label class="control-label" for="endDate">To</label>
+      <input formControlName='endDate' type="date" id="endDate" class="form-control">
+    </section>
+    <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-md-2 mt-sm-2">
+     <fieldset>
+       <legend>Group By</legend>
+        <section class="d-flex justify-content-between">
+          <app-checkbox formControlName='cumulateByDate' label='Date'></app-checkbox>
+          <app-checkbox formControlName='cumulateByProduct' label='Product'></app-checkbox>
+        </section>
+     </fieldset>
+    </section>
+    <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-md-2 mt-sm-2">
+      <button [disabled]='salesReportForm.invalid' class="btn btn-primary">
+        Generate Report
+        <i *ngIf='salesReportForm.valid && (isSubmittingAction$ | async) === false' class='icon-ok'></i>
+        <i *ngIf='isSubmittingAction$ | async' class='icon-spin3 animate-spin'></i>
+      </button>
+    </section>
+  </section>
+</form>
+<section  *ngIf='dataRetrieved' class="text-right"><app-print selector='.printable'></app-print></section>
+<section class="printable" *ngIf='dataRetrieved'>
+  <table class="table table-dark mt-3">
+    <thead>
+      <tr>
+        <th class="d-none d-xl-inline-block">Date Time</th>
+        <th class="d-none d-lg-inline-block">Product Id</th>
+        <th>Product Name</th>
+        <th>Quantity Sold</th>
+        <th>FIFO Price</th>
+        <th>Selling Price</th>
+        <th class="d-none d-lg-inline-block">Profit Per Unit</th>
+        <th title='Profit'>Profit</th>
+        <th title="Gross Profit Margin">Margin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let sale of filteredData$ | async'>
+        <td [attr.title]="sale.date + ' ' + sale.time" class="d-none d-xl-inline-block">{{ sale.date }}</td>
+        <td class="d-none d-lg-inline-block">#{{ sale.productId }}</td>
+        <td>{{ sale.productName | titlecase }}</td>
+        <td>{{ sale.quantity }}</td>
+        <td>{{ sale.fifoPrice | currency: ' ' }}</td>
+        <td>{{ sale.sellingPrice | currency: ' ' }}</td>
+        <td class="d-none d-lg-inline-block">{{ (sale.sellingPrice - sale.fifoPrice) | currency: ' ' }}</td>
+        <td>{{ ((sale.sellingPrice - sale.fifoPrice) * sale.quantity) | currency: ' ' }}</td>
+        <td>{{ (sale.sellingPrice - sale.fifoPrice) / sale.fifoPrice * 100 | number: '1.0-2' }}%</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr *ngIf='reportData.length < 1'>
+        <td colspan="7"><section class="alert alert-info">No Data Found</section></td>
+      </tr>
+    </tfoot>
+  </table>
+  
+  <section class="card mt-3">
+    <section class="d-flex justify-content-around flex-wrap">
+      <section class="col-lg-5 d-flex justify-content-between p-3">
+        <span>TOTAL SALES</span>
+        <span><strong>{{ totalSales | currency: 'KES ' }}</strong></span>
+      </section>
+      <section class="col-lg-5 d-flex justify-content-between p-3">
+        <span>TOTAL COGS</span>
+        <span><strong>{{ totalCogs | currency: 'KES ' }}</strong></span>
+      </section>
+      <section class="col-lg-5 d-flex justify-content-between p-3">
+        <span>TOTAL GROSS PROFIT</span>
+        <span><strong>{{ (totalSales - totalCogs) | currency : 'KES ' }}</strong></span>
+      </section>
+      <section class="col-lg-5 d-flex justify-content-between p-3">
+        <span>GROSS PROFIT MARGIN</span>
+        <span><strong>{{ (totalSales - totalCogs)/totalCogs * 100 | number: '1.0-2' }}%</strong></span>
+      </section>
+    </section>
+  </section>
+</section>

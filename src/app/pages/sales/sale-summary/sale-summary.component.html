@@ -1,0 +1,179 @@
+<h1>Sale</h1>
+<section>
+  
+  <div class="card p-2">
+    <h2 class="card-header mb-1 pt-1 pl-2">Items in Cart</h2>
+    <section class="d-flex justify-content-between">
+      <button (click)='addItems()' class="btn btn-primary"><span class="icon-plus-circled">Add Item</span></button>
+    </section>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Product Id</th>
+          <th>Product Name</th>
+          <th>Price Per Unit</th>
+          <th class="text-center">Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let cart of cartItems$ | async'>
+          <td>
+            #{{ cart.productId }}
+
+          </td>
+          <td>
+            <ng-container *ngIf='productName(cart.productId) | async as _productName'>
+                {{ _productName | titlecase }}
+            </ng-container>
+          </td>
+          <td>{{ cart.salePrice | currency : ' ' }}</td>
+          <td>
+            <section class="d-flex flex-wrap justify-content-between">
+              <span class="col-sm-12 col-md-12 col-lg-3 text-center">
+                <button [disabled]='cart.saleQuantity <= 1' class="btn btn-secondary btn-sm"
+                  aria-label="Reduce Quantity" (click)="changeQuantity(cart.productId, -1)"><span
+                    class="icon-minus-circled"></span></button>
+              </span>
+              <span class="col-sm-12 col-md-12 col-lg-3 text-center">{{ cart.saleQuantity }}</span>
+              <span class="col-sm-12 col-md-12 col-lg-3 text-center">
+                <button class="btn btn-secondary btn-sm" aria-label="Reduce Quantity"
+                  (click)="changeQuantity(cart.productId, 1)"><span class="icon-plus-circled"></span>
+                </button>
+              </span>
+
+            </section>
+
+          </td>
+          <td class="d-flex flex-wrap justify-content-between">
+            {{ (cart.salePrice * cart.saleQuantity) | currency : ' '  }}
+          </td>
+          <td>
+            <button (click)='removeItem(cart.productId)' aria-label="Remove" class="btn btn-danger btn-sm"><span
+                class="icon-cancel-circled"></span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="4"><strong>TOTAL</strong></td>
+          <td>{{ cartItemsTotal$ | async | currency: 'KES ' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card p-2 mt-2">
+    <h2 class="card-header mb-1 pt-1 pl-2">Discount</h2>
+    <section class="d-flex flex-wrap">
+      <section class="col-lg-3">
+        <div class="custom-control custom-switch mt-3">
+          <input [(ngModel)]='isDiscounted' type="checkbox" class="custom-control-input" id="apply-discount">
+          <label class="custom-control-label" for="apply-discount">
+            Apply Discount
+          </label>
+        </div>
+      </section>
+      <section *ngIf='isDiscounted' class="col-lg-3">
+        <label for="discountType">Discount Type</label>
+        <select [(ngModel)]='discountType' class='custom-select' id="discountType">
+          <option selected value="absolute">Absolute</option>
+          <option value="percentage">Percentage</option>
+        </select>
+      </section>
+      <section *ngIf='isDiscounted' class="col-lg-3">
+        <label for="discountAmount">Discount Value</label>
+        <input class='form-control' [(ngModel)]='discountAmount' id="discountAmount">
+      </section>
+    </section>
+  </div>
+
+  <div class="card p-2 mt-2">
+    <h2 class="card-header mb-1 pt-1 pl-2">Summary</h2>
+    <section class="d-flex flex-wrap mt-3 p-3 pb-4">
+      <section *ngIf='isDiscounted' class="col-lg-12 d-flex justify-content-end mt-2">
+        <section class="col-lg-4">
+          Discount Amount
+        </section>
+        <section class="col-lg-2">
+          {{ discountNetAmount }}
+
+        </section>
+      </section>
+      <section class="col-lg-12 d-flex justify-content-end mt-2">
+
+        <section class="col-lg-4">
+          Total Amount Due
+        </section>
+        <section class="col-lg-2">
+          {{ amountDue | currency: 'KES ' }}
+        </section>
+      </section>
+
+    </section>
+
+  </div>
+
+  <div class="card p-2 mt-2" style="position: relative;">
+    <h2 class="card-header mb-1 pt-1 pl-2">Payment Method</h2>
+
+    <div class="d-flex flex-wrap justify-content-between">
+      <div class="col-lg-6 mt-2 mb-2 d-flex justify-content-between">
+        <div class="custom-control custom-radio">
+          <input [(ngModel)]='paymentMethod' value="cash" type="radio" class="custom-control-input"
+            id="payment-method-cash">
+          <label class="custom-control-label" for="payment-method-cash">Cash</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input disabled [(ngModel)]='paymentMethod' value="on-credit" type="radio" class="custom-control-input"
+            id="payment-method-on-credit">
+          <label class="custom-control-label" for="payment-method-on-credit">On Credit</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input [(ngModel)]='paymentMethod' value="m-pesa" type="radio" class="custom-control-input"
+            id="payment-method-m-pesa">
+          <label class="custom-control-label" for="payment-method-m-pesa">M - PESA</label>
+        </div>
+      </div>
+
+      <div *ngIf='paymentMethod === "cash"' class="col-lg-8 d-flex justify-content-between align-items-end">
+        <div class="col-lg-5 p-0">
+          <label for="cashReceived">Cash Received</label>
+          <input [(ngModel)]='cashReceived' type="text" id="cashReceived" class="form-control">
+        </div>
+        <div class="col-lg-4">
+          Change {{ cashReceived - (cartItemsTotal - discountNetAmount) | currency:'KES ' }}
+        </div>
+      </div>
+      <div *ngIf='paymentMethod === "on-credit"' class="col-lg-8 d-flex justify-content-between align-items-end">
+        <div class="col-lg-5 p-0">
+          <label for="cashReceived">Creditor Phone Number</label>
+          <input [(ngModel)]='creditorPhoneNumber' type="text" id="creditorPhoneNumber" class="form-control">
+        </div>
+      </div>
+      <div *ngIf='paymentMethod === "m-pesa"' class="col-lg-8 d-flex justify-content-between align-items-end">
+        <div class="col-lg-5 p-0">
+          <label for="cashReceived">M-Pesa Phone Number</label>
+          <input type="tel" placeholder="2547XXXXXXXX" [(ngModel)]='mPesaPhoneNumber' type="text" id="creditorPhoneNumber" class="form-control">
+        </div>
+        <div>
+          <button [disabled]='amountDue <= 0' type="button" (click)='sendMpesaPaymentRequest()' class="btn btn-primary mr-2">Send Payment Request</button>
+          <button [disabled]='amountDue <= 0' type="button" (click)='checkPaymentReceipt()' class="btn btn-success">Check </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="d-flex mt-2">
+  <section class='col-lg-12 d-flex justify-content-end'>
+    <button (click)='submitCart()' [disabled]='cartItemsTotal <= 0' class='btn btn-success' type='button'>
+      Submit
+      <i *ngIf='(submitInProgressAction$ | async) === false' class='icon-ok'></i>
+      <i *ngIf='(submitInProgressAction$ | async)' class='icon-spin3 animate-spin'></i>
+    </button>
+  </section>
+</section>

@@ -1,0 +1,61 @@
+<h1>Inventory Management</h1>
+<div class="d-flex flex-wrap justify-content-between align-items-end">
+  <section class="col-md-5 col-xl-5 col-lg-5 col-sm-5">
+    <label for="searchProducts">Search <span class="icon-search"></span></label>
+    <input (keyup)='filterStringSubject$.next($event.target.value)' id="searchProducts" type="search"
+      class="form-control">
+  </section>
+  <section class="col-md-4 col-xs-4 col-lg-5 col-sm-5">
+    <app-checkbox label='Sort By Quantity Level' (ngModelChange)='sortByQuantityLowSubject$.next($event)'>
+    </app-checkbox>
+  </section>
+  <section class="col-xl-2 col-md-2 text-md-right col-lg-2 text-right mt-3">
+    <app-print selector='.printable'></app-print>
+  </section>
+</div>
+
+
+
+<section class="printable mt-2">
+  <!-- {{ sortedProducts$ | async | json }} -->
+
+  <table class="table table-sm table-dark">
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Remaining Items</th>
+        <th>Percentage Remaining</th>
+        <th class="d-print-none">Action</th>
+      </tr>
+      <tr *ngIf='loadingAction$ | async'>
+        <td>
+          <app-loading-bubble></app-loading-bubble>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let product of sortedProducts$ | async' [class.bg-danger]='product.count < 0 '>
+        <td>#{{ product.id }}</td>
+        <td>{{ product.name | titlecase }}</td>
+        <td>{{ product.count }}</td>
+        <td style="width: 25%;">
+          <div class="progress">
+            <div class="progress-bar" [ngStyle]='{ backgroundColor: product.color }' role="progressbar"
+              [style.width]='product.lowIndex * 100 + "%"' style="color: black; font-weight: bold;">
+              {{ (product.lowIndex * 100) | number:'2.0-0' }}%
+            </div>
+            <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar"
+              [ngStyle]='{ width: (100 - product.lowIndex * 100) + "%" }'>
+            </div>
+          </div>
+        </td>
+        <td class="d-print-none">
+          <button (click)='openModal({id: product.id})' class="btn btn-primary btn-sm" aria-label="Adjust Inventory"><span
+              class="icon-edit"></span></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>

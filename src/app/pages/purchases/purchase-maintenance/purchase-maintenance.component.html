@@ -1,0 +1,71 @@
+<section class="bg-dark">
+  <form [formGroup]='purchaseForm' (submit)='purchaseFormSubmit()'>
+    <section class="card">
+      <section class="card-header">
+        <h2>{{ id === 0 ? 'New' : 'Edit'}} Purchase</h2>
+      </section>
+      <section class="card-body">
+        <section class="d-flex flex-wrap">
+          <section class="col-lg-6 mt-3">
+            <label class="control-label" for="product">Product</label>
+            <ng-select placeholder='Choose a Product' id='product' formControlName='productId'>
+              <ng-option role='option' *ngFor="let item of products$ | async" [value]="item.id">
+                {{ item.name | titlecase}}
+              </ng-option>
+            </ng-select>
+          </section>
+          <section class="col-lg-6 mt-3">
+            <label class="control-label" for="seller">Seller</label>
+            <ng-select placeholder='Choose a Seller' id='seller' [items]="sellers$ | async" bindLabel="name" bindValue="id" formControlName='sellerId'>
+            </ng-select>
+          </section>
+          <section class="col-lg-6 mt-3" >
+            <label class="control-label" for="purchaseBuyingPrice">Unit Price</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <div class="btn-group" dropdown>
+                  <button type="button" class="btn bg-light text-dark">{{ purchaseCurrency.value }}</button>
+                  <button id="button-split" type="button" dropdownToggle
+                    class="btn bg-light text-dark dropdown-toggle dropdown-toggle-split" aria-controls="dropdown-split">
+                    <span class="caret"></span>
+                    <span class="sr-only">Change Currency</span>
+                  </button>
+                  <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu"
+                    aria-labelledby="button-split">
+                    <li *ngFor='let currency of currencies$ | async'
+                      (click)='purchaseCurrency.setValue(currency)' role="menuitem"><span
+                        class="dropdown-item">{{ currency }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+       
+              <!-- <app-input type='number' label='Quantity' placeholder="Enter Buying Price eg 100.00" id="purchaseBuyingPrice" formControlName='quantityPurchased'></app-input> -->
+              <input placeholder="Enter Price e.g 50.00" class="form-control" id='purchaseBuyingPrice' formControlName='unitPrice' type="number" />
+            </div>
+          </section>
+          
+          <section class="col-lg-6 mt-3">
+            <app-input label='Quantity' placeholder="Enter Quantity eg 50" id="quantityPurchased" formControlName='quantityPurchased'></app-input>
+          </section>
+          <section class="col-lg-6 mt-3">
+            <label for="purchaseDate">Purchase Date</label>
+            <section>
+              <input id="purchaseDate" type="date" class='form-control' formControlName='purchaseDate'>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section class="card-footer d-flex justify-content-between">
+        <button [disabled]='purchaseForm.invalid || !purchaseForm.dirty' class="btn btn-success">
+          Save
+          <i *ngIf='purchaseForm.valid && (submitInProgressAction$ | async) === false' class='icon-ok'></i>
+          <i *ngIf='submitInProgressAction$ | async' class='icon-spin3 animate-spin'></i>
+        </button>
+        <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
+            class="icon-cancel"></span>Cancel</button>
+
+      </section>
+    </section>
+  </form>
+</section>

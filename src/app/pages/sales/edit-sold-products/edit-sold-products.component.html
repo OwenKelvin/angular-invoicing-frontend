@@ -1,0 +1,51 @@
+<h1>Edit Sales</h1>
+
+<div class="d-flex flex-wrap align-items-end justify-content-between">
+  <section class="col-md-4 col-xl-3 col-lg-3 col-sm-4">
+    <app-date-picker label='Sale Date' (ngModelChange)='saleDateSubject$.next($event)'
+      [enabledDates$]='saleDates$'></app-date-picker>
+  </section>
+  <section class="col-xl-2 col-md-2 text-md-right col-lg-2 text-right mt-3">
+    <app-print selector='.printable'></app-print>
+  </section>
+</div>
+<div class="printable">
+  <div class="printable">
+    <table class="mt-2 table table-sm table-dark">
+      <thead>
+        <tr>
+          <th>Ref</th>
+          <th>Time</th>
+          <th>Product Name</th>
+          <th>Purchase Price</th>
+          <th>Selling Price</th>
+          <th class="d-print-none">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf='salesFiltered$ | async  as sales'>
+          <tr *ngIf='sales.length < 1'>
+            <td colspan="6" class="alert alert-info p-2 m-2">
+              No sale on this date found!
+            </td>
+          </tr>
+          <tr *ngFor='let sale of sales'>
+            <td>#{{ sale.productId }}/{{ sale.saleId}}-{{ sale.id }}</td>
+            <td>{{ sale.time }}</td>
+            <td>{{ sale.productName | titlecase }}</td>
+            <td>{{ sale.price | currency: ' ' }}</td>
+            <td>{{ sale.quantity }} unit<span *ngIf='sale.quantity > 1'>s</span> @
+              {{ sale.sellingPrice | currency:(sale.sellingPriceCurrency + ' ') }}</td>
+            <!-- <td><button aria-label="View Item" class="btn btn-info"><span class="icon-eye"></span></button></td> -->
+            <td class='d-print-none'>
+              <button (click)='editSoldItem(sale.id)' aria-label="Edit Item"
+                class="btn btn-sm btn-primary mr-2"><span class="icon-edit"></span></button>
+              <button (click)='deleteSoldItem(sale.id)' aria-label="Delete" class="btn btn-sm btn-danger"><span
+                  class="icon-trash"></span></button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
