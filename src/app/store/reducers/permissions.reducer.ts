@@ -23,6 +23,12 @@ export const initialState: State = {
       permissions: ['view sales report']
     },
     {
+      name: 'Purchases Report',
+      icon: 'icon-truck',
+      link: 'reports/purchases',
+      permissions: ['view sales report']
+    },
+    {
       name: 'MPesa Receipts Report',
       icon: 'icon-dollar',
       link: 'reports/mpesa-receipt-report',

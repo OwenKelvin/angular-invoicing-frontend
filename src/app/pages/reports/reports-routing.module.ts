@@ -20,6 +20,13 @@ const routes: Routes = [
     }
   },
   {
+    path: 'purchases',
+    loadChildren: () => import('./purchases-report/purchases-report.module').then(m => m.PurchasesReportModule),
+    data: {
+      breadcrumb: 'Purchases Report'
+    }
+  },
+  {
     path: 'mpesa-receipt-report',
     loadChildren: () => import('./m-pesa-receipt-report/m-pesa-receipt-report.module').then(m => m.MPesaReceiptReportModule),
     data: {

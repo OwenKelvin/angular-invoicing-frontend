@@ -7,9 +7,9 @@ export const environment = {
   API_URL : 'http://localhost:7777'
 };
 
-export const PASSPORT_CLIENT_GRANT_TYPE = 'password'
-export const PASSPORT_CLIENT_CLIENT_ID = '2';
-export const PASSPORT_CLIENT_CLIENT_SECRET = 'WC0yIRWVAjyHiGRCPN1VhMGdREsdTkASnevVO4M5';
+export const PASSPORT_CLIENT_GRANT_TYPE = 'password';
+export const PASSPORT_CLIENT_CLIENT_ID = '4';
+export const PASSPORT_CLIENT_CLIENT_SECRET = 'RpjWFGI6GIzM0XlLj8u6AXz3pUSbuyHlhK9IvVnU';
 
 /*
  * For easier debugging in development mode, you can import the following file

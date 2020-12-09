@@ -1,17 +1,17 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { AddSaleItemComponent } from '../add-sale-item/add-sale-item.component';
-import { Store, select } from '@ngrx/store';
-import { tap, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { selectCartState, selectTotalCartPrice } from '../store/selectors/cart.selectors';
-import { selectProductById } from '../../products/store/selectors/products.selectors';
-import { changeCartQuantity, deleteCartItem } from '../store/actions/cart.actions';
-import { SaleService } from '../services/sale.service';
-import { subscribedContainerMixin } from 'src/app/mixins/subscribed-container.mixin';
-import { modalMixin } from 'src/app/mixins/modal.mixin';
-import { formMixin } from 'src/app/mixins/form.mixin';
-import { MPesaService } from '../services/m-pesa.service';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {AddSaleItemComponent} from '../add-sale-item/add-sale-item.component';
+import {select, Store} from '@ngrx/store';
+import {map, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {selectCartState, selectTotalCartPrice} from '../store/selectors/cart.selectors';
+import {selectProductById} from '../../products/store/selectors/products.selectors';
+import {changeCartQuantity, deleteCartItem} from '../store/actions/cart.actions';
+import {SaleService} from '../services/sale.service';
+import {subscribedContainerMixin} from 'src/app/mixins/subscribed-container.mixin';
+import {modalMixin} from 'src/app/mixins/modal.mixin';
+import {formMixin} from 'src/app/mixins/form.mixin';
+import {MPesaService} from '../services/m-pesa.service';
 
 @Component({
   selector: 'app-sale-summary',
@@ -19,8 +19,26 @@ import { MPesaService } from '../services/m-pesa.service';
   styleUrls: ['./sale-summary.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SaleSummaryComponent extends modalMixin(subscribedContainerMixin(formMixin())) implements OnInit {
+export class SaleSummaryComponent
+  extends modalMixin(subscribedContainerMixin(formMixin())) implements OnInit, OnDestroy {
   mPesaToken$: Observable<any>;
+  cashReceived = 0;
+  cartItemsTotal: number;
+  cartItems: any;
+  paymentMethod = 'cash';
+  isDiscounted = false;
+  discountAmount = 0;
+  discountType: 'absolute' | 'percentage' = 'percentage';
+  creditorPhoneNumber: '';
+  mPesaPhoneNumber: '';
+  cartItems$: Observable<any> = this.store.pipe(
+    select(selectCartState),
+    tap((res) => this.cartItems = res)
+  );
+  cartItemsTotal$: Observable<number> = this.store.pipe(
+    select(selectTotalCartPrice),
+    tap((res) => this.cartItemsTotal = res)
+  );
 
   constructor(
     private store: Store,
@@ -35,7 +53,7 @@ export class SaleSummaryComponent extends modalMixin(subscribedContainerMixin(fo
 
   ngOnInit() {
     this.mPesaService.getAccountBalance().subscribe(res => console.log({res}));
-    //this.mPesaService.lipaNaMPesa({ mobileNumber: '254712692310'}).subscribe(res => console.log({res}))
+    // this.mPesaService.lipaNaMPesa({ mobileNumber: '254712692310'}).subscribe(res => console.log({res}))
     // this.mPesaService.simulateResult().subscribe(res => console.log({res}))
 
   }
@@ -50,22 +68,6 @@ export class SaleSummaryComponent extends modalMixin(subscribedContainerMixin(fo
     return 0;
   }
 
-  cartItems$: Observable<any> = this.store.pipe(
-    select(selectCartState),
-    tap((res) => this.cartItems = res)
-  );
-  cartItemsTotal$: Observable<number> = this.store.pipe(
-    select(selectTotalCartPrice),
-    tap((res) => this.cartItemsTotal = res)
-  );
-  cashReceived = 0;
-  cartItemsTotal: number;
-
-  isDiscounted = false;
-  discountAmount = 0;
-  discountType: 'absolute' | 'percentage' = 'percentage';
-  creditorPhoneNumber: '';
-  mPesaPhoneNumber: '';
   sendMpesaPaymentRequest() {
     this.mPesaService.lipaNaMPesa({
       mobileNumber: this.mPesaPhoneNumber
@@ -75,9 +77,9 @@ export class SaleSummaryComponent extends modalMixin(subscribedContainerMixin(fo
       }
     });
   }
-  
+
   checkPaymentReceipt() {
-    alert(this.mPesaPhoneNumber)
+    alert(this.mPesaPhoneNumber);
     this.mPesaService.checkPaymentReceipt({
       amount: this.amountDue,
       mobileNumber: this.mPesaPhoneNumber
@@ -87,31 +89,32 @@ export class SaleSummaryComponent extends modalMixin(subscribedContainerMixin(fo
       }
     });
   }
+
   get amountDue() {
-    return this.cartItemsTotal - this.discountNetAmount
+    return this.cartItemsTotal - this.discountNetAmount;
   }
 
-  cartItems: any;
-
-  paymentMethod = 'cash';
-
   productName = (id: number) => this.store.pipe(
-    select(selectProductById({ id })),
+    select(selectProductById({id})),
     map(product => product.name)
   );
 
   changeQuantity(productId: number, changeBy: number) {
-    this.store.dispatch(changeCartQuantity({ data: { productId, changeBy } }));
+    this.store.dispatch(changeCartQuantity({data: {productId, changeBy}}));
   }
+
   removeItem(productId: number) {
-    this.store.dispatch(deleteCartItem({ data: { productId } }));
+    this.store.dispatch(deleteCartItem({data: {productId}}));
   }
-  addItems() { this.openModal({ id: 0, component: AddSaleItemComponent }); }
+
+  addItems() {
+    this.openModal({id: 0, component: AddSaleItemComponent});
+  }
 
   submitCart() {
     this.submitInProgressSubject$.next(true);
     this.saleService.saveSale({
-      discount: { type: this.discountType, amount: this.discountAmount },
+      discount: {type: this.discountType, amount: this.discountAmount},
       products: this.cartItems,
       payment: {
         method: this.paymentMethod,
@@ -130,9 +133,11 @@ export class SaleSummaryComponent extends modalMixin(subscribedContainerMixin(fo
         error: () => this.submitInProgressSubject$.next(false)
       });
   }
+
   canDeactivate() {
     return confirm('You are exiting the sales page, continue?');
   }
+
   ngOnDestroy() {
     super.ngOnDestroy();
     this.modalRef?.hide();
