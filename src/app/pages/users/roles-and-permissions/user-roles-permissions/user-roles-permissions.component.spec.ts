@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UserRolesPermissionsComponent } from './user-roles-permissions.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -8,7 +8,7 @@ describe('UserRolesPermissionsComponent', () => {
   let component: UserRolesPermissionsComponent;
   let fixture: ComponentFixture<UserRolesPermissionsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         ErrorModule,

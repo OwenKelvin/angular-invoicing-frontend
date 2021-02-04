@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ViewUserInfoComponent } from './view-user-info.component';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
@@ -11,7 +11,7 @@ describe('ViewUserInfoComponent', () => {
   let component: ViewUserInfoComponent;
   let fixture: ComponentFixture<ViewUserInfoComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         AppLoadingBubbleModule,

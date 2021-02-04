@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { HeaderCollapseComponent } from './header-collapse.component';
 import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
@@ -10,7 +10,7 @@ describe('HeaderCollapseComponent', () => {
   let component: HeaderCollapseComponent;
   let fixture: ComponentFixture<HeaderCollapseComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         AppLayoutModule,

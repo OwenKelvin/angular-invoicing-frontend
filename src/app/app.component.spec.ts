@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -7,7 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FullWithCenterComponent } from './shared/components/full-with-center/full-with-center.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,

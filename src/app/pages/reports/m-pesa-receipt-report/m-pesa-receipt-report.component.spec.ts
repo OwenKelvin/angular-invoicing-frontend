@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MPesaReceiptReportComponent } from './m-pesa-receipt-report.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -7,7 +7,7 @@ describe('MPesaReceiptReportComponent', () => {
   let component: MPesaReceiptReportComponent;
   let fixture: ComponentFixture<MPesaReceiptReportComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
       declarations: [ MPesaReceiptReportComponent ]
