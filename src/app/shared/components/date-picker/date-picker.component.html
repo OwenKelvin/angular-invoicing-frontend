@@ -1,11 +1,12 @@
 <label for="date">{{ label }}</label>
-<input 
-  type="text" 
-  placeholder="Datepicker" 
-  class="form-control" 
+<input
+  id="date"
+  type="text"
+  placeholder="Datepicker"
+  class="form-control"
   bsDatepicker
-  [bsConfig]="{containerClass:'theme-default'}" 
-  [minDate]="minDate" 
+  [bsConfig]="{containerClass:'theme-default'}"
+  [minDate]="minDate"
   [maxDate]="maxDate"
   [datesDisabled]="disabledDates$ | async"
   [ngModel]='date'

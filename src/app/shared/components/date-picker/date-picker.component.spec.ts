@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DatePickerComponent } from './date-picker.component';
+import {of} from 'rxjs';
 
 describe('DatePickerComponent', () => {
   let component: DatePickerComponent;
@@ -16,6 +17,7 @@ describe('DatePickerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DatePickerComponent);
     component = fixture.componentInstance;
+    component.enabledDates$ = of([]);
     fixture.detectChanges();
   });
 

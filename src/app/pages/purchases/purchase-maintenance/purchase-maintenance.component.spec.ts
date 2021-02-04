@@ -6,6 +6,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import {AppInputModule} from '../../../shared/components/input/app-input.module';
 
 describe('PurchaseMaintenanceComponent', () => {
   let component: PurchaseMaintenanceComponent;
@@ -25,6 +26,7 @@ describe('PurchaseMaintenanceComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        AppInputModule
       ],
       declarations: [PurchaseMaintenanceComponent],
       providers: [

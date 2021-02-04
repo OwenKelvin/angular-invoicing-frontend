@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  API_URL: 'https://alhemis-invoicing.furahacapital.com'
+  API_URL: 'https://gariamba-and-sons-sales.furahasolutions.tech'
 };
 
 export const PASSPORT_CLIENT_GRANT_TYPE = 'password';
