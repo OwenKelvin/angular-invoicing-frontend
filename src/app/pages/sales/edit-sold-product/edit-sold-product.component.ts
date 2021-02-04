@@ -32,7 +32,6 @@ export class EditSoldProductComponent extends formMixin(modalMixin()) implements
     this.soldProduct$ = this.saleService.getProductSoldWithId(this.id).pipe(
       tap(res => this.productSoldForm.patchValue({ ...res }))
     );
-  
   }
 
   productSoldFormSubmit() {

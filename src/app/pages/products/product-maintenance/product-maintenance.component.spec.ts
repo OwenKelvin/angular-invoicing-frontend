@@ -6,6 +6,7 @@ import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/redu
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {AppInputModule} from '../../../shared/components/input/app-input.module';
 
 describe('ProductMaintenanceComponent', () => {
   let component: ProductMaintenanceComponent;
@@ -26,6 +27,7 @@ describe('ProductMaintenanceComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        AppInputModule
       ],
       declarations: [ProductMaintenanceComponent],
       providers: [reducerProvider]

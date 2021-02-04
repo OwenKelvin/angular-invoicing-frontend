@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-date-picker',
@@ -14,10 +14,11 @@ export class DatePickerComponent implements OnInit {
   minDate: Date;
   maxDate: Date = new Date();
   date: Date = new Date();
-  
-  @Output() ngModelChange = new EventEmitter<string>()
-  
-  constructor() { }
+
+  @Output() ngModelChange = new EventEmitter<string>();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.disabledDates$ = this.enabledDates$.pipe(
@@ -32,8 +33,8 @@ export class DatePickerComponent implements OnInit {
         const datesBetween: string[] = [...Array(duration + 1).keys()].map(i =>
           new Date(this.minDate.valueOf() + i * millisecondPerDay).toISOString().slice(0, 10));
         const enabledDates = [...dates].map(date => date.toISOString().slice(0, 10));
-        return datesBetween.filter(x => !enabledDates.includes(x)).map(x => new Date(x))
+        return datesBetween.filter(x => !enabledDates.includes(x)).map(x => new Date(x));
       })
-    )
+    );
   }
 }

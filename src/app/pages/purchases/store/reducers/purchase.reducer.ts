@@ -18,7 +18,7 @@ export const initialState: State = {
     sellerId: null,
     sellerName: '',
     purchaseCurrency: 'KES',
-    purchaseDate: (new Date()).toISOString().substring(0, 10)
+  purchaseDate: (new Date()).toISOString().substring(0, 10)
   }
 };
 

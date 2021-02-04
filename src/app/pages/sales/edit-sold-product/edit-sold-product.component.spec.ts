@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditSoldProductComponent } from './edit-sold-product.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('EditSoldProductComponent', () => {
   let component: EditSoldProductComponent;
@@ -8,6 +10,7 @@ describe('EditSoldProductComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, HttpClientTestingModule],
       declarations: [ EditSoldProductComponent ]
     })
     .compileComponents();

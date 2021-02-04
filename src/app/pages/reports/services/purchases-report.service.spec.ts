@@ -1,16 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MPesaReceiptsService } from './m-pesa-receipts.service';
+import { PurchasesReportService } from './purchases-report.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('MPesaReceiptsService', () => {
-  let service: MPesaReceiptsService;
+describe('PurchasesReportService', () => {
+  let service: PurchasesReportService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [
+        HttpClientTestingModule
+      ]
     });
-    service = TestBed.inject(MPesaReceiptsService);
+    service = TestBed.inject(PurchasesReportService);
   });
 
   it('should be created', () => {
