@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MPesaReceiptReportComponent } from './m-pesa-receipt-report.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('MPesaReceiptReportComponent', () => {
   let component: MPesaReceiptReportComponent;
@@ -9,7 +10,7 @@ describe('MPesaReceiptReportComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, HttpClientTestingModule],
       declarations: [ MPesaReceiptReportComponent ]
     })
     .compileComponents();

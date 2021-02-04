@@ -51,9 +51,11 @@ describe('CreateStaffComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(document, 'querySelector').and.returnValue(document.createElement('input'));
     fixture = TestBed.createComponent(CreateStaffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    
   });
 
   it('should create', () => {

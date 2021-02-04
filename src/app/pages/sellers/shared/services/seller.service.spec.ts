@@ -2,8 +2,9 @@ import { TestBed } from '@angular/core/testing';
 
 import { SellerService } from './seller.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import { of } from 'rxjs';
 
 describe('SellerService', () => {
   let service: SellerService;
@@ -21,7 +22,14 @@ describe('SellerService', () => {
         }),
       ],
       providers: [
-        reducerProvider
+        reducerProvider,
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => of(true),
+            dispatch: () => { }
+          }
+        }
       ]
     });
     service = TestBed.inject(SellerService);

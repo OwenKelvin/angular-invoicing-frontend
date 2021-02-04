@@ -4,9 +4,11 @@ import { PurchaseMaintenanceComponent } from './purchase-maintenance.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import {AppInputModule} from '../../../shared/components/input/app-input.module';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { of } from 'rxjs';
 
 describe('PurchaseMaintenanceComponent', () => {
   let component: PurchaseMaintenanceComponent;
@@ -26,11 +28,19 @@ describe('PurchaseMaintenanceComponent', () => {
             strictActionImmutability: true,
           }
         }),
-        AppInputModule
+        AppInputModule,
+        NgSelectModule
       ],
       declarations: [PurchaseMaintenanceComponent],
       providers: [
-        reducerProvider
+        reducerProvider,
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => of([]),
+            dispatch: () => { }
+          }
+        }
       ]
     })
     .compileComponents();

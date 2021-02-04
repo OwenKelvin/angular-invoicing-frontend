@@ -5,6 +5,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { AppState, REDUCER_TOKEN, metaReducers, reducerProvider } from 'src/app/store/reducers';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
 describe('MenuSearchComponent', () => {
   let component: MenuSearchComponent;
@@ -25,7 +26,16 @@ describe('MenuSearchComponent', () => {
         FormsModule,
         RouterTestingModule],
       declarations: [MenuSearchComponent],
-      providers: [reducerProvider]
+      providers: [reducerProvider,
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => of([]),
+            select: () => of([]),
+            dispatch: () => {}
+          }
+        }
+      ]
     });
 
     await TestBed.compileComponents();

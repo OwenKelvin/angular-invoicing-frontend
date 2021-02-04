@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PurchasesReportComponent } from './purchases-report.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PurchasesReportComponent', () => {
   let component: PurchasesReportComponent;
@@ -10,7 +11,8 @@ describe('PurchasesReportComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientTestingModule
       ],
       declarations: [ PurchasesReportComponent ]
     })

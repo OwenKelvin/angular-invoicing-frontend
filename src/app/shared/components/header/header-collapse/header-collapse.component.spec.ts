@@ -5,6 +5,9 @@ import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('HeaderCollapseComponent', () => {
   let component: HeaderCollapseComponent;
@@ -21,11 +24,14 @@ describe('HeaderCollapseComponent', () => {
             strictActionImmutability: true,
           }
         }),
-        EffectsModule.forRoot([])
+        EffectsModule.forRoot([]),
+        HttpClientTestingModule,
+        RouterTestingModule
       ],
       declarations: [HeaderCollapseComponent],
       providers: [
-        reducerProvider
+        reducerProvider,
+        provideMockStore({ initialState: { permissions: [] } }),
       ],
     })
     .compileComponents();

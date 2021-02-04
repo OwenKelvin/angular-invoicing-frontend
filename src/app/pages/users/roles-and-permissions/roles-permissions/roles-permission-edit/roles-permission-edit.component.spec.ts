@@ -3,12 +3,13 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RolesPermissionEditComponent } from './roles-permission-edit.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppCheckboxModule } from 'src/app/shared/components/checkbox/checkbox.module';
 import { AppInputModule } from 'src/app/shared/components/input/app-input.module';
+import { of } from 'rxjs';
 
 describe('RolesPermissionEditComponent', () => {
   let component: RolesPermissionEditComponent;
@@ -33,7 +34,15 @@ describe('RolesPermissionEditComponent', () => {
         }),
       ],
       declarations: [RolesPermissionEditComponent],
-      providers: [reducerProvider]
+      providers: [reducerProvider,
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => of([]),
+            dispatch: () => {}
+          }
+        }
+      ]
     })
     .compileComponents();
   }));

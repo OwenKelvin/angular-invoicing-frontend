@@ -31,7 +31,7 @@ describe('DeletePurchaseConfirmationComponent', () => {
           provide: Store,
           useValue: {
             dispatch: () => true,
-            pipe: of(1)
+            pipe: () => of(1)
           }
         }
       ],

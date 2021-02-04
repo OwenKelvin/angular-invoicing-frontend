@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppInputModule } from 'src/app/shared/components/input/app-input.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('SellerMaintenanceComponent', () => {
   let component: SellerMaintenanceComponent;
@@ -29,7 +30,9 @@ describe('SellerMaintenanceComponent', () => {
         }),
       ],
       declarations: [SellerMaintenanceComponent],
-      providers: [reducerProvider]
+      providers: [reducerProvider,
+        provideMockStore({ initialState: { sellers: [] } }),
+      ]
     })
     .compileComponents();
   }));

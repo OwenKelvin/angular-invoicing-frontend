@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DeleteSellerConfirmationComponent } from './delete-seller-confirmation.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { of } from 'rxjs';
 
 describe('DeleteSellerConfirmationComponent', () => {
   let component: DeleteSellerConfirmationComponent;
@@ -26,6 +27,13 @@ describe('DeleteSellerConfirmationComponent', () => {
       ],
       providers: [
         reducerProvider,
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => of(true),
+            dispatch: () => {}
+          }
+        }
       ],
       declarations: [ DeleteSellerConfirmationComponent ]
     })

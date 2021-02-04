@@ -2,10 +2,11 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ViewUserInfoComponent } from './view-user-info.component';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
 describe('ViewUserInfoComponent', () => {
   let component: ViewUserInfoComponent;
@@ -27,7 +28,14 @@ describe('ViewUserInfoComponent', () => {
       ],
       declarations: [ViewUserInfoComponent],
       providers: [
-        reducerProvider
+        reducerProvider,
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => of([]),
+            dispatch: () => {}
+          }
+        }
       ]
     })
     .compileComponents();

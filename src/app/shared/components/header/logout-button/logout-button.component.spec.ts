@@ -2,7 +2,7 @@
 
   import { LogoutButtonComponent } from './logout-button.component';
   import { HttpClientTestingModule } from '@angular/common/http/testing';
-  import { StoreModule } from '@ngrx/store';
+  import { Store, StoreModule } from '@ngrx/store';
   import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 
   describe('LogoutButtonComponent', () => {
@@ -22,7 +22,13 @@
         }),
       ],
       providers: [
-        reducerProvider
+        reducerProvider,
+        {
+          provide: Store,
+          useValue: {
+            pipe: () => ([])
+          }
+        }
       ],
       declarations: [ LogoutButtonComponent ]
     })

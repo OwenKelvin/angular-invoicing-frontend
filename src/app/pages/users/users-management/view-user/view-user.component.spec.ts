@@ -4,6 +4,7 @@ import { ViewUserComponent } from './view-user.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import {StoreModule} from '@ngrx/store';
 import {metaReducers, REDUCER_TOKEN, reducerProvider} from '../../../../store/reducers';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ViewUserComponent', () => {
   let component: ViewUserComponent;
@@ -20,6 +21,7 @@ describe('ViewUserComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        HttpClientTestingModule
       ],
       declarations: [ ViewUserComponent ],
       providers: [reducerProvider]

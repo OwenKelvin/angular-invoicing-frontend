@@ -1,5 +1,7 @@
 <label for="date">{{ label }}</label>
-<input
+
+<ng-container *ngIf='disabledDates$ | async as disabledDates'>
+  <input
   id="date"
   type="text"
   placeholder="Datepicker"
@@ -8,7 +10,9 @@
   [bsConfig]="{containerClass:'theme-default'}"
   [minDate]="minDate"
   [maxDate]="maxDate"
-  [datesDisabled]="disabledDates$ | async"
+  [datesDisabled]="disabledDates"
   [ngModel]='date'
   (ngModelChange)='ngModelChange.emit($event)'
   >
+
+</ng-container>

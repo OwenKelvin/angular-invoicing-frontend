@@ -31,6 +31,7 @@ describe('TelInputComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(document, 'querySelector').and.returnValue(document.createElement('input'));
     fixture = TestBed.createComponent(TelInputComponent);
     component = fixture.componentInstance;
     component.formControl = new FormControl();

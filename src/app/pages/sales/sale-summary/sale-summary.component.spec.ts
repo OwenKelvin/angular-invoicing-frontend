@@ -4,8 +4,10 @@ import { SaleSummaryComponent } from './sale-summary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import { of } from 'rxjs';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('SaleSummaryComponent', () => {
   let component: SaleSummaryComponent;
@@ -28,7 +30,8 @@ describe('SaleSummaryComponent', () => {
       ],
       declarations: [SaleSummaryComponent],
       providers: [
-        reducerProvider
+        reducerProvider,
+        provideMockStore({ initialState: { cart: [] } }),
       ]
     })
     .compileComponents();

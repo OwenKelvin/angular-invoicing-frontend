@@ -4,7 +4,7 @@ import {selectSupportStaffState} from './support-staff.selectors';
 describe('SupportStaff Selectors', () => {
   it('should select the feature state', () => {
     const result = selectSupportStaffState({
-      users : {staff: {[fromSupportStaff.supportStaffFeatureKey]: fromSupportStaff.initialState} }
+      users : {[fromSupportStaff.supportStaffFeatureKey]: fromSupportStaff.initialState} 
     });
 
     expect(result).toEqual(fromSupportStaff.initialState);
