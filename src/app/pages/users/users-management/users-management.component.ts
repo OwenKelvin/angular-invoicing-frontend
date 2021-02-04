@@ -20,7 +20,7 @@ export class UsersManagementComponent implements OnInit {
       link: 'users/users-management/support-staff'
     },
 
-  ])
+  ]);
 
   constructor() { }
 

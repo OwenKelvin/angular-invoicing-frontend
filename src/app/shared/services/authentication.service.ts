@@ -110,7 +110,7 @@ export class AuthenticationService {
         sessionStorage.removeItem('currentUser');
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
-        return EMPTY
+        return EMPTY;
       }),
       tap(() => {
         sessionStorage.removeItem('currentUser');

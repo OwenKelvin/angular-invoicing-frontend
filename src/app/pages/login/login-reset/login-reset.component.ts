@@ -26,14 +26,14 @@ export class LoginResetComponent extends formMixin(subscribedContainerMixin()) {
 
   submitPasswordResetForm() {
 
-    this.submitInProgressSubject$.next(true)
+    this.submitInProgressSubject$.next(true);
     if (this.passwordResetForm.valid) {
       this.authService.resetPassword(this.passwordResetForm.value)
         .pipe(takeUntil(this.destroyed$))
         .subscribe({
           next: () => {
-            this.router.navigate(['/login', 'token'], {queryParamsHandling: 'preserve'})
-            this.submitInProgressSubject$.next(false)
+            this.router.navigate(['/login', 'token'], {queryParamsHandling: 'preserve'});
+            this.submitInProgressSubject$.next(false);
           },
           error: () => this.submitInProgressSubject$.next(false)
         });

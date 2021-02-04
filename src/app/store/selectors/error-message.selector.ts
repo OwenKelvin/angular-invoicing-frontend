@@ -5,4 +5,4 @@ import { selectAppState } from './app.selectors';
 export const selectErrorState = createSelector(
   selectAppState,
   app => app?.[errorMessageFeatureKey]
-)
+);

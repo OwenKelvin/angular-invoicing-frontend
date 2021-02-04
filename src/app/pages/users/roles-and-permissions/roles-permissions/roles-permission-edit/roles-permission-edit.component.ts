@@ -32,24 +32,24 @@ export class RolesPermissionEditComponent implements OnInit {
       .pipe(map(params => Number(params.get('id'))))
       .pipe(tap(id => this.roleId = id))
       .pipe(mergeMap(id => this.rolesPermissionService.getAllPermissionsStatusForRole(id)))
-      .pipe(takeWhile(() => this.componentIsActive))
+      .pipe(takeWhile(() => this.componentIsActive));
     this.role$.subscribe(res => {
       this.isLoading = false;
       this.role = res;
-      this.updatePermissionsForm()
-    })
+      this.updatePermissionsForm();
+    });
   }
   updatePermissionsForm() {
     this.permissionsForm = this.fb.group({
       permissions: this.fb.array([])
-    })
+    });
 
     this.role.permissionStatus.forEach(({ id, hasPermission, name }: any) => {
       this.formPermissions.push(this.fb.group({
         id: [id, [Validators.required]],
         name: [name],
         hasPermission: [hasPermission]
-      }))
+      }));
     });
   }
   get formPermissions() {
@@ -66,8 +66,8 @@ export class RolesPermissionEditComponent implements OnInit {
           .pipe(takeWhile(() => this.componentIsActive))
           .subscribe(() => {
             this.isSubmitting = false;
-          }, () => this.isSubmitting = false)
-      })
+          }, () => this.isSubmitting = false);
+      });
   }
 
 }

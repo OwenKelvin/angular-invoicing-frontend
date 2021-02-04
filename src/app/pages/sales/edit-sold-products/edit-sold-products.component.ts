@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SaleService } from '../services/sale.service';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { mergeMap, tap, takeUntil, map } from 'rxjs/operators';
@@ -14,7 +14,8 @@ import { subscribedContainerMixin } from 'src/app/mixins/subscribed-container.mi
   templateUrl: './edit-sold-products.component.html',
   styleUrls: ['./edit-sold-products.component.less']
 })
-export class EditSoldProductsComponent extends modalMixin(subscribedContainerMixin()) implements OnInit {
+export class EditSoldProductsComponent
+  extends modalMixin(subscribedContainerMixin()) implements OnInit, OnDestroy {
 
   deletedIds: number[] = [];
   updatedItems: { [id: number]: any; } = {};

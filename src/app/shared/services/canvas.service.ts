@@ -54,5 +54,5 @@ export class CanvasService {
       yStart = 0;
     }
     context?.drawImage(imageObj, xStart, yStart, renderableWidth, renderableHeight);
-  };
+  }
 }

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { MyProfileComponent } from './my-profile.component';;
+import { MyProfileComponent } from './my-profile.component';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { AppUserProfileModule } from 'src/app/shared/components/user-profile/user-profile.module';

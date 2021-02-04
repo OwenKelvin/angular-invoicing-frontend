@@ -18,7 +18,7 @@ export class LinkService {
   salesLinks$: Observable<ILink[]> = this.filerAllowed(this.store.select(fromLinks.salesLinks));
   reportsLinks$: Observable<ILink[]> = this.filerAllowed(this.store.select(fromLinks.selectReportsLinks));
   allLinks$: Observable<ILink[]> = this.filerAllowed(this.store.select(fromLinks.allLinks));
-  filerAllowed (links$: Observable<ILink[]>): Observable<ILink[]> {
+  filerAllowed(links$: Observable<ILink[]>): Observable<ILink[]> {
     return combineLatest([this.myPermissions$, this.myRoles$, links$]).pipe(
       map(([myPermissions, myRoles, links]) =>
         links?.filter(link => myRoles?.includes('super admin') || myPermissions?.some(r => link.permissions?.includes(r)))

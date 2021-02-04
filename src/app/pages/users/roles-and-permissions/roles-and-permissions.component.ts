@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./roles-and-permissions.component.css']
 })
 export class RolesAndPermissionsComponent implements OnInit {
-  links$: Observable<any>
+  links$: Observable<any>;
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class RolesAndPermissionsComponent implements OnInit {
     this.links$ = of([
       { name: 'User Roles/ Permissions', icon: 'icon-user-circle-o', link: 'users/roles-and-permissions/user' },
       { name: 'Roles & Permissions', icon: 'icon-sliders', link: 'users/roles-and-permissions/roles' },
-    ])
+    ]);
   }
 
 }

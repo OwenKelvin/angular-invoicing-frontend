@@ -24,18 +24,18 @@ export class RolesPermissionsComponent implements OnInit, OnDestroy {
     this.filter = '';
     this.componentIsActive = true;
     this.roles$ = this.rolesPermissionsService.roles$
-      .pipe(takeWhile(()=> this.componentIsActive));
+      .pipe(takeWhile(() => this.componentIsActive));
     this.roles$.subscribe(res => {
       this.roles = res;
       this.isLoading = false;
     });
   }
   getRoleWithId(idNumber: number) {
-    return this.roles.find(({ id }) => id === idNumber)
+    return this.roles.find(({ id }) => id === idNumber);
   }
 
   getFilteredPermissionsWithRoleId(idNumber: number) {
-    return this.getRoleWithId(idNumber).permissions.filter(({name}: any) => (new RegExp(this.filter).test(name)))
+    return this.getRoleWithId(idNumber).permissions.filter(({name}: any) => (new RegExp(this.filter).test(name)));
   }
   ngOnDestroy() {
     this.componentIsActive = false;

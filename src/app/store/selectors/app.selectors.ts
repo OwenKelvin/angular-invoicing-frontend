@@ -9,5 +9,5 @@ export const selectAppState = createFeatureSelector<fromApp.AppState>(
 
 export const selectEditModeOnState = createSelector(
   selectAppState,
-  app => app ? app[editModeFeatureKey].on: false
+  app => app ? app[editModeFeatureKey].on : false
 );

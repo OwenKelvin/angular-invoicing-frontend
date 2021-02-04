@@ -15,10 +15,10 @@ export const reducer = createReducer(
 
   on(CurrencyActions.loadCurrencys, state => state),
   on(CurrencyActions.loadCurrencysSuccess, (state, action) => {
-    const uniqueCurrency = new Set([...state, ...action.data])
+    const uniqueCurrency = new Set([...state, ...action.data]);
     return [...uniqueCurrency];
   }),
-  on(CurrencyActions.loadCurrencysFailure, (state, _action) => state),
+  on(CurrencyActions.loadCurrencysFailure, (state) => state),
 
 );
 

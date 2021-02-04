@@ -6,14 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MPesaService {
-  
+
+  constructor(private http: HttpClient) { }
+
+  token$: Observable<any> = this.http.get('api/m-pesa/access-token');
+
   getAccountBalance() {
     return this.http.get('api/m-pesa/balance');
   }
-  
+
   simulateError() {
     return this.http.post('api/m-pesa/callback-url', {
-      
+
       // "Result": {
       //   "ResultType": 0,
       //   "ResultCode": 2001,
@@ -28,23 +32,23 @@ export class MPesaService {
       //     }
       //   }
       // }
-    })
+    });
   }
   simulateResult() {
     return this.http.post('api/m-pesa/callback-url', {
-      "Body": {
-        "stkCallback": {
-          "MerchantRequestID": "4358-8482324-1",
-          "CheckoutRequestID": "ws_CO_240620201951034354",
-          "ResultCode": 0,
-          "ResultDesc": "The service request is processed successfully.",
-          "CallbackMetadata": {
-            "Item": [
-              { "Name": "Amount", "Value": 1 },
-              { "Name": "MpesaReceiptNumber", "Value": "OFO1800ZC1" },
-              { "Name": "Balance" },
-              { "Name": "TransactionDate", "Value": 20200624195156 },
-              { "Name": "PhoneNumber", "Value": 254712692310 }]
+      Body: {
+        stkCallback: {
+          MerchantRequestID: '4358-8482324-1',
+          CheckoutRequestID: 'ws_CO_240620201951034354',
+          ResultCode: 0,
+          ResultDesc: 'The service request is processed successfully.',
+          CallbackMetadata: {
+            Item: [
+              { Name: 'Amount', Value: 1 },
+              { Name: 'MpesaReceiptNumber', Value: 'OFO1800ZC1' },
+              { Name: 'Balance' },
+              { Name: 'TransactionDate', Value: 20200624195156 },
+              { Name: 'PhoneNumber', Value: 254712692310 }]
           }
         }
       }
@@ -101,17 +105,13 @@ export class MPesaService {
     });
   }
 
-  constructor(private http: HttpClient) { }
-
-  token$: Observable<any> = this.http.get('api/m-pesa/access-token');
-
   checkPaymentReceipt: ({ mobileNumber, amount }: any) => Observable<any> = ({ mobileNumber, amount }) =>
-    this.http.get(`api/m-pesa/receipts/?query=${mobileNumber}&amount=${amount}`);
-  
+    this.http.get(`api/m-pesa/receipts/?query=${mobileNumber}&amount=${amount}`)
+
   lipaNaMPesa: ({ mobileNumber }: any) => Observable<any> = ({ mobileNumber }) =>
     this.http.post('api/m-pesa/lipa-na-mpesa', {
       mobile_number: mobileNumber
-    });
+    })
 
 }
 

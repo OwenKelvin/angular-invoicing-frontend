@@ -28,5 +28,5 @@ export class UserPasswordResetComponent extends formMixin() {
         })),
       tap(() => this.submitInProgressSubject$.next(false))
     ).subscribe({ error: () => this.submitInProgressSubject$.next(false) });
-  };
+  }
 }

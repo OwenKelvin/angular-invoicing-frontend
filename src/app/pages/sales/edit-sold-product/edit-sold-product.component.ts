@@ -24,9 +24,9 @@ export class EditSoldProductComponent extends formMixin(modalMixin()) implements
   });
   soldProduct$: Observable<any>;
   constructor(private fb: FormBuilder,
-    private saleService: SaleService,
-    private modalService: BsModalService,
-    private store: Store) { super(); }
+              private saleService: SaleService,
+              private modalService: BsModalService,
+              private store: Store) { super(); }
 
   ngOnInit(): void {
     this.soldProduct$ = this.saleService.getProductSoldWithId(this.id).pipe(

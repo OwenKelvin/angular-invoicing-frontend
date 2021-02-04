@@ -33,15 +33,15 @@ export class SupportStaffAdmissionComponent implements OnInit {
       .subscribe();
     this.staffTypes$ = this.store.pipe(
       select(selectStaffTypes)
-    )
+    );
     this.staffTypeFrom = this.fb.group({
       staffTypeId: ['', [Validators.required]]
-    })
+    });
   }
 
   staffTypeFormSubmit() {
     if (this.staffTypeFrom.valid) {
-      this.router.navigate(['users', 'users-management', 'support-staff', this.staffTypeFrom.get('staffTypeId')?.value,'create']);
+      this.router.navigate(['users', 'users-management', 'support-staff', this.staffTypeFrom.get('staffTypeId')?.value, 'create']);
     }
 
   }

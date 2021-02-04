@@ -11,7 +11,7 @@ export class UsersComponent implements OnInit {
    links$ = of([
      { name: 'Admissions', icon: 'icon-user-circle-o', link: 'users/users-management' },
      { name: 'Roles & Permissions', icon: 'icon-sliders', link: 'users/roles-and-permissions' },
-   ])
+   ]);
 
   constructor() { }
 

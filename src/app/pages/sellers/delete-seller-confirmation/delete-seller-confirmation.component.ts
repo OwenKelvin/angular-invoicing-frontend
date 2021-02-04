@@ -43,7 +43,7 @@ export class DeleteSellerConfirmationComponent implements OnInit, OnDestroy {
       return null;
     }
     return { idMismatch: 'Id Mismatch' };
-  };
+  }
 
   closeModal() {
     this.store.dispatch(closeModals());

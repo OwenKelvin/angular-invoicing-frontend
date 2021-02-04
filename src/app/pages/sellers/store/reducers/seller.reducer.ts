@@ -28,7 +28,7 @@ export const reducer = createReducer(
     });
     return { ...state, ...states };
   }),
-  on(SellerActions.loadSellersFailure, (state, _action) => state),
+  on(SellerActions.loadSellersFailure, (state) => state),
 
   on(SellerActions.deleteSeller, (state, action) => {
     const newState = { ...state };

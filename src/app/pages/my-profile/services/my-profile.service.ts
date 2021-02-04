@@ -17,9 +17,9 @@ export class MyProfileService {
   loadMyProfile$: Observable<any> = this.store.pipe(
     select(selectMyProfileState),
     tap((profile) => profile?.id === 0 ? this.store.dispatch(loadMyProfiles()) : '')
-  )
+  );
 
   loadMyPermissions$ = this.store.pipe(
     select(selectMyPermissions)
-  )
+  );
 }

@@ -43,9 +43,9 @@ export class AddSaleItemComponent extends formMixin(subscribedContainerMixin()) 
   ) { super(); }
 
   ngOnInit(): void {
-    this.newSaleItemForm.valueChanges.subscribe({ 
+    this.newSaleItemForm.valueChanges.subscribe({
       next: () => this.cartAdditionSubject$.next(false)
-    })
+    });
     this.store.dispatch(loadModals());
     this.newSaleItemForm.get('productId')?.valueChanges
       .pipe(
@@ -55,10 +55,10 @@ export class AddSaleItemComponent extends formMixin(subscribedContainerMixin()) 
       )
       .subscribe({
         next: (product) => {
-          this.newSaleItemForm.get('unitPrice')?.setValue(product.sellingPrice)
-          this.newSaleItemForm.get('salePrice')?.setValue(product.sellingPrice)
-          this.newSaleItemForm.get('saleCurrency')?.setValue(product.sellingPriceCurrency)
-          this.newSaleItemForm.get('unitPriceCurrency')?.setValue(product.sellingPriceCurrency)
+          this.newSaleItemForm.get('unitPrice')?.setValue(product.sellingPrice);
+          this.newSaleItemForm.get('salePrice')?.setValue(product.sellingPrice);
+          this.newSaleItemForm.get('saleCurrency')?.setValue(product.sellingPriceCurrency);
+          this.newSaleItemForm.get('unitPriceCurrency')?.setValue(product.sellingPriceCurrency);
           this.newSaleItemForm.updateValueAndValidity();
         }
       });
@@ -88,7 +88,7 @@ export class AddSaleItemComponent extends formMixin(subscribedContainerMixin()) 
     if (this.newSaleItemForm.valid) {
       this.store.dispatch(loadCartsSuccess({ data: this.newSaleItemForm.value }));
       this.resetForm();
-      this.cartAdditionSubject$.next(true)
+      this.cartAdditionSubject$.next(true);
     }
   }
 

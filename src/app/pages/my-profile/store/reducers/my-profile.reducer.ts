@@ -29,7 +29,7 @@ const myProfileReducer = createReducer(
   on(MyProfileActions.loadMyProfilesSuccess, (state, action) => {
     return {...state, ...action.data};
   }),
-  on(MyProfileActions.loadMyProfilesFailure, (state, _action) => state),
+  on(MyProfileActions.loadMyProfilesFailure, (state) => state),
 
 );
 

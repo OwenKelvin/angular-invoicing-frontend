@@ -78,7 +78,7 @@ export class PasswordChangeFormComponent implements OnDestroy  {
     this.isSubmittingSubject$.next(false);
     this.store.dispatch(loadErrorMessagesFailure());
     this.router.navigate([returnUrl]);
-  };
+  }
 
   ngOnDestroy() {
     this.componentIsActive = false;

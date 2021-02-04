@@ -11,4 +11,4 @@ import { SupportStaffEffects } from './store/effects/support-staff.effects';
   ]
 })
 
-export class LoadUsersModule { };
+export class LoadUsersModule { }

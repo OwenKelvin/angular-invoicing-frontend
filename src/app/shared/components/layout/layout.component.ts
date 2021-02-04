@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit {
   routerActivated = false;
   closeFullScreenMode = (): void => {
     document.exitFullscreen();
-  };
+  }
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {

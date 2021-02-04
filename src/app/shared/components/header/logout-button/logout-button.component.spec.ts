@@ -1,11 +1,11 @@
   import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { LogoutButtonComponent } from './logout-button.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+  import { LogoutButtonComponent } from './logout-button.component';
+  import { HttpClientTestingModule } from '@angular/common/http/testing';
+  import { StoreModule } from '@ngrx/store';
+  import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 
-describe('LogoutButtonComponent', () => {
+  describe('LogoutButtonComponent', () => {
   let component: LogoutButtonComponent;
   let fixture: ComponentFixture<LogoutButtonComponent>;
 

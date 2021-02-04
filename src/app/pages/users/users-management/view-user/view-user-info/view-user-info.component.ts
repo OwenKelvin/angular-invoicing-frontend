@@ -29,7 +29,7 @@ export class ViewUserInfoComponent {
         data: { id, [fieldName]: $event }
       }))),
       take(1)
-    ).subscribe()
+    ).subscribe();
     // this.store.dispatch(loadSupportStaffsSuccess({
     //   data: {
     //     // id: this.teacherId,
@@ -43,7 +43,7 @@ export class ViewUserInfoComponent {
         data: { id, [fieldName + '_id']: $event.id, [fieldName + '_name']: $event.name }
       }))),
       take(1)
-    ).subscribe()
+    ).subscribe();
     // this.store.dispatch(loadSupportStaffsSuccess({
     //   data: {
     //     // id: this.teacherId,

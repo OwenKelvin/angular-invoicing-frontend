@@ -4,11 +4,11 @@ import * as CartActions from '../actions/cart.actions';
 export const cartFeatureKey = 'cart';
 
 export interface State {
-  productId: number,
-  saleQuantity: number,
-  salePrice: number,
-  unitPrice: number,
-  unitPriceCurrency: string,
+  productId: number;
+  saleQuantity: number;
+  salePrice: number;
+  unitPrice: number;
+  unitPriceCurrency: string;
   saleCurrency: string;
 }
 
@@ -34,7 +34,7 @@ export const reducer = createReducer(
       return currentState;
     }
 
-    return [...currentState, action.data ]
+    return [...currentState, action.data ];
 
   }),
 

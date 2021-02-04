@@ -39,7 +39,7 @@ export class InventoryManagementComponent extends modalMixin(
   sortByQuantityLowSubject$ = new BehaviorSubject<boolean>(false);
   sortByQuantityLowAction$ = this.sortByQuantityLowSubject$.asObservable();
   products$: Observable<IProduct[]> = this.productService.productsStockCount$;
-  adjustmentsAction$ = this.inventoryQuantityService.adjustmentsAction$
+  adjustmentsAction$ = this.inventoryQuantityService.adjustmentsAction$;
 
   filteredProducts$ = combineLatest([this.products$, this.filterStringAction$, this.adjustmentsAction$]).pipe(
     tap(() => this.loadingSubject$.next(true)),
@@ -63,7 +63,7 @@ export class InventoryManagementComponent extends modalMixin(
     map(([isSortByChecked, products]) => {
       if (isSortByChecked) {
         return products.sort((prev, next) => prev.lowIndex > next.lowIndex ? 1 : prev.lowIndex < next.lowIndex ? -1 : 0);
-      } else return products.sort((prev, next) => prev.id > next.id ? 1 : prev.id < next.id ? -1 : 0);
+      } else { return products.sort((prev, next) => prev.id > next.id ? 1 : prev.id < next.id ? -1 : 0); }
     })
   );
 

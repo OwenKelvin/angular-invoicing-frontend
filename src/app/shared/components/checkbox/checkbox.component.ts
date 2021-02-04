@@ -22,7 +22,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   onTouched: any;
   onChanges: (val: any) => void = (val) => {
     this.ngModelChange.emit(val);
-  };
+  }
 
   writeValue(value: any): void {
     if (value !== undefined) {

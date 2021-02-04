@@ -13,5 +13,5 @@ export const formMixin = <T extends Constructor>(BaseClass: T = class {
     editFormAction$ = this.editFormSubject$.asObservable();
     itemForm: FormGroup;
     closeFormDialog: () => boolean = () =>
-      this.itemForm.touched ? confirm('You have unsaved changes, Do you wish to continue? ') : true;
+      this.itemForm.touched ? confirm('You have unsaved changes, Do you wish to continue? ') : true
   };

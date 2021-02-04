@@ -27,7 +27,7 @@ export class ProductsService {
       minAmountCheck: item.max
     })))),
     shareReplay(1)
-  )
+  );
 
   productsStockCount$: Observable<any[]> = this.http.get('api/products?stock_count=true').pipe(
     map((res: any[]) => (res.map(item => ({
@@ -38,7 +38,7 @@ export class ProductsService {
       min: item.min,
       max: item.max
     }))))
-  )
+  );
 
 
   loadProducts$: Observable<any> = this.store.pipe(
@@ -74,7 +74,7 @@ export class ProductsService {
           max: value.maxAmountCheck,
           min: value.minAmountCheck
         }))
-      )
+      );
     }
     return this.http.post(url, {
       _method: 'PATCH',
@@ -93,6 +93,6 @@ export class ProductsService {
         buyingPriceCurrency: item.buying_price_currency,
         sellingPriceCurrency: item.selling_price_currency,
       }))
-    )
+    );
   }
 }

@@ -22,12 +22,12 @@ export class SellerService {
       name: item.name,
       description: item.description
     })))),
-    tap(()=> this.sellersLoaded = true)
+    tap(() => this.sellersLoaded = true)
   );
 
   loadSellers$: Observable<any> = this.store.pipe(
     select(selectAllSellers),
-    tap(({ length }) => (length < 1 && !this.sellersLoaded )? this.store.dispatch(loadSellers()) : ''),
+    tap(({ length }) => (length < 1 && !this.sellersLoaded ) ? this.store.dispatch(loadSellers()) : ''),
   );
 
   deleteSeller(id: number) {

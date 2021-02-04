@@ -9,16 +9,16 @@ export const crudMixin = <T extends Constructor>(BaseClass: T = class { } as T) 
     tranforms: TransformInterface[] = [];
     url = '';
     http: HttpClient;
-    constructor(..._args: any[]) {
+    constructor(...args: any[]) {
       super();
-      this.http = _args[0];
+      this.http = args[0];
     }
 
     get all$(): Observable<any[]> {
       return this.http.get(this.url).pipe(
         map(res => res as any)
-      );;
-    };
+      );
+    }
     get active$(): Observable<any[]> {
       return this.http.get(`${this.url}/?active=${true}`).pipe(
         map(res => res as any)

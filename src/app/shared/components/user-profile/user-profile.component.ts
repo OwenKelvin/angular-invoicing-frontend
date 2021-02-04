@@ -55,12 +55,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.editMode ? this.store.dispatch(loadEditModesSuccess()) : this.store.dispatch(loadEditModesFailure());
   }
   getProfilePic() {
-    this.profPicLoadingSubject$.next(true)
+    this.profPicLoadingSubject$.next(true);
     this.usersService.getProfilePicture({ userId: this.profile.id })
       .pipe(takeWhile(() => this.componentIsActive), take(1))
       .subscribe(res => {
         (this.profPic.nativeElement as HTMLImageElement).src = URL.createObjectURL(res);
-        this.profPicLoadingSubject$.next(false)
+        this.profPicLoadingSubject$.next(false);
       });
   }
   get fullName(): string {

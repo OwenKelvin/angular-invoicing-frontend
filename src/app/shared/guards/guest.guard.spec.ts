@@ -8,7 +8,7 @@ import { AppState, REDUCER_TOKEN, metaReducers, reducerProvider } from './../../
 import { AuthenticationService } from '../services/authentication.service';
 
 describe('GuestGuard', () => {
-  beforeEach(async () => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -22,10 +22,10 @@ describe('GuestGuard', () => {
         }), ],
       providers: [GuestGuard, reducerProvider]
     });
-    await TestBed.compileComponents();
-  });
+    TestBed.compileComponents();
+  }));
 
-  it('should create auth guard', inject([GuestGuard, Store], (guard: GuestGuard, _store: Store<AppState>) => {
+  it('should create auth guard', inject([GuestGuard, Store], (guard: GuestGuard) => {
     expect(guard).toBeTruthy();
   }));
   it('should return true if no current user ',

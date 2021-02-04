@@ -27,7 +27,7 @@ export class AllSellersComponent extends modalMixin() implements OnDestroy {
   maintainSeller(id: number) {
     this.openModal({ id, component: SellerMaintenanceComponent });
   }
-  
+
 
   delete(id: number) {
     this.openModal({ id, component: DeleteSellerConfirmationComponent });

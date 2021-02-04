@@ -15,11 +15,11 @@ import { map, filter, tap } from 'rxjs/operators';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  appVersion = 'V 1.1.2'
+  appVersion = 'V 1.1.2';
   isMenuClosed$: Observable<boolean>;
   listItems$: Observable<ILink[]>;
   isMenuClosed: boolean;
-  isClickedSubject$ = new Subject();
+  isClickedSubject$ = new Subject<boolean>();
   isSmallDevice$: Observable<boolean> = this.breakpointObserver
     .observe([Breakpoints.XSmall, Breakpoints.Small])
     .pipe(
@@ -47,7 +47,7 @@ export class SidebarComponent implements OnInit {
       filter(([clicked, isSmallDevice]) => clicked && isSmallDevice),
       tap(() => this.store.dispatch(showMenu())),
       tap(() => this.isClickedSubject$.next(false))
-    ).subscribe()
+    ).subscribe();
   }
   toggleMenu(): void {
     if (this.isMenuClosed) {
@@ -56,13 +56,13 @@ export class SidebarComponent implements OnInit {
       this.store.dispatch(showMenu());
     }
   }
-  goto($event: MouseEvent, _b: any) {
+  goto($event: MouseEvent) {
     $event.stopPropagation(); // Only seems to
     $event.preventDefault(); // work with both
   }
 
   handleLinkClick() {
-    this.isClickedSubject$.next(true)
+    this.isClickedSubject$.next(true);
   }
 
 }

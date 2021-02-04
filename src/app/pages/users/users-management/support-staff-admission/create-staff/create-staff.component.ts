@@ -54,7 +54,7 @@ export class CreateStaffComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeToEmailChecking();
-    this.staffType$.subscribe()
+    this.staffType$.subscribe();
   }
 
 
@@ -103,7 +103,7 @@ export class CreateStaffComponent implements OnInit, OnDestroy {
       mergeMap((id) => this.supportStaffService.save({ ...this.newStaffForm.value, staff_type: id })),
       takeWhile(() => this.componentIsActive),
       finalize(() => this.submittingSubject$.next(false)),
-    ).subscribe({ next: (res) => this.router.navigate(['/users', res.data.id, 'info']) })
+    ).subscribe({ next: (res) => this.router.navigate(['/users', res.data.id, 'info']) });
   }
 
   ngOnDestroy() {

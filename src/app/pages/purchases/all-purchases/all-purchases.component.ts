@@ -20,13 +20,27 @@ import { modalMixin } from 'src/app/mixins/modal.mixin';
 export class AllPurchasesComponent extends searchProductMixin(modalMixin(
   subscribedContainerMixin())
 ) implements OnDestroy {
-  storeInjected = this.store;
-  modalServiceInjected = this.modalService;
   constructor(
     private purchaseServive: PurchaseService,
     private modalService: BsModalService,
     private store: Store
   ) { super(); }
+  storeInjected = this.store;
+  modalServiceInjected = this.modalService;
+
+  purchaseDates$ = this.purchaseServive.purchaseDates$;
+  purchaseDateSubject$ = new BehaviorSubject<Date>(new Date());
+  purchaseDateAction$ = this.purchaseDateSubject$.asObservable();
+  purchases$ = this.purchaseDateAction$.pipe(
+    mergeMap(date => this.purchaseServive.getPurchasesForDate$(date))
+  );
+
+  // purchases$ = this.purchaseServive.loadPurchases$;
+  filteredPurchases$ = combineLatest([this.purchases$, this.filterStringAction$]).pipe(
+    debounceTime(500),
+    map(([purchases, filterString]) => purchases.filter(
+      purchase => purchase?.productName?.toLowerCase().includes(filterString.toLowerCase()))),
+  );
 
   maintainPurchase(id: number) {
     this.openModal({ id, component: PurchaseMaintenanceComponent });
@@ -39,19 +53,5 @@ export class AllPurchasesComponent extends searchProductMixin(modalMixin(
     super.ngOnDestroy();
     this.modalRef?.hide();
   }
-  
-  purchaseDates$ = this.purchaseServive.purchaseDates$;
-  purchaseDateSubject$ = new BehaviorSubject<Date>(new Date())
-  purchaseDateAction$ = this.purchaseDateSubject$.asObservable();
-  purchases$ = this.purchaseDateAction$.pipe(
-    mergeMap(date => this.purchaseServive.getPurchasesForDate$(date))
-  )
-  
-  // purchases$ = this.purchaseServive.loadPurchases$;
-  filteredPurchases$ = combineLatest([this.purchases$, this.filterStringAction$]).pipe(
-    debounceTime(500),
-    map(([purchases, filterString]) => purchases.filter(
-      purchase => purchase?.productName?.toLowerCase().includes(filterString.toLowerCase()))),
-  )
 
 }

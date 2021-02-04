@@ -108,7 +108,7 @@ export class SalesReportComponent implements OnInit {
     ),
     map(res => Object.values(res)),
 
-  )
+  );
 
   reportData: any[];
   dataRetrieved = false;

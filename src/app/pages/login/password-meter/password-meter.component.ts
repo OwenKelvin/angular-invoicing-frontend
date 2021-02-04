@@ -22,7 +22,7 @@ export class PasswordMeterComponent extends colorMixin() {
       { regex: /[0-9]/, value: 2 },
       { regex: /[0-9](.)*[0-9]/, value: 2 },
     ];
-    const regexStrengthScore = regexStrengths.reduce((prev, next) => prev + (next.regex.test(password) ? next.value : 0), 0)
+    const regexStrengthScore = regexStrengths.reduce((prev, next) => prev + (next.regex.test(password) ? next.value : 0), 0);
     const score = Math.min(4, password.length / 2) + regexStrengthScore;
     return (score / 20) * 100;
   }

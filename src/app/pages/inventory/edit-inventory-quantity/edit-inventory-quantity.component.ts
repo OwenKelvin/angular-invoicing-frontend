@@ -22,7 +22,7 @@ export class EditInventoryQuantityComponent extends formMixin(
     adjustment: [0, [Validators.required]],
     finalStockCount: [0, [Validators.required]],
     reasonForAdjustment: ['', [Validators.required]],
-  });;
+  });
 
   product$: Observable<IProduct | undefined>;
   inventoryQuantity$: Observable<any>;
@@ -49,7 +49,7 @@ export class EditInventoryQuantityComponent extends formMixin(
 
 
   ngOnInit(): void {
-    
+
     this.product$ = this.productsService.loadProducts$.pipe(
       map(item => item.find(({ id }: any) => id === this.id))
     );

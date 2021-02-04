@@ -12,27 +12,11 @@ import { getDateMixin } from 'src/app/mixins/get-date.mixin';
   providedIn: 'root'
 })
 export class PurchaseService extends getDateMixin() {
-  getPurchasesForDate$: (date: Date) => Observable<IPurchase[]> = (date: Date) =>
-    this.http.get<string[]>(`${this.url}/?purchase_date=${this.getDate(date)}`).pipe(
-      map(this.mappedPurchases));
-
-  url: string = 'api/purchases';
-  purchaseDates$: Observable<string[]> = this.http.get<string[]>(`${this.url}/?purchase_dates=${true}`);
   constructor(private store: Store, private http: HttpClient) { super(); }
+
+  url = 'api/purchases';
+  purchaseDates$: Observable<string[]> = this.http.get<string[]>(`${this.url}/?purchase_dates=${true}`);
   purchasesLoaded = false;
-
-
-  mappedPurchases: (res: any[]) => IPurchase[] = (res: any[]) => res.map(item => ({
-    id: item.id,
-    productId: item.product_id,
-    productName: item.product_name,
-    quantityPurchased: item.quantity,
-    sellerId: item.seller_id,
-    sellerName: item.seller_name,
-    unitPrice: item.unit_price,
-    purchaseCurrency: item.currency,
-    purchaseDate: item.purchase_date,
-  }));
 
   purchases$: Observable<IPurchase[]> = this.http.get(this.url).pipe(
     map((res: any[]) => (res.map(item => ({
@@ -53,6 +37,22 @@ export class PurchaseService extends getDateMixin() {
     select(selectAllPurchases),
     tap(({ length }) => (length < 1 && !this.purchasesLoaded) ? this.store.dispatch(loadPurchases()) : ''),
   );
+  getPurchasesForDate$: (date: Date) => Observable<IPurchase[]> = (date: Date) =>
+    this.http.get<string[]>(`${this.url}/?purchase_date=${this.getDate(date)}`).pipe(
+      map(this.mappedPurchases))
+
+
+  mappedPurchases: (res: any[]) => IPurchase[] = (res: any[]) => res.map(item => ({
+    id: item.id,
+    productId: item.product_id,
+    productName: item.product_name,
+    quantityPurchased: item.quantity,
+    sellerId: item.seller_id,
+    sellerName: item.seller_name,
+    unitPrice: item.unit_price,
+    purchaseCurrency: item.currency,
+    purchaseDate: item.purchase_date,
+  }))
 
   deletePurchase(id: number) {
     return this.http.delete(`${this.url}/${id}`);

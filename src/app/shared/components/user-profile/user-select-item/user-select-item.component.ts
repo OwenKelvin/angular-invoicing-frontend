@@ -36,7 +36,7 @@ export class UserSelectItemComponent implements OnInit, OnDestroy {
     this.componentIsActive = true;
     this.itemForm = this.fb.group({
       fieldName: [this.value]
-    })
+    });
     this.editMode$ = this.store.pipe(select(selectEditModeOnState));
   }
 

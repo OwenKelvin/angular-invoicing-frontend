@@ -25,7 +25,7 @@ export class SupportStaffService {
     select(selectStaffType(id)),
     tap((res) => {
       if (!res) {
-        this.store.dispatch(loadStaffTypes())
+        this.store.dispatch(loadStaffTypes());
       }
     })
   )
@@ -37,7 +37,7 @@ export class SupportStaffService {
   loadStaffWithId$ = (id: number) => this.store.pipe(
     select(selectSupportStaffWithId(id)),
     tap((profile) => profile ? profile : this.store.dispatch(loadSupportStaffById({ data: { id } })))
-  );
+  )
 
   getSupportStaffById(id: number): Observable<any> {
 
@@ -58,7 +58,7 @@ export class SupportStaffService {
       );
   }
 
-  update = ({ id, data }: {id: number, data: any }) => this.http.post(`api/users/${id}`, { ...data })
+  update = ({ id, data }: {id: number, data: any }) => this.http.post(`api/users/${id}`, { ...data });
 
   save(data: any): Observable<any> {
 

@@ -14,18 +14,18 @@ export class MPesaReceiptReportComponent extends formMixin() implements OnInit {
     startDate: [(new Date()).toISOString().substr(0, 10), [Validators.required]],
     endDate: [(new Date()).toISOString().substr(0, 10), [Validators.required]],
   });
-  
+
   receipts$: Observable<any[]> = this.mPesaService.getReceipts(this.itemForm.value);
 
- 
+
   constructor(private fb: FormBuilder, private mPesaService: MPesaReceiptsService) { super(); }
-  
+
   ngOnInit() {
 
   }
-  
+
   getReport() {
-    
+
   }
 
 }

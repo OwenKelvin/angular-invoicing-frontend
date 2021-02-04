@@ -22,7 +22,7 @@ export interface AppState {
   [fromModals.modalFeatureKey]: fromModals.State;
   [fromErrors.errorMessageFeatureKey]: fromErrors.ErrorMessageStateInterface;
   [fromEditMode.editModeFeatureKey]: fromEditMode.State;
-  [fromPermissions.permissionsFeatureKey]: fromPermissions.State
+  [fromPermissions.permissionsFeatureKey]: fromPermissions.State;
 
 }
 

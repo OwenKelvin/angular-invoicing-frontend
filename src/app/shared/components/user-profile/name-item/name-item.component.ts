@@ -34,7 +34,7 @@ export class NameItemComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.editMode$ = this.store.pipe(select(selectEditModeOnState))
+    this.editMode$ = this.store.pipe(select(selectEditModeOnState));
     this.componentIsActive = true;
     this.itemForm = this.fb.group({
       name: [this.name, Validators.minLength(2)]
@@ -64,7 +64,7 @@ export class NameItemComponent implements OnInit, OnDestroy {
           }
         });
     } else {
-      alert('Form not filled correctly')
+      alert('Form not filled correctly');
     }
 
   }

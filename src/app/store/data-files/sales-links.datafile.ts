@@ -12,4 +12,4 @@ export const SalesLinks: ILink[] = [
     link: 'sales/edit-sale',
     permissions: ['edit sales']
   }
-]
+];

@@ -20,13 +20,13 @@ export class DeleteProductConfirmationComponent implements OnInit, OnDestroy {
   product$: Observable<IProduct>;
   productForm: FormGroup = this.fb.group({
     id: ['']
-  })
+  });
   componentIsActive = true;
   isSubmitting: boolean;
   constructor(
     private store: Store,
     private productService: ProductsService,
-    private fb : FormBuilder
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -35,14 +35,14 @@ export class DeleteProductConfirmationComponent implements OnInit, OnDestroy {
       select(selectProductById({ id: this.id })),
       takeWhile(() => this.componentIsActive)
     );
-    this.productForm.get('id')?.setValidators([Validators.required, this.validateId(this.id)])
+    this.productForm.get('id')?.setValidators([Validators.required, this.validateId(this.id)]);
   }
 
   validateId = (id: number) => (control: FormControl): null | { idMismatch: string; } => {
     if (control.value === ('#' + id)) {
       return null;
     }
-    return { idMismatch: 'Id Mismatch' }
+    return { idMismatch: 'Id Mismatch' };
   }
 
   closeModal() {
@@ -58,7 +58,7 @@ export class DeleteProductConfirmationComponent implements OnInit, OnDestroy {
           next: () => {
             this.isSubmitting = false;
             this.closeModal();
-            this.store.dispatch(deleteProduct({ data: { id: this.id } }))
+            this.store.dispatch(deleteProduct({ data: { id: this.id } }));
           },
           error: () => this.isSubmitting = false
         });

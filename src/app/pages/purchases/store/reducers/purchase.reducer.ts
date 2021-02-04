@@ -5,7 +5,7 @@ import { IPurchase } from '../../shared/interfaces/purchase.interface';
 export const purchaseFeatureKey = 'purchases';
 
 export interface State {
-  [id: number]: IPurchase
+  [id: number]: IPurchase;
 }
 
 export const initialState: State = {
@@ -34,7 +34,7 @@ export const reducer = createReducer(
     });
     return { ...state, ...states };
   }),
-  on(PurchaseActions.loadPurchasesFailure, (state, _action) => state),
+  on(PurchaseActions.loadPurchasesFailure, (state) => state),
   on(PurchaseActions.deletePurchase, (state, action) => {
     const newState = { ...state };
     delete newState[action.data.id];

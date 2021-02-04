@@ -18,9 +18,9 @@ export class DeleteSoldProductComponent extends modalMixin(formMixin()) implemen
   storeInjected = this.store;
   modalServiceInjected = this.modalService;
   @Input() id: number;
-  productSoldForm: FormGroup = this.fb.group({ id: [''] })
+  productSoldForm: FormGroup = this.fb.group({ id: [''] });
   soldProduct$: Observable<any>;
-  
+
   constructor(
     private fb: FormBuilder,
     private saleService: SaleService,
@@ -34,7 +34,7 @@ export class DeleteSoldProductComponent extends modalMixin(formMixin()) implemen
           this.validateRef(`${soldProduct.productId}/${soldProduct.saleId}-${soldProduct.id}`)
         )
       )
-    )
+    );
   }
 
   validateRef = (ref: string) => (control: FormControl): null | { refMismatch: string; } => {
@@ -43,7 +43,7 @@ export class DeleteSoldProductComponent extends modalMixin(formMixin()) implemen
     }
     return { refMismatch: 'Id Mismatch' };
   }
-  
+
   productSoldFormSubmit() {
     if (this.productSoldForm.valid) {
       this.submitInProgressSubject$.next(true);

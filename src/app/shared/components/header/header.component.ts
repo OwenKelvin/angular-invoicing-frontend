@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   );
 
   constructor(private store: Store<AppState>,
-    public breakpointObserver: BreakpointObserver) { }
+              public breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
     this.isMenuClosed = true;

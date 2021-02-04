@@ -24,7 +24,7 @@ export class ToastComponent implements OnDestroy{
         }, 4000);
       }
     })
-  )
+  );
 
   constructor(private store: Store<AppState>) { }
 

@@ -29,7 +29,7 @@ export class MyProfileEffects {
           map(data => MyProfileActions.loadMyProfilesSuccess({ data })),
           catchError(error => {
             this.authService.logout();
-            return throwError(error)
+            return throwError(error);
           }),
           catchError(error => of(MyProfileActions.loadMyProfilesFailure({ error }))))
       )

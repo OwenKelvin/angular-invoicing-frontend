@@ -10,7 +10,7 @@ describe('App Selectors', () => {
         [editModeFeatureKey]: { on: false }
       }
     });
-    console.log({ result })
+    console.log({ result });
     // expect(result).toEqual({
     //   [editModeFeatureKey]: {on: false}
     // });

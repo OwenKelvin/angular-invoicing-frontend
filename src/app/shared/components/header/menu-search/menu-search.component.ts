@@ -16,7 +16,7 @@ export class MenuSearchComponent {
     tap(items => (this.listItems = items))
   );
   listItems: ILink[];
-  searchForm: FormGroup = this.fb.group({ search: [''] });;
+  searchForm: FormGroup = this.fb.group({ search: [''] });
   constructor(
     private fb: FormBuilder,
     private linkService: LinkService,

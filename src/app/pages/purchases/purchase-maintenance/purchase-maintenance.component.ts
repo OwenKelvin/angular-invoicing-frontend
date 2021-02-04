@@ -83,7 +83,7 @@ export class PurchaseMaintenanceComponent extends formMixin(subscribedContainerM
         .subscribe({
           next: (data) => {
             this.submitInProgressSubject$.next(false);
-            this.store.dispatch(closeModals())
+            this.store.dispatch(closeModals());
             this.store.dispatch(loadPurchasesSuccess({ data: [data] }));
           },
           error: () => this.submitInProgressSubject$.next(false)

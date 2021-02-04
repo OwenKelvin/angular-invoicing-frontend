@@ -97,7 +97,7 @@ export class SaleSummaryComponent
   productName = (id: number) => this.store.pipe(
     select(selectProductById({id})),
     map(product => product.name)
-  );
+  )
 
   changeQuantity(productId: number, changeBy: number) {
     this.store.dispatch(changeCartQuantity({data: {productId, changeBy}}));

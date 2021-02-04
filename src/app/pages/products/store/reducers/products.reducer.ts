@@ -5,7 +5,7 @@ import { IProduct } from 'src/app/shared/interfaces/products.interface';
 export const productsFeatureKey = 'products';
 
 export interface State {
-  [id: number]: IProduct
+  [id: number]: IProduct;
 }
 
 export const initialState: State = {
@@ -27,11 +27,11 @@ export const reducer = createReducer(
   on(ProductsActions.loadProductsSuccess, (state, action) => {
     const states: State = {};
     action.data.forEach((element: IProduct) => {
-      states[element.id] = element
+      states[element.id] = element;
     });
     return { ...state, ...states};
   }),
-  on(ProductsActions.loadProductsFailure, (state, _action) => state),
+  on(ProductsActions.loadProductsFailure, (state) => state),
 
   on(ProductsActions.deleteProduct, (state, action) => {
     const newState = { ...state };

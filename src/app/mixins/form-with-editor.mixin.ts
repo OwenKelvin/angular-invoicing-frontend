@@ -21,7 +21,7 @@ export const formWithEditorMixin = () =>
                        alignleft aligncenter alignright alignjustify | \
                        bullist numlist outdent indent | removeformat | help'
     };
-    editorInitializedSubject$ = new BehaviorSubject<boolean>(false)
+    editorInitializedSubject$ = new BehaviorSubject<boolean>(false);
     editorInitializedAction$ = this.editorInitializedSubject$.asObservable();
 
     initializeEditor() {

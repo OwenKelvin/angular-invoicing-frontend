@@ -6,9 +6,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MPesaReceiptsService {
-  url = 'api/m-pesa/receipts'
+  url = 'api/m-pesa/receipts';
   constructor(private http: HttpClient) { }
-  
+
   getReceipts(data: { startDate: string, endDate: any }) {
     const queryStringParams = require('querystring').stringify({
       start_date: data.startDate,
@@ -24,6 +24,6 @@ export class MPesaReceiptsService {
         name: item.receiver_party.split('-')[1],
         amount: item.trans_amount
       })))
-    )
+    );
   }
 }

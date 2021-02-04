@@ -28,7 +28,7 @@ export class UserButtonComponent {
     }
   }
   menuAnimator: () =>
-    Observable<number> = () => timer(100, 10);
+    Observable<number> = () => timer(100, 10)
 
   toggleMenu() {
     const dropDownElement = this.dropDownMenu.nativeElement as HTMLDivElement;
