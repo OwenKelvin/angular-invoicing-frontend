@@ -1,0 +1,16 @@
+<h1>Inventory Movement Report</h1>
+<div class="wrapper card p-2">
+  <form [formGroup]='itemForm' class="">
+    <div class="d-flex flex-wrap">
+      <div class="col-lg-6 mt-3">
+          <label class="control-label" for="product">Product</label>
+          <ng-select placeholder='Choose a Product' id='product' formControlName='productId'>
+            <ng-option role='option' *ngFor="let item of products$ | async" [value]="item.id">
+              {{ item.name | titlecase}}
+            </ng-option>
+          </ng-select>
+      </div>
+    </div>
+  </form>
+</div>
+

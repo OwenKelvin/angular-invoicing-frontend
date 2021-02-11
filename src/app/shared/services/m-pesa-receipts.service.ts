@@ -10,12 +10,11 @@ export class MPesaReceiptsService {
   constructor(private http: HttpClient) { }
 
   getReceipts(data: { startDate: string, endDate: any }) {
-    const queryStringParams = require('querystring').stringify({
+    const queryParams = {
       start_date: data.startDate,
       end_date: data.endDate
-    });
-    return this.http.get(`${this.url}/?${queryStringParams}`).pipe(
-      map(res => res as any[]),
+    };
+    return this.http.get<any[]>(this.url, {params: queryParams}).pipe(
       map(res => res.map(item => ({
         ...item,
         ref: item.trans_id,

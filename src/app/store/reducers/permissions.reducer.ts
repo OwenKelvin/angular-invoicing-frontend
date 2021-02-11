@@ -33,6 +33,12 @@ export const initialState: State = {
       icon: 'icon-dollar',
       link: 'reports/mpesa-receipt-report',
       permissions: ['view m-pesa receipt report']
+    },
+    {
+      name: 'Inventory Movement Report',
+      icon: 'icon-exchange',
+      link: 'reports/inventory-movement-report',
+      permissions: ['view inventory movement report']
     }
   ]
 };

@@ -32,6 +32,14 @@ const routes: Routes = [
     data: {
       breadcrumb: 'Sales Report'
     }
+  },
+  {
+    path: 'inventory-movement-report',
+    loadChildren: () => import('./inventory-movement-report/inventory-movement-report.module')
+      .then(m => m.InventoryMovementReportModule),
+    data: {
+      breadcrumb: 'Inventory Movement Report Report'
+    }
   }
 ];
 
