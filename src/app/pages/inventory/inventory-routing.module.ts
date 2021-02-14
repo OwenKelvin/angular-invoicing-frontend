@@ -13,6 +13,11 @@ const routes: Routes = [
     },
     canDeactivate: [ CanDeactivateGuard ],
     component: InventoryManagementComponent
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./inventory-movement-management/inventory-movement-management.module')
+      .then(m => m.InventoryMovementManagementModule)
   }
 ];
 

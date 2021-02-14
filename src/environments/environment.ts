@@ -4,14 +4,12 @@
 
 export const environment = {
   production: false,
-  API_URL : 'https://gariamba-and-sons-sales.furahasolutions.tech'
-  // API_URL : 'http://localhost:7777'
+  API_URL : 'http://localhost:7777'
 };
 
 export const PASSPORT_CLIENT_GRANT_TYPE = 'password';
 export const PASSPORT_CLIENT_CLIENT_ID = '2';
-export const PASSPORT_CLIENT_CLIENT_SECRET = 'Ma3JtuaDMu4iLvi6gGpGyVco7cgCzbQmwbtFTRmh'; // gariamba
-// export const PASSPORT_CLIENT_CLIENT_SECRET = 'DfA7GdoGt89MoaAbkpw5pzLfp3itXumP2Q23aYBo'; //patricia
+export const PASSPORT_CLIENT_CLIENT_SECRET = 'DfA7GdoGt89MoaAbkpw5pzLfp3itXumP2Q23aYBo';
 
 /*
  * For easier debugging in development mode, you can import the following file

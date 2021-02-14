@@ -18,3 +18,4 @@ export const deletePurchase = createAction(
   '[Purchase] Delete Purchase',
   props<{ data: {id: number} }>()
 );
+

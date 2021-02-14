@@ -11,7 +11,7 @@
           </ng-select>
       </div>
       <div class="col-lg-6 mt-3">
-        <button class="btn btn-primary" type="submit">Get Statement</button>
+        <button [disabled]="itemForm.invalid" class="btn btn-primary" type="submit">Get Statement</button>
       </div>
     </div>
   </form>
@@ -26,12 +26,12 @@
     </thead>
     <tbody>
     <ng-container *ngIf='movements$ | async  as movements'>
-      <tr *ngIf='movements.length < 1'>
+      <tr *ngIf='movements.inventoryStatement.length < 1'>
         <td colspan="6" class="alert alert-info p-2 m-2">
           No sale on this date found!
         </td>
       </tr>
-      <tr *ngFor='let movement of movements'>
+      <tr *ngFor='let movement of movements.inventoryStatement'>
         <td>{{ movement.type }} - {{ movement.id }}</td>
         <td>{{ movement.dateTime }}</td>
         <td>{{ movement.quantity | minus2parenthesis }}</td>

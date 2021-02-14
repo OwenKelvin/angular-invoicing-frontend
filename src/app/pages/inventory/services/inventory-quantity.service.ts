@@ -2,13 +2,18 @@ import {Injectable} from '@angular/core';
 import {Observable, BehaviorSubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map, tap} from 'rxjs/operators';
+import {IProduct} from '../../../shared/interfaces/products.interface';
 
-interface IInventoryMovement {
+interface IInventoryMovementItem {
   id: number;
   quantity: number;
   type: 'sale' | 'purchase' | 'adjustment';
   dateTime: string;
   total: number;
+}
+
+interface IInventoryMovementResponse extends IProduct{
+  inventoryStatement: IInventoryMovementItem[];
 }
 
 @Injectable({
@@ -35,14 +40,15 @@ export class InventoryQuantityService {
   }
 
   changesStatement(productId: number) {
-    return this.http.get<IInventoryMovement[]>(`api/products/${productId}/inventory-changes-statement`)
+    return this.http.get<IInventoryMovementResponse>(`api/products/${productId}/inventory-changes-statement`)
       .pipe(
-        map(movement => movement.sort(({dateTime: a}, {dateTime: b}) =>
-          new Date(a) > new Date(b) ? 1 : -1
-        )),
-        map(movement => movement.reduce((prev: IInventoryMovement[], next, index) =>
-            ([...prev, {...next, total: index === 0 ? next.quantity : prev[index - 1].total + next.quantity}]),
-          [])
+        tap(x => console.log(x)),
+        map(res => ({ ...res, inventoryStatement: res.inventoryStatement.sort(({dateTime: a}, {dateTime: b}) =>
+            new Date(a) > new Date(b) ? 1 : -1
+          )})),
+        map(res => ({ ...res, inventoryStatement: res.inventoryStatement.reduce((prev: IInventoryMovementItem[], next, index) =>
+              ([...prev, {...next, total: index === 0 ? next.quantity : prev[index - 1].total + next.quantity}]),
+            [])})
         ));
   }
 

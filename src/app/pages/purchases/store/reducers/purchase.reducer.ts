@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import {createReducer, on} from '@ngrx/store';
 import * as PurchaseActions from '../actions/purchase.actions';
-import { IPurchase } from '../../shared/interfaces/purchase.interface';
+import {IPurchase} from '../../shared/interfaces/purchase.interface';
 
 export const purchaseFeatureKey = 'purchases';
 
@@ -18,8 +18,8 @@ export const initialState: State = {
     sellerId: null,
     sellerName: '',
     purchaseCurrency: 'KES',
-  purchaseDate: (new Date()).toISOString().substring(0, 10)
-  }
+    purchaseDate: (new Date()).toISOString().substring(0, 10)
+  },
 };
 
 
@@ -32,14 +32,13 @@ export const reducer = createReducer(
     action.data.forEach((element: IPurchase) => {
       states[element.id] = element;
     });
-    return { ...state, ...states };
+    return {...state, ...states};
   }),
   on(PurchaseActions.loadPurchasesFailure, (state) => state),
   on(PurchaseActions.deletePurchase, (state, action) => {
-    const newState = { ...state };
+    const newState = {...state};
     delete newState[action.data.id];
     return newState;
   }),
-
 );
 

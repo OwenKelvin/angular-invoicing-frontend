@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {formMixin} from 'src/app/mixins/form.mixin';
 import {ProductsService} from 'src/app/shared/services/products.service';
-import {combineLatest, Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {InventoryQuantityService} from '../../inventory/services/inventory-quantity.service';
 
@@ -21,6 +21,7 @@ export class InventoryMovementReportComponent extends formMixin() {
     switchMap(() =>
       this.inventoryService.changesStatement(this.itemForm.value.productId))
   );
+
   constructor(
     private fb: FormBuilder,
     private productsService: ProductsService,

@@ -7,7 +7,7 @@ import { PurchaseService } from '../shared/services/purchase.service';
 import { CurrencyService } from 'src/app/shared/services/currency.service';
 import { loadModals, closeModals } from 'src/app/store/actions/modal.actions';
 import { selectPurchaseById } from '../store/selectors/purchase.selectors';
-import { tap, takeUntil } from 'rxjs/operators';
+import {tap, takeUntil, filter} from 'rxjs/operators';
 import { loadPurchasesSuccess } from '../store/actions/purchase.actions';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { SellerService } from '../../sellers/shared/services/seller.service';
@@ -50,24 +50,29 @@ export class PurchaseMaintenanceComponent extends formMixin(subscribedContainerM
   ) { super(); }
 
   ngOnInit(): void {
-    this.store.dispatch(loadModals());
-    this.purchase$ = this.store.pipe(
-      select(selectPurchaseById({ id: this.id })),
-      tap(purchase => {
-        const formData: IPurchase = {
-          id: purchase.id,
-          productId: purchase.productId,
-          quantityPurchased: purchase.quantityPurchased,
-          unitPrice: purchase.unitPrice,
-          sellerId: purchase.sellerId,
-          purchaseCurrency: purchase.purchaseCurrency,
-          purchaseDate: purchase.purchaseDate
-        };
-        this.purchaseForm.setValue(formData);
-        this.purchaseForm.updateValueAndValidity();
-      }),
-      takeUntil(this.destroyed$)
+    this.purchase$ = this.purchaseService.getPurchaseWithId(this.id).pipe(
+      tap(console.log),
+      tap(val => this.purchaseForm.patchValue(val))
     );
+    this.store.dispatch(loadModals());
+    // this.purchase$ = this.store.pipe(
+    //   select(selectPurchaseById({ id: this.id })),
+    //   filter(purchase => !!purchase),
+    //   tap(purchase => {
+    //     const formData: IPurchase = {
+    //       id: purchase.id,
+    //       productId: purchase.productId,
+    //       quantityPurchased: purchase.quantityPurchased,
+    //       unitPrice: purchase.unitPrice,
+    //       sellerId: purchase.sellerId,
+    //       purchaseCurrency: purchase.purchaseCurrency,
+    //       purchaseDate: purchase.purchaseDate
+    //     };
+    //     this.purchaseForm.setValue(formData);
+    //     this.purchaseForm.updateValueAndValidity();
+    //   }),
+    //   takeUntil(this.destroyed$)
+    // );
     this.purchase$.subscribe();
   }
   closeModal() {

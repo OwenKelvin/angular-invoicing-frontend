@@ -51,6 +51,8 @@
           </div>
         </td>
         <td class="d-print-none">
+          <button [routerLink]="['product', product.id]" class="btn btn-info btn-sm mr-2" aria-label="Adjust Inventory"><span
+            class="icon-eye"></span></button>
           <button (click)='openModal({id: product.id})' class="btn btn-primary btn-sm" aria-label="Adjust Inventory"><span
               class="icon-edit"></span></button>
         </td>
