@@ -1,7 +1,7 @@
 <h1>Inventory Movement Report</h1>
 <div class="wrapper card p-2">
-  <form [formGroup]='itemForm' class="">
-    <div class="d-flex flex-wrap">
+  <form [formGroup]='itemForm' (submit)="getStatement()">
+    <div class="d-flex flex-wrap align-items-end">
       <div class="col-lg-6 mt-3">
           <label class="control-label" for="product">Product</label>
           <ng-select placeholder='Choose a Product' id='product' formControlName='productId'>
@@ -10,7 +10,36 @@
             </ng-option>
           </ng-select>
       </div>
+      <div class="col-lg-6 mt-3">
+        <button class="btn btn-primary" type="submit">Get Statement</button>
+      </div>
     </div>
   </form>
+  <table class="mt-2 table table-sm table-dark">
+    <thead>
+    <tr>
+      <th>Movement ID</th>
+      <th>Date Time</th>
+      <th>Quantity</th>
+      <th>Remaining</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngIf='movements$ | async  as movements'>
+      <tr *ngIf='movements.length < 1'>
+        <td colspan="6" class="alert alert-info p-2 m-2">
+          No sale on this date found!
+        </td>
+      </tr>
+      <tr *ngFor='let movement of movements'>
+        <td>{{ movement.type }} - {{ movement.id }}</td>
+        <td>{{ movement.dateTime }}</td>
+        <td>{{ movement.quantity | minus2parenthesis }}</td>
+        <td> {{ movement.total }}</td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
 </div>
+
 
