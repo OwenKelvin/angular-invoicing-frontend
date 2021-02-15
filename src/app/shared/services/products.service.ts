@@ -23,8 +23,8 @@ export class ProductsService {
       buyingPrice: item.buying_price,
       buyingPriceCurrency: item.buying_price_currency,
       sellingPriceCurrency: item.selling_price_currency,
-      maxAmountCheck: item.min,
-      minAmountCheck: item.max
+      maxAmountCheck: item.max,
+      minAmountCheck: item.min
     })))),
     shareReplay(1)
   );
@@ -41,7 +41,7 @@ export class ProductsService {
   );
 
 
-  loadProducts$: Observable<any> = this.store.pipe(
+  loadProducts$: Observable<IProduct[]> = this.store.pipe(
     select(selectAllProducts),
     tap(({ length }) => length < 1 ? this.store.dispatch(loadProducts()) : ''),
   );
@@ -71,8 +71,8 @@ export class ProductsService {
           buyingPrice: item.buying_price,
           buyingPriceCurrency: item.buying_price_currency,
           sellingPriceCurrency: item.selling_price_currency,
-          max: value.maxAmountCheck,
-          min: value.minAmountCheck
+          maxAmountCheck: item.max,
+          minAmountCheck: item.min
         }))
       );
     }
@@ -82,7 +82,9 @@ export class ProductsService {
       buying_price: value.buyingPrice,
       selling_price: value.sellingPrice,
       selling_price_currency: value.sellingPriceCurrency,
-      buying_price_currency: value.buyingPriceCurrency
+      buying_price_currency: value.buyingPriceCurrency,
+      max: value.maxAmountCheck,
+      min: value.minAmountCheck
     }).pipe(
       map((res: any) => res.data),
       map((item: any) => ({
@@ -92,6 +94,8 @@ export class ProductsService {
         buyingPrice: item.buying_price,
         buyingPriceCurrency: item.buying_price_currency,
         sellingPriceCurrency: item.selling_price_currency,
+        maxAmountCheck: item.max,
+        minAmountCheck: item.min
       }))
     );
   }

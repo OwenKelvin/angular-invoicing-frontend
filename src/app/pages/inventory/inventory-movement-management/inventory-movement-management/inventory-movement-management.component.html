@@ -21,11 +21,13 @@
   <div>
     <table class="mt-2 table table-sm table-dark">
       <thead>
+      <tr><td><button (click)="refresh$.next(true)" class="btn btn-secondary btn-sm">Refresh</button></td></tr>
       <tr>
         <th>Movement ID</th>
         <th>Date Time</th>
         <th>Quantity</th>
         <th>Remaining</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>
@@ -40,6 +42,24 @@
           <td>{{ movement.dateTime }}</td>
           <td>{{ movement.quantity | minus2parenthesis }}</td>
           <td> {{ movement.total }}</td>
+          <td *ngIf="movement.type === 'purchase'">
+            <button (click)='maintainPurchase(movement.id)' aria-label="Edit Item"
+                    class="btn btn-sm btn-primary mr-2"><span class="icon-edit"></span></button>
+            <button (click)='deletePurchase(movement.id)' aria-label="Delete" class="btn btn-sm btn-danger"><span
+              class="icon-trash"></span></button>
+          </td>
+          <td *ngIf="movement.type === 'sale'">
+            <button (click)='editSoldItem(movement.id)' aria-label="Edit Item"
+                    class="btn btn-sm btn-primary mr-2"><span class="icon-edit"></span></button>
+            <button (click)='deleteSoldItem(movement.id)' aria-label="Delete" class="btn btn-sm btn-danger"><span
+              class="icon-trash"></span></button>
+          </td>
+          <td *ngIf="movement.type === 'adjustment'">
+            <button disabled="disabled" (click)='editAdjustment(movement.id)' aria-label="Edit Item"
+                    class="btn btn-sm btn-primary mr-2"><span class="icon-edit"></span></button>
+            <button disabled="disabled" (click)='deleteAdjustment(movement.id)' aria-label="Delete" class="btn btn-sm btn-danger"><span
+              class="icon-trash"></span></button>
+          </td>
         </tr>
       </ng-container>
       </tbody>

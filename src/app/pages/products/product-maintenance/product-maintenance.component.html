@@ -22,7 +22,7 @@
                     <span class="sr-only">Change Currency</span>
                   </button>
                   <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
-                    <li 
+                    <li
                       *ngFor='let currency of currencies$ | async'
                       (click)='selectedBuyingPriceCurrency.setValue(currency)'
                       role="menuitem"><span class="dropdown-item">{{ currency }}</span>
@@ -63,8 +63,8 @@
                 <app-input label='Max Threshold' type='number' id="maxThreshold" formControlName='maxAmountCheck'></app-input>
               </div>
             </div>
-            
-           
+
+
           </section>
         </section>
     </section>

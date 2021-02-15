@@ -20,6 +20,7 @@
       <tr>
         <th>Product Id</th>
         <th>Product Name</th>
+        <th>Threshold [min - max]</th>
         <th>Buying Price</th>
         <th>Selling Price</th>
         <th>Gross Margin</th>
@@ -31,6 +32,7 @@
         <tr *ngFor='let product of products' [class.bg-danger]='!product.sellingPrice || !product.buyingPrice'>
           <td>#{{ product.id }}</td>
           <td>{{ product.name | titlecase }}</td>
+          <td>{{ product.minAmountCheck }} - {{ product.maxAmountCheck }}</td>
           <td>{{ product.buyingPrice | currency:' ' }}</td>
           <td>{{ product.sellingPrice | currency:' ' }}</td>
           <td>{{ ((product.sellingPrice - product.buyingPrice)/product.buyingPrice) * 100 | number:'2.2-2' }}% </td>

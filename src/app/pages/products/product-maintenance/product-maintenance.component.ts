@@ -43,8 +43,8 @@ export class ProductMaintenanceComponent extends formMixin(subscribedContainerMi
     buyingPriceCurrency: ['KES'],
     sellingPrice: [0],
     sellingPriceCurrency: ['KES'],
-    minAmountCheck: [3, [Validators.required]],
-    maxAmountCheck: [8, [Validators.required]],
+    minAmountCheck: [5, [Validators.required]],
+    maxAmountCheck: [15, [Validators.required]],
 
   });
 

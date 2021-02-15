@@ -42,7 +42,6 @@ export class InventoryQuantityService {
   changesStatement(productId: number) {
     return this.http.get<IInventoryMovementResponse>(`api/products/${productId}/inventory-changes-statement`)
       .pipe(
-        tap(x => console.log(x)),
         map(res => ({ ...res, inventoryStatement: res.inventoryStatement.sort(({dateTime: a}, {dateTime: b}) =>
             new Date(a) > new Date(b) ? 1 : -1
           )})),

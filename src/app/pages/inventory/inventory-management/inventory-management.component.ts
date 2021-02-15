@@ -83,7 +83,7 @@ export class InventoryManagementComponent extends modalMixin(
 
   getProductLowIndex(product: IProduct) {
     const {count, min, max} = product as { count: number, min: number, max: number; };
-    return 1 - Math.min(1, Math.max(0, ((count - min) / (max - min))));
+    return Math.min(1, Math.max(0, ((count - min) / (max - min))));
   }
 
   getProductColor(product: IProduct) {

@@ -8,7 +8,7 @@ import { CurrencyService } from 'src/app/shared/services/currency.service';
 import { loadModals, closeModals } from 'src/app/store/actions/modal.actions';
 import { selectPurchaseById } from '../store/selectors/purchase.selectors';
 import {tap, takeUntil, filter} from 'rxjs/operators';
-import { loadPurchasesSuccess } from '../store/actions/purchase.actions';
+import { loadPurchasesSuccess, updatePurchase } from '../store/actions/purchase.actions';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { SellerService } from '../../sellers/shared/services/seller.service';
 import { ISeller } from '../../sellers/shared/interfaces/seller.interface';
@@ -51,7 +51,6 @@ export class PurchaseMaintenanceComponent extends formMixin(subscribedContainerM
 
   ngOnInit(): void {
     this.purchase$ = this.purchaseService.getPurchaseWithId(this.id).pipe(
-      tap(console.log),
       tap(val => this.purchaseForm.patchValue(val))
     );
     this.store.dispatch(loadModals());
@@ -89,7 +88,7 @@ export class PurchaseMaintenanceComponent extends formMixin(subscribedContainerM
           next: (data) => {
             this.submitInProgressSubject$.next(false);
             this.store.dispatch(closeModals());
-            this.store.dispatch(loadPurchasesSuccess({ data: [data] }));
+            this.store.dispatch(updatePurchase({ data }));
           },
           error: () => this.submitInProgressSubject$.next(false)
         });

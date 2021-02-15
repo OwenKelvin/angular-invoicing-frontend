@@ -24,6 +24,7 @@
       <tr>
         <th>Product Id</th>
         <th>Product Name</th>
+        <th>Threshold</th>
         <th>Remaining Items</th>
         <th>Percentage Remaining</th>
         <th class="d-print-none">Action</th>
@@ -38,6 +39,7 @@
       <tr *ngFor='let product of sortedProducts$ | async' [class.bg-danger]='product.count < 0 '>
         <td>#{{ product.id }}</td>
         <td>{{ product.name | titlecase }}</td>
+        <td>{{ product.min }} - {{ product.max }}</td>
         <td>{{ product.count }}</td>
         <td style="width: 25%;">
           <div class="progress">

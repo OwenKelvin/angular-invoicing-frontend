@@ -27,12 +27,12 @@ export const reducer = createReducer(
   initialState,
 
   on(PurchaseActions.loadPurchases, state => state),
-  on(PurchaseActions.loadPurchasesSuccess, (state, action) => {
+  on(PurchaseActions.loadPurchasesSuccess, (_, action) => {
     const states: State = {};
     action.data.forEach((element: IPurchase) => {
       states[element.id] = element;
     });
-    return {...state, ...states};
+    return {...states};
   }),
   on(PurchaseActions.loadPurchasesFailure, (state) => state),
   on(PurchaseActions.deletePurchase, (state, action) => {
@@ -40,5 +40,8 @@ export const reducer = createReducer(
     delete newState[action.data.id];
     return newState;
   }),
+  on(PurchaseActions.updatePurchase, (state, action) => {
+    return { ...state, [action.data.id] : action.data};
+  })
 );
 
