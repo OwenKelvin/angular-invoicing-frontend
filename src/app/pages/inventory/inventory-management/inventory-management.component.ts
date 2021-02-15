@@ -77,8 +77,8 @@ export class InventoryManagementComponent extends modalMixin(
   }
 
   getProductLowPercentage(product: IProduct) {
-    const {count, min} = product as { count: number, min: number; };
-    return Math.min((count / min));
+    const {count, min, max} = product as { count: number, min: number; max: number };
+    return Math.min((count / ((min + max) / 2)));
   }
 
   getProductLowIndex(product: IProduct) {

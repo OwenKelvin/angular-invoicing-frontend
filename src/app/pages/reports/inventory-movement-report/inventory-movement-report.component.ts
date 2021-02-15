@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {formMixin} from 'src/app/mixins/form.mixin';
 import {ProductsService} from 'src/app/shared/services/products.service';
-import {Subject} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, Subject} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {InventoryQuantityService} from '../../inventory/services/inventory-quantity.service';
 
 @Component({
@@ -14,13 +14,30 @@ import {InventoryQuantityService} from '../../inventory/services/inventory-quant
 export class InventoryMovementReportComponent extends formMixin() {
   products$ = this.productsService.loadProducts$;
   itemForm: FormGroup = this.fb.group({
-    productId: [null, [Validators.required]]
+    productId: [null, [Validators.required]],
+    startDate: [(new Date()).toISOString().substring(0, 10)]
   });
   submitSubject$ = new Subject();
+  dateSubject$ = new Subject<string>();
   movements$ = this.submitSubject$.pipe(
     switchMap(() =>
-      this.inventoryService.changesStatement(this.itemForm.value.productId))
+      this.inventoryService.changesStatement(this.itemForm.value.productId)),
+    tap(() => this.dateSubject$.next(this.startDateControl.value))
   );
+
+  datedMovement$ = combineLatest([this.movements$, this.dateSubject$.asObservable()]).pipe(
+    map(([movement, date]) => ({
+      ...movement,
+      inventoryStatement: movement.inventoryStatement.filter(({dateTime}) =>
+        new Date(dateTime) > new Date(date)),
+      // unfilteredInventoryStatement: movement,
+      total: movement.inventoryStatement.reduce((prev, {quantity}) => prev + quantity, 0)
+    }))
+  );
+
+  get startDateControl() {
+    return this.itemForm.get('startDate') as FormControl;
+  }
 
   constructor(
     private fb: FormBuilder,

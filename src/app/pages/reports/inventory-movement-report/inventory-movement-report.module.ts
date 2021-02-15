@@ -7,17 +7,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LoadProductsModule } from '../../products/load-products/load-products.module';
 import {Minus2parenthesisModule} from '../../../shared/pipes/minus2parenthesis/minus2parenthesis.module';
+import {AppInputModule} from '../../../shared/components/input/app-input.module';
+import {AppPrintModule} from '../../../shared/print/print.module';
 
 
 @NgModule({
   declarations: [InventoryMovementReportComponent],
-    imports: [
-        CommonModule,
-        InventoryMovementReportRoutingModule,
-        ReactiveFormsModule,
-        NgSelectModule,
-        LoadProductsModule,
-        Minus2parenthesisModule,
-    ]
+  imports: [
+    CommonModule,
+    InventoryMovementReportRoutingModule,
+    ReactiveFormsModule,
+    NgSelectModule,
+    LoadProductsModule,
+    Minus2parenthesisModule,
+    AppInputModule,
+    AppPrintModule,
+  ]
 })
 export class InventoryMovementReportModule { }

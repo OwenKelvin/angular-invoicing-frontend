@@ -8,7 +8,7 @@ import { AppState } from 'src/app/store/reducers';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
-  title = 'Rickshaw Retails Sales Management';
+  title = 'Gariamba and Sons Sales Management';
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
