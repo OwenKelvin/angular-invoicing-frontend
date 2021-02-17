@@ -19,52 +19,53 @@
     </div>
   </form>
   <app-print selector=".printable"></app-print>
-  <table class="mt-2 table table-sm table-dark printable">
-    <thead class="bg-dark">
-    <tr class="p-2">
-      <th>Movement ID</th>
-      <th>Date Time</th>
-      <th>Quantity</th>
-      <th>Remaining</th>
-    </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngIf='datedMovement$ | async  as movements;'>
-      <tr *ngIf='movements.inventoryStatement.length < 1'>
-        <td colspan="6" class="alert alert-info p-2 m-2">
-          No Inventory Movement found!
-        </td>
+  <div class="printable">
+    <table class="mt-2 table table-sm table-dark">
+      <thead class="bg-dark">
+      <tr class="p-2">
+        <th>Movement ID</th>
+        <th>Date Time</th>
+        <th>Quantity</th>
+        <th>Remaining</th>
       </tr>
-      <ng-container *ngFor='let movement of movements.inventoryStatement; let isFirst = first; let isLast = last'>
-        <tr *ngIf="isFirst">
-          <td class="pt-3 pb-3">Balance Brought Down</td>
-          <td colspan="2" class="pt-3 pb-3">{{ startDateControl.value }}</td>
-          <td class="pt-3 pb-3"> {{ movement.total - movement.quantity }}</td>
+      </thead>
+      <tbody>
+      <ng-container *ngIf='datedMovement$ | async  as movements;'>
+        <tr *ngIf='movements.inventoryStatement.length < 1'>
+          <td colspan="6" class="alert alert-info p-2 m-2">
+            No Inventory Movement found!
+          </td>
         </tr>
-        <tr>
-          <td>{{ movement.type }} - {{ movement.id }}</td>
-          <td>{{ movement.dateTime }}</td>
-          <td [class.text-success]="movement.quantity > 0" [class.text-danger]="movement.quantity < 0">
+        <ng-container *ngFor='let movement of movements.inventoryStatement; let isFirst = first; let isLast = last'>
+          <tr *ngIf="isFirst">
+            <td class="pt-3 pb-3">Balance Brought Down</td>
+            <td colspan="2" class="pt-3 pb-3">{{ startDateControl.value }}</td>
+            <td class="pt-3 pb-3"> {{ movement.total - movement.quantity }}</td>
+          </tr>
+          <tr>
+            <td>{{ movement.type }} - {{ movement.id }}</td>
+            <td>{{ movement.dateTime }}</td>
+            <td [class.text-success]="movement.quantity > 0" [class.text-danger]="movement.quantity < 0">
           <span
             [class.icon-folder-add]="movement.quantity > 0"
             [class.icon-folder-delete]="movement.quantity < 0"></span>{{ movement.quantity | minus2parenthesis }}</td>
-          <td> {{ movement.total }}</td>
-        </tr>
-        <tr *ngIf="isLast" style="border-top: #cccccc double">
-          <td class="pt-3 pb-3">Balance Carried Forward</td>
-          <td colspan="2" class="pt-3 pb-3">{{ movement.dateTime }}</td>
-          <td class="pt-3 pb-3"> {{ movement.total }}</td>
+            <td> {{ movement.total }}</td>
+          </tr>
+          <tr *ngIf="isLast" style="border-top: #cccccc double">
+            <td class="pt-3 pb-3">Balance Carried Forward</td>
+            <td colspan="2" class="pt-3 pb-3">{{ movement.dateTime }}</td>
+            <td class="pt-3 pb-3"> {{ movement.total }}</td>
+          </tr>
+        </ng-container>
+        <tr style="border-top: #cccccc double">
+          <td colspan="3" class="pt-4 pb-1">Balance Carried Forward</td>
+
+          <td class="pt-3 pb-3"> {{ movements.total }}</td>
         </tr>
       </ng-container>
-
-      <tr style="border-top: #cccccc double">
-        <td colspan="3" class="pt-4 pb-1">Balance Carried Forward</td>
-
-        <td class="pt-3 pb-3"> {{ movements.total }}</td>
-      </tr>
-    </ng-container>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 
