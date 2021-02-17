@@ -27,7 +27,7 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() prependIcon: string;
   @Input() formControl: FormControl = new FormControl();
   @Input() triggerValidation: boolean;
-  @Input() autofocus: false;
+  @Input() autofocus: boolean;
   @Input() autocomplete: string;
   @Input() type: string;
   @Input() labelClass: string;

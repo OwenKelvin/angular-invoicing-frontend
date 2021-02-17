@@ -1,15 +1,16 @@
-import { Component, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {Component, OnDestroy} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
-import { Router, ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Store} from '@ngrx/store';
 
-import { AppState } from '../../store/reducers';
-import { takeWhile, tap, map } from 'rxjs/operators';
-import { loadErrorMessagesFailure, loadErrorMessagesSuccess } from 'src/app/store/actions/error-message.actions';
-import { Subject, combineLatest, Observable } from 'rxjs';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { showToast } from 'src/app/store/actions/toast.actions';
+import {AppState} from '../../store/reducers';
+import {takeWhile, tap, map} from 'rxjs/operators';
+import {loadErrorMessagesFailure, loadErrorMessagesSuccess} from 'src/app/store/actions/error-message.actions';
+import {Subject, combineLatest, Observable} from 'rxjs';
+import {AuthenticationService} from 'src/app/shared/services/authentication.service';
+import {showToast} from 'src/app/store/actions/toast.actions';
+import {COMPANY_NAME} from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { showToast } from 'src/app/store/actions/toast.actions';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnDestroy {
+  companyName = COMPANY_NAME;
   triggerValidation: boolean;
   isSubmitting: boolean;
   componentIsActive = true;
@@ -41,13 +43,15 @@ export class LoginComponent implements OnDestroy {
       return !submitted && inputChange;
     }),
   );
+
   constructor(
     private store: Store<AppState>,
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthenticationService,
     private fb: FormBuilder
-  ) { }
+  ) {
+  }
 
   submitLoginForm() {
     this.inputSubmittedSubject$.next(true);
@@ -71,7 +75,8 @@ export class LoginComponent implements OnDestroy {
       this.triggerValidation = !this.triggerValidation;
     }
   }
-  loginSuccessful = ([returnUrl ]: any []) => {
+
+  loginSuccessful = ([returnUrl]: any []) => {
     returnUrl = returnUrl || '/dashboard';
     this.isSubmitting = false;
     this.store.dispatch(loadErrorMessagesFailure());
@@ -84,7 +89,8 @@ export class LoginComponent implements OnDestroy {
       }
     }));
     this.router.navigate([returnUrl]);
-  }
+  };
+
   ngOnDestroy() {
     this.componentIsActive = false;
   }
