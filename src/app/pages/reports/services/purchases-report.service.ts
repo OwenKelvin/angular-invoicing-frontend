@@ -1,16 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ProductsService} from '../../../shared/services/products.service';
-import {combineLatest, Observable} from 'rxjs';
-import {IProduct} from '../../../shared/interfaces/products.interface';
-import {map, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchasesReportService {
-  purchases$: (q: string) => Observable<any[]> = (q) =>
-    this.http.get<any[]>(`api/reports/purchases/?${q}`)
+  purchases$: (q: { [key: string]: string }) => Observable<any[]> = (q) =>
+    this.http.get<any[]>(`api/reports/purchases`, q)
 
   constructor(
     private http: HttpClient,
@@ -31,10 +29,10 @@ export class PurchasesReportService {
 
   getReport({startDate, endDate}: { startDate: string, endDate: string }): Observable<any> {
 
-    const queryStringParams = require('querystring').stringify({
+    const queryStringParams = {
       start_date: startDate,
       end_date: endDate
-    });
+    };
     return this.purchases$(queryStringParams).pipe(map(this.transformPurchases));
   }
 }
