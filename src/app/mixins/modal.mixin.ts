@@ -10,7 +10,7 @@ export const modalMixin = <T extends Constructor>(BaseClass: T = class {
   class extends BaseClass {
     componentIsActive = true;
     config: ModalOptions = {
-      initialState: {id: 0} as Partial<Object>,
+      initialState: {id: 0} as Partial<object>,
       backdrop: true,
       ignoreBackdropClick: true,
       animated: true,
@@ -28,7 +28,7 @@ export const modalMixin = <T extends Constructor>(BaseClass: T = class {
 
     openModal({id, component}: { id: number; component: any; }) {
       this.storeInjected.dispatch(loadModals());
-      this.config.initialState = { id } as Partial<Object>;
+      this.config.initialState = { id } as Partial<object>;
       this.modalRef = this.modalServiceInjected.show(component, this.config);
       this.modalRef.setClass('modal-lg bg-dark text-light modal-container ');
       this.storeInjected.pipe(

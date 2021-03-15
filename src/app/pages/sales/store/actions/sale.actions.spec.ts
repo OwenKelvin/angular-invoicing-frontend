@@ -12,7 +12,7 @@ beforeEach(waitForAsync(() => {
       ErrorModule
     ]
   });
-}))
+}));
 
 describe('loadSales', () => {
   it('should return an action', () => {

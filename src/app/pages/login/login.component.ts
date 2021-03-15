@@ -89,7 +89,7 @@ export class LoginComponent implements OnDestroy {
       }
     }));
     this.router.navigate([returnUrl]);
-  };
+  }
 
   ngOnDestroy() {
     this.componentIsActive = false;

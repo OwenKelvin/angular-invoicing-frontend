@@ -26,7 +26,7 @@ describe('DeleteSoldProductComponent', () => {
         ModalModule.forRoot()
       ],
       declarations: [ DeleteSoldProductComponent ],
-      providers: [reducerProvider, 
+      providers: [reducerProvider,
         {
           provide: Store,
           useValue: {

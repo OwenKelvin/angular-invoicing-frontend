@@ -85,8 +85,10 @@ export class AuthenticationService {
         catchError(error => throwError(error))
       );
   }
-  contactAdmin(_data: { email: string; }) {
+
+  contactAdmin(data: { email: string; }) {
     // TODO-me Authentication Service Contact admin
+    console.log(data);
     return of({ message: 'Feature coming soon' });
   }
   resetPassword(email: { email: string; }) {
