@@ -6,7 +6,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppUserProfileModule } from './user-profile.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import {REDUCER_TOKEN, reducerProvider, metaReducers, reducers} from 'src/app/store/reducers';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserProfileComponent', () => {
@@ -29,6 +29,7 @@ describe('UserProfileComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('app', reducers)
       ],
       declarations: [UserProfileComponent],
       providers: [reducerProvider]

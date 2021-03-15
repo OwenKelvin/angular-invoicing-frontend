@@ -38,7 +38,7 @@ export class SellerMaintenanceComponent extends formMixin(subscribedContainerMix
     this.seller$ = this.store.pipe(
       select(selectsellerById({ id: this.id })),
       tap(seller => {
-        this.sellerForm.setValue(seller);
+        this.sellerForm.patchValue(seller);
         this.sellerForm.updateValueAndValidity();
       }),
       takeUntil(this.destroyed$)

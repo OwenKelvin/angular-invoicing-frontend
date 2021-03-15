@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppLinksModule} from '../../shared/components/links/links.module';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -8,6 +10,10 @@ describe('UsersComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        AppLinksModule
+      ],
       declarations: [ UsersComponent ]
     })
     .compileComponents();

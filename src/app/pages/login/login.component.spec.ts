@@ -9,6 +9,7 @@ import { REDUCER_TOKEN, metaReducers, reducerProvider } from 'src/app/store/redu
 import { ErrorModule } from 'src/app/shared/components/error/error.module';
 import { FullWithCenterComponent } from 'src/app/shared/components/full-with-center/full-with-center.component';
 import { InputComponent } from 'src/app/shared/components/input/input.component';
+import {CollapseModule} from 'ngx-bootstrap/collapse';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -28,7 +29,8 @@ describe('LoginComponent', () => {
             strictActionImmutability: true,
           }
         }),
-        ErrorModule
+        ErrorModule,
+        CollapseModule.forRoot()
       ],
       declarations: [LoginComponent, FullWithCenterComponent, InputComponent],
       providers: [reducerProvider]

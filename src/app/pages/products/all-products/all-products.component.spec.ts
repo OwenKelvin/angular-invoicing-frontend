@@ -5,6 +5,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {FormsModule} from '@angular/forms';
+import {reducer} from '../store/reducers/products.reducer';
 
 describe('AllProductsComponent', () => {
   let component: AllProductsComponent;
@@ -22,6 +24,8 @@ describe('AllProductsComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('products', reducer),
+        FormsModule
       ],
       providers: [
         reducerProvider,

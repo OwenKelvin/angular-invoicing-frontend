@@ -1,27 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { LayoutComponent } from './layout.component';
-import { Store, StoreModule } from '@ngrx/store';
-import { AppState, REDUCER_TOKEN, metaReducers, reducerProvider } from 'src/app/store/reducers';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { FooterComponent } from '../footer/footer.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { MenuSearchComponent } from '../header/menu-search/menu-search.component';
-import { UserButtonComponent } from '../header/user-button/user-button.component';
-import { BreadcrumbComponent } from '../header/breadcrumb/breadcrumb.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {LayoutComponent} from './layout.component';
+import {Store, StoreModule} from '@ngrx/store';
+import {AppState, REDUCER_TOKEN, metaReducers, reducerProvider, reducers} from 'src/app/store/reducers';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HeaderComponent} from '../header/header.component';
+import {SidebarComponent} from '../sidebar/sidebar.component';
+import {FooterComponent} from '../footer/footer.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {MenuSearchComponent} from '../header/menu-search/menu-search.component';
+import {UserButtonComponent} from '../header/user-button/user-button.component';
+import {BreadcrumbComponent} from '../header/breadcrumb/breadcrumb.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HeaderModule} from '../header/header.module';
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
   let store: Store<AppState>;
 
-  beforeEach(async () => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
+        HeaderModule,
         RouterTestingModule,
         HttpClientTestingModule,
         StoreModule.forRoot(REDUCER_TOKEN, {
@@ -31,6 +33,7 @@ describe('LayoutComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('app', reducers),
         FormsModule,
         ReactiveFormsModule,
         BrowserAnimationsModule
@@ -47,8 +50,8 @@ describe('LayoutComponent', () => {
       providers: [reducerProvider]
     });
 
-    await TestBed.compileComponents();
-  });
+    TestBed.compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LayoutComponent);

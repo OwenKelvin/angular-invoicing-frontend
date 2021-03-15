@@ -1,14 +1,20 @@
-import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AppFormService } from './AppForm.service';
+import {FormControl, FormBuilder, Validators, FormGroup} from '@angular/forms';
+import {AppFormService} from './AppForm.service';
+import {TestBed, waitForAsync} from '@angular/core/testing';
+import {AppDatePickerModule} from '../components/date-picker/date-picker.module';
+import {AppPrintModule} from '../print/print.module';
 
 describe('AppForm class', () => {
   const fb: FormBuilder = new FormBuilder();
   let formField: FormGroup;
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [ AppDatePickerModule, AppPrintModule]
+    });
     formField = fb.group({
       formItem: ['', [Validators.required]]
     });
-  });
+  }));
   const appForm = new AppFormService();
   describe('Trigger validation function', () => {
     it('should return true if form is dirty', () => {

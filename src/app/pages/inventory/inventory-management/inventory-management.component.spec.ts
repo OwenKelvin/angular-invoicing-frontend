@@ -8,6 +8,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import {AppPrintModule} from '../../../shared/print/print.module';
+import {AppCheckboxModule} from '../../../shared/components/checkbox/checkbox.module';
 
 describe('InventoryManagementComponent', () => {
   let component: InventoryManagementComponent;
@@ -22,6 +24,8 @@ describe('InventoryManagementComponent', () => {
         AppLoadingBubbleModule,
         ModalModule.forRoot(),
         HttpClientTestingModule,
+        AppPrintModule,
+        AppCheckboxModule,
         StoreModule.forRoot(REDUCER_TOKEN, {
           metaReducers,
           runtimeChecks: {

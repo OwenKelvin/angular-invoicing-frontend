@@ -5,6 +5,8 @@ import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { myProfileFeatureKey, reducer } from '../store/reducers/my-profile.reducer';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
+import {AppToastModule} from '../../../shared/components/toast/toast.module';
+import {NetworkLoadingModule} from '../../../shared/network-loading';
 
 describe('MyProfileInfoComponent', () => {
   let component: MyProfileInfoComponent;
@@ -13,6 +15,8 @@ describe('MyProfileInfoComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
+        AppToastModule,
+        NetworkLoadingModule,
         AppLoadingBubbleModule,
         StoreModule.forRoot(REDUCER_TOKEN, {
           metaReducers,

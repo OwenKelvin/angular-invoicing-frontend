@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import {REDUCER_TOKEN, reducerProvider, metaReducers, reducers} from 'src/app/store/reducers';
 import { ErrorModule } from 'src/app/shared/components/error/error.module';
 import { FullWithCenterComponent } from 'src/app/shared/components/full-with-center/full-with-center.component';
 import { InputComponent } from 'src/app/shared/components/input/input.component';
@@ -29,6 +29,7 @@ describe('LoginResetComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('app', reducers)
       ],
       declarations: [LoginResetComponent, FullWithCenterComponent, InputComponent],
       providers: [

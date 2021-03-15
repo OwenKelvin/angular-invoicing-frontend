@@ -2,15 +2,17 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, metaReducers, reducerProvider } from './store/reducers';
+import {REDUCER_TOKEN, metaReducers, reducerProvider, reducers} from './store/reducers';
 import { HomeComponent } from './pages/home/home.component';
 import { FullWithCenterComponent } from './shared/components/full-with-center/full-with-center.component';
+import {AppToastModule} from './shared/components/toast/toast.module';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        AppToastModule,
         StoreModule.forRoot(REDUCER_TOKEN, {
           metaReducers,
           runtimeChecks: {
@@ -18,6 +20,7 @@ describe('AppComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('app', reducers)
       ],
       declarations: [
         AppComponent, HomeComponent, FullWithCenterComponent

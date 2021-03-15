@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { ToastComponent } from './toast/toast.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +11,6 @@ import { AppFullWidthCenteredContentModule } from './full-width-centered-content
 @NgModule({
   declarations: [
     PasswordResetComponent,
-    ToastComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +23,6 @@ import { AppFullWidthCenteredContentModule } from './full-width-centered-content
   ],
   exports: [
     PasswordResetComponent,
-    ToastComponent
   ]
 })
 export class ComponentsModule { }

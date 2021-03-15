@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ValidateSubmitButtonsComponent } from './validate-submit-buttons.component';
 import { FormGroup } from '@angular/forms';
+import {AppToastModule} from '../toast/toast.module';
 
 describe('ValidateSubmitButtonsComponent', () => {
   let component: ValidateSubmitButtonsComponent;
@@ -9,6 +10,9 @@ describe('ValidateSubmitButtonsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [
+        AppToastModule
+      ],
       declarations: [ ValidateSubmitButtonsComponent ]
     })
     .compileComponents();

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { CurrencyEffects } from './currency.effects';
 import { StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import {REDUCER_TOKEN, reducerProvider, metaReducers, reducers} from 'src/app/store/reducers';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CurrencyEffects', () => {
@@ -22,6 +22,7 @@ describe('CurrencyEffects', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('app',  reducers)
       ],
       providers: [
         reducerProvider,

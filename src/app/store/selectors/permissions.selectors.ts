@@ -24,6 +24,6 @@ export const salesLinks = createSelector(
 
 export const allLinks = createSelector(
   selectAppPermissionsState,
-  state => Object.values(state)?.reduce((a, b) => ([...a, ...b]), [])
+  state => state ? Object.values(state)?.reduce((a, b) => ([...a, ...b]), []) : null
 );
 

@@ -6,6 +6,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {AppLinksModule} from '../../../shared/components/links/links.module';
 
 describe('EditSoldProductComponent', () => {
   let component: EditSoldProductComponent;
@@ -13,7 +14,9 @@ describe('EditSoldProductComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, HttpClientTestingModule,
+      imports: [
+        AppLinksModule,
+        ReactiveFormsModule, HttpClientTestingModule,
         StoreModule.forRoot(REDUCER_TOKEN, {
           metaReducers,
           runtimeChecks: {

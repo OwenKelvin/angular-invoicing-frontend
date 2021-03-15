@@ -6,6 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import {reducer} from '../../products/store/reducers/products.reducer';
 
 describe('EditInventoryQuantityComponent', () => {
   let component: EditInventoryQuantityComponent;
@@ -25,6 +26,7 @@ describe('EditInventoryQuantityComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('products', reducer)
       ],
       declarations: [EditInventoryQuantityComponent],
       providers: [

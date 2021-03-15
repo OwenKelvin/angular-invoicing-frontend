@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReportsComponent } from './reports.component';
 import { StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
+import {REDUCER_TOKEN, reducerProvider, metaReducers, reducers} from 'src/app/store/reducers';
 import { AppLinksModule } from 'src/app/shared/components/links/links.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import {reducer} from '../my-profile/store/reducers/my-profile.reducer';
 
 describe('ReportsComponent', () => {
   let component: ReportsComponent;
@@ -22,6 +23,8 @@ describe('ReportsComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('myProfile', reducer),
+        StoreModule.forFeature('app', reducers)
       ],
       declarations: [ReportsComponent],
       providers: [reducerProvider],

@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DatePickerComponent } from './date-picker.component';
 import {of} from 'rxjs';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 describe('DatePickerComponent', () => {
   let component: DatePickerComponent;
@@ -9,6 +10,7 @@ describe('DatePickerComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [BsDatepickerModule.forRoot()],
       declarations: [ DatePickerComponent ]
     })
     .compileComponents();

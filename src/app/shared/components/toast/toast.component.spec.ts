@@ -1,8 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ToastComponent } from './toast.component';
-import { Store, StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, metaReducers, AppState, reducerProvider } from 'src/app/store/reducers';
+import {ToastComponent} from './toast.component';
+import {Store, StoreModule} from '@ngrx/store';
+import {REDUCER_TOKEN, metaReducers, AppState, reducerProvider} from 'src/app/store/reducers';
+import {AppPrintModule} from '../../print/print.module';
 
 describe('ToastComponent', () => {
   let component: ToastComponent;
@@ -11,13 +12,15 @@ describe('ToastComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot(REDUCER_TOKEN, {
-        metaReducers,
-        runtimeChecks: {
-          strictStateImmutability: true,
-          strictActionImmutability: true,
-        }
-      })],
+      imports: [
+        AppPrintModule,
+        StoreModule.forRoot(REDUCER_TOKEN, {
+          metaReducers,
+          runtimeChecks: {
+            strictStateImmutability: true,
+            strictActionImmutability: true,
+          }
+        })],
       declarations: [ToastComponent],
       providers: [reducerProvider]
     });

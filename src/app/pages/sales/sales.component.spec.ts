@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SalesComponent } from './sales.component';
 import {StoreModule} from '@ngrx/store';
-import {metaReducers, REDUCER_TOKEN, reducerProvider} from '../../store/reducers';
+import {metaReducers, REDUCER_TOKEN, reducerProvider, reducers} from '../../store/reducers';
+import {reducer} from '../my-profile/store/reducers/my-profile.reducer';
 
 describe('SalesComponent', () => {
   let component: SalesComponent;
@@ -18,6 +19,8 @@ describe('SalesComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('app', reducers),
+        StoreModule.forFeature('myProfile', reducer)
       ],
       declarations: [ SalesComponent ],
       providers: [reducerProvider]

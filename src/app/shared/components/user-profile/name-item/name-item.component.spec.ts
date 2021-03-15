@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { NameItemComponent } from './name-item.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NameItemComponent} from './name-item.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { Store, StoreModule } from '@ngrx/store';
-import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { AppInputModule } from '../../input/app-input.module';
-import { of } from 'rxjs';
+import {Store, StoreModule} from '@ngrx/store';
+import {REDUCER_TOKEN, reducerProvider, metaReducers} from 'src/app/store/reducers';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {AppInputModule} from '../../input/app-input.module';
+import {of} from 'rxjs';
 
 
 describe('NameItemComponent', () => {
@@ -31,7 +31,7 @@ describe('NameItemComponent', () => {
 
       ],
       declarations: [NameItemComponent],
-      providers: [reducerProvider, 
+      providers: [reducerProvider,
         {
           provide: Store,
           useValue: {
@@ -40,7 +40,7 @@ describe('NameItemComponent', () => {
         }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

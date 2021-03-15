@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PageUnderMaintenanceComponent } from './page-under-maintenance.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('PageUnderMaintenanceComponent', () => {
   let component: PageUnderMaintenanceComponent;
@@ -8,6 +9,9 @@ describe('PageUnderMaintenanceComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [ PageUnderMaintenanceComponent ]
     })
     .compileComponents();

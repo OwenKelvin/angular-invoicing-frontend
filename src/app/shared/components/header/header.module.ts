@@ -24,14 +24,16 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     BreadcrumbComponent,
     MenuSearchComponent,
     UserButtonComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    HeaderCollapseComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+
   ]
 })
 export class HeaderModule { }

@@ -1,10 +1,11 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { LoginContactAdminComponent } from './login-contact-admin.component';
-import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
-import { By } from '@angular/platform-browser';
-import { FullWithCenterComponent } from 'src/app/shared/components/full-with-center/full-with-center.component';
-import { InputComponent } from 'src/app/shared/components/input/input.component';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {LoginContactAdminComponent} from './login-contact-admin.component';
+import {FormsModule, ReactiveFormsModule, FormControl} from '@angular/forms';
+import {By} from '@angular/platform-browser';
+import {FullWithCenterComponent} from 'src/app/shared/components/full-with-center/full-with-center.component';
+import {InputComponent} from 'src/app/shared/components/input/input.component';
+import {AppToastModule} from '../../../shared/components/toast/toast.module';
 
 describe('LoginContactAdminComponent', () => {
   let component: LoginContactAdminComponent;
@@ -12,10 +13,15 @@ describe('LoginContactAdminComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, HttpClientTestingModule],
-      declarations: [ LoginContactAdminComponent, FullWithCenterComponent, InputComponent ]
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        AppToastModule
+      ],
+      declarations: [LoginContactAdminComponent, FullWithCenterComponent, InputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

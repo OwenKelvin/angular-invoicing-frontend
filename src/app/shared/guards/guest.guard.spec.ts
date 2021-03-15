@@ -6,11 +6,17 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Store, StoreModule } from '@ngrx/store';
 import { AppState, REDUCER_TOKEN, metaReducers, reducerProvider } from './../../store/reducers';
 import { AuthenticationService } from '../services/authentication.service';
+import {AppDatePickerModule} from '../components/date-picker/date-picker.module';
+import {HeaderModule} from '../components/header/header.module';
+import {AppPrintModule} from '../print/print.module';
 
 describe('GuestGuard', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
+        AppDatePickerModule,
+        HeaderModule,
+        AppPrintModule,
         RouterTestingModule,
         HttpClientTestingModule,
         StoreModule.forRoot(REDUCER_TOKEN, {

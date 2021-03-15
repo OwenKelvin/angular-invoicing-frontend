@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { of } from 'rxjs';
+import {HeaderModule} from '../../../shared/components/header/header.module';
 
 describe('DeleteProductConfirmationComponent', () => {
   let component: DeleteProductConfirmationComponent;
@@ -14,6 +15,7 @@ describe('DeleteProductConfirmationComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
+        HeaderModule,
         HttpClientTestingModule,
         FormsModule,
         ReactiveFormsModule,

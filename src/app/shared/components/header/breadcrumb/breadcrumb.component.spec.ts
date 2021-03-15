@@ -5,6 +5,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { AppState, REDUCER_TOKEN, metaReducers, reducerProvider } from 'src/app/store/reducers';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import {reducer} from '../../../../pages/my-profile/store/reducers/my-profile.reducer';
 
 describe('BreadcrumbComponent', () => {
   let component: BreadcrumbComponent;
@@ -21,6 +22,7 @@ describe('BreadcrumbComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('myProfile', reducer),
         HttpClientTestingModule,
         RouterTestingModule],
       declarations: [BreadcrumbComponent, BreadcrumbComponent],

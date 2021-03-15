@@ -6,6 +6,8 @@ import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/redu
 import { AppUserProfileModule } from 'src/app/shared/components/user-profile/user-profile.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {reducer} from './store/reducers/my-profile.reducer';
 
 describe('MyProfileComponent', () => {
   let component: MyProfileComponent;
@@ -17,6 +19,7 @@ describe('MyProfileComponent', () => {
         AppUserProfileModule,
         HttpClientTestingModule,
         AppLoadingBubbleModule,
+        BsDatepickerModule.forRoot(),
         StoreModule.forRoot(REDUCER_TOKEN, {
           metaReducers,
           runtimeChecks: {
@@ -24,6 +27,7 @@ describe('MyProfileComponent', () => {
             strictActionImmutability: true,
           }
         }),
+        StoreModule.forFeature('myProfile', reducer)
       ],
       declarations: [MyProfileComponent],
       providers: [reducerProvider]

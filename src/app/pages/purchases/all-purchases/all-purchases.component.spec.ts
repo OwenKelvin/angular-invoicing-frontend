@@ -6,6 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, reducerProvider, metaReducers } from 'src/app/store/reducers';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {AppDatePickerModule} from '../../../shared/components/date-picker/date-picker.module';
 
 describe('AllPurchasesComponent', () => {
   let component: AllPurchasesComponent;
@@ -24,7 +25,8 @@ describe('AllPurchasesComponent', () => {
             strictActionImmutability: true,
           }
         }),
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        AppDatePickerModule
       ],
       providers: [
         reducerProvider,
