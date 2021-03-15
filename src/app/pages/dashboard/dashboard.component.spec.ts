@@ -4,7 +4,6 @@ import { DashboardComponent } from './dashboard.component';
 import { Store, StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, metaReducers, AppState, reducerProvider } from 'src/app/store/reducers';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TelInputComponent } from '../../shared/components/tel-input/tel-input.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -28,7 +27,7 @@ describe('DashboardComponent', () => {
         NgSelectModule,
         HttpClientTestingModule
       ],
-      declarations: [DashboardComponent, TelInputComponent],
+      declarations: [DashboardComponent],
       providers: [reducerProvider]
     });
 

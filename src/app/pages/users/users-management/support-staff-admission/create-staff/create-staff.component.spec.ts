@@ -9,7 +9,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { reducer } from 'src/app/store/reducers/toast.reducer';
 import { AppInputModule } from 'src/app/shared/components/input/app-input.module';
-import { AppTelInputModule } from 'src/app/shared/components/tel-input/tel-input.module';
 import { AppValidateSubmitButtonModule } from 'src/app/shared/components/validate-submit-buttons/app-validate-submit-buttons.module';
 
 describe('CreateStaffComponent', () => {
@@ -32,7 +31,6 @@ describe('CreateStaffComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         AppInputModule,
-        AppTelInputModule,
         AppValidateSubmitButtonModule
       ],
       providers: [
@@ -55,7 +53,7 @@ describe('CreateStaffComponent', () => {
     fixture = TestBed.createComponent(CreateStaffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
+
   });
 
   it('should create', () => {

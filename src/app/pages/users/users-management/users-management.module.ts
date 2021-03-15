@@ -9,7 +9,6 @@ import {
 
 import { CreateStaffComponent } from './support-staff-admission/create-staff/create-staff.component';
 import { AppInputModule } from 'src/app/shared/components/input/app-input.module';
-import { AppTelInputModule } from 'src/app/shared/components/tel-input/tel-input.module';
 import { AppValidateSubmitButtonModule } from 'src/app/shared/components/validate-submit-buttons/app-validate-submit-buttons.module';
 import { UsersManagementComponent } from './users-management.component';
 import { AppLinksModule } from 'src/app/shared/components/links/links.module';
@@ -36,7 +35,6 @@ import { LoadUsersModule } from './load-users.module';
     FormsModule,
     ReactiveFormsModule,
     AppInputModule,
-    AppTelInputModule,
     AppValidateSubmitButtonModule,
     AppLinksModule,
     LoadUsersModule,
