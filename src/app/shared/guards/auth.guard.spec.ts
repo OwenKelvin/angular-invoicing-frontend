@@ -20,10 +20,10 @@ describe('AuthGuard', () => {
     const next = jasmine.createSpyObj({queryParams: ''});
     const state = jasmine.createSpyObj({url: ''});
     const router = jasmine.createSpyObj({ navigate: () => { } });
-    const authenticationServive = jasmine.createSpyObj({
+    const authenticationService = jasmine.createSpyObj({
       currentUserValue: true
     });
-    const authGuard = new AuthGuard(router, authenticationServive);
+    const authGuard = new AuthGuard(router, authenticationService);
     expect(authGuard.canActivate(next, state)).toBeTruthy();
   });
   it('should return false if no current user ', inject([AuthenticationService], (authenticationServive: AuthenticationService) => {
