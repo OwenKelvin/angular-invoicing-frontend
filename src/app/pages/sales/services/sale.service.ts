@@ -27,7 +27,7 @@ export class SaleService extends getDateMixin() {
   updateSoldProductAction$ = this.updateSoldProductSubject$.asObservable();
   url = 'api/sales';
 
-  saleDates$: Observable<string[]> = this.http.get<string[]>(`${this.url}/?sale_dates=${true}`);
+  saleDates$: Observable<string[]> = this.http.get<string[]>(`${this.url}?sale_dates=${true}`);
 
   updateProductSold: (arg: { id: number; data: any; }) => Observable<any> = ({id, data}) =>
     this.http.post<any>(`${this.url}/${id}`, { ...data, _method: 'PATCH' }).pipe(
@@ -44,7 +44,7 @@ export class SaleService extends getDateMixin() {
     tap(() => this.deleteSoldProductSubject$.next(id))
   )
   getSoldProductsForDate$: (date: Date) => Observable<any[]> = (date: Date) =>
-    this.http.get<string[]>(`${this.url}/?sale_date=${this.getDate(date)}`).pipe(
+    this.http.get<string[]>(`${this.url}?sale_date=${this.getDate(date)}`).pipe(
       map(this.mappedSoldProducts)
     )
   mappedSoldProduct: (item: any) => any = item => ({

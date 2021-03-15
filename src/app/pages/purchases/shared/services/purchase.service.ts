@@ -14,7 +14,7 @@ import { getDateMixin } from 'src/app/mixins/get-date.mixin';
 export class PurchaseService extends getDateMixin() {
   constructor(private store: Store, private http: HttpClient) { super(); }
   url = 'api/purchases';
-  purchaseDates$: Observable<string[]> = this.http.get<string[]>(`${this.url}/?purchase_dates=${true}`);
+  purchaseDates$: Observable<string[]> = this.http.get<string[]>(`${this.url}?purchase_dates=${true}`);
   purchasesLoaded = false;
 
   purchases$: Observable<IPurchase[]> = this.http.get(this.url).pipe(
@@ -37,7 +37,7 @@ export class PurchaseService extends getDateMixin() {
     tap(({ length }) => (length < 1 && !this.purchasesLoaded) ? this.store.dispatch(loadPurchases()) : ''),
   );
   getPurchasesForDate$: (date: Date) => Observable<IPurchase[]> = (date: Date) =>
-    this.http.get<string[]>(`${this.url}/?purchase_date=${this.getDate(date)}`).pipe(
+    this.http.get<string[]>(`${this.url}?purchase_date=${this.getDate(date)}`).pipe(
       map(this.mappedPurchases))
 
 

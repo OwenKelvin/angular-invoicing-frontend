@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable, combineLatest } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { tap, map } from 'rxjs/operators';
-import { ProductsService } from 'src/app/shared/services/products.service';
-import { IProduct } from 'src/app/shared/interfaces/products.interface';
+import {Injectable} from '@angular/core';
+import {Observable, combineLatest} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import {ProductsService} from 'src/app/shared/services/products.service';
+import {IProduct} from 'src/app/shared/interfaces/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,12 @@ import { IProduct } from 'src/app/shared/interfaces/products.interface';
 export class SalesReportService {
 
   products$: Observable<IProduct[]> = this.productService.loadProducts$;
+
   constructor(
     private http: HttpClient,
     private productService: ProductsService
-  ) { }
+  ) {
+  }
 
   getReport(data: any): Observable<any> {
 
@@ -23,7 +25,7 @@ export class SalesReportService {
       end_date: data.endDate
     });
 
-    const sales$: Observable<any[]> = this.http.get<any[]>(`api/reports/sales/?${queryStringParams}`)
+    const sales$: Observable<any[]> = this.http.get<any[]>(`api/reports/sales?${queryStringParams}`)
       .pipe(
         map(res => res.map(item => ({
           quantity: item.quantity,
@@ -38,10 +40,10 @@ export class SalesReportService {
 
     return combineLatest([this.products$, sales$]).pipe(
       map(([products, sales]) => sales.map(sale => ({
-        ...sale,
-        productName: products.find(({ id }) => sale.productId === id)?.name,
-        definedPurchasePrice: products.find(({ id }) => sale.productId === id)?.buyingPrice
-      }))
+          ...sale,
+          productName: products.find(({id}) => sale.productId === id)?.name,
+          definedPurchasePrice: products.find(({id}) => sale.productId === id)?.buyingPrice
+        }))
       )
     );
   }
