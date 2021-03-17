@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, combineLatest } from 'rxjs';
-import { ILink } from '../interfaces/link.interface';
-import { Store, select } from '@ngrx/store';
-import { selectMyPermissions, selectMyRoles } from 'src/app/pages/my-profile/store/selectors/my-profile.selectors';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable, combineLatest} from 'rxjs';
+import {ILink} from '../interfaces/link.interface';
+import {Store, select} from '@ngrx/store';
+import {selectMyPermissions, selectMyRoles} from 'src/app/pages/my-profile/store/selectors/my-profile.selectors';
+import {map} from 'rxjs/operators';
 import * as fromLinks from '../../store/selectors/permissions.selectors';
 
 @Injectable({

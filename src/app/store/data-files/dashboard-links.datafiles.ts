@@ -43,4 +43,10 @@ export const DashboardLinks: ILink[] = [
     link: 'reports',
     permissions: ['view report']
   },
+  {
+    name: 'Insights',
+    icon: 'icon-chart-pie',
+    link: 'insights',
+    permissions: ['view insights']
+  },
 ];
