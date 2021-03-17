@@ -85,6 +85,13 @@ const routes: Routes = [
         data: {
           breadcrumb: 'My Profile'
         }
+      },
+      {
+        path: 'insights',
+        loadChildren: () => import('./insights/insights.module').then(m => m.InsightsModule),
+        data: {
+          breadcrumb: 'Insights'
+        }
       }
     ]
   }

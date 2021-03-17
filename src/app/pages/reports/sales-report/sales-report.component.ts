@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { SalesReportService } from '../services/sales-report.service';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {SalesReportService} from '../services/sales-report.service';
+import {BehaviorSubject, combineLatest} from 'rxjs';
+import {tap, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sales-report',
@@ -80,14 +80,14 @@ export class SalesReportComponent implements OnInit {
         if (cumulateByProductChecked && cumulateByDateChecked) {
           return data.reduce((prev: any, next: any) => {
             const prevQuantity = prev[String(next.date)
-              + String(next.productId)]?.quantity ? prev[String(next.date)
-                + String(next.productId)]?.quantity : 0;
+            + String(next.productId)]?.quantity ? prev[String(next.date)
+            + String(next.productId)]?.quantity : 0;
             const prevPrice = prev[String(next.date)
-              + String(next.productId)]?.fifoPrice ? prev[String(next.date)
-                + String(next.productId)]?.fifoPrice : 0;
+            + String(next.productId)]?.fifoPrice ? prev[String(next.date)
+            + String(next.productId)]?.fifoPrice : 0;
             const prevSellingPrice = prev[String(next.date)
-              + String(next.productId)]?.sellingPrice ? prev[String(next.date)
-                + String(next.productId)]?.sellingPrice : 0;
+            + String(next.productId)]?.sellingPrice ? prev[String(next.date)
+            + String(next.productId)]?.sellingPrice : 0;
             const quantity = (Number(prevQuantity ? prevQuantity : 0) + Number(next.quantity));
             const fifoPrice = ((prevQuantity * prevPrice) + (next.quantity * next.fifoPrice)) / quantity;
             const sellingPricePrice = ((prevQuantity * prevSellingPrice) + (next.quantity * next.sellingPrice)) / quantity;
@@ -107,15 +107,16 @@ export class SalesReportComponent implements OnInit {
       }
     ),
     map(res => Object.values(res)),
-
   );
 
   reportData: any[];
   dataRetrieved = false;
+
   constructor(
     private fb: FormBuilder,
     private salesReportService: SalesReportService
-  ) { }
+  ) {
+  }
 
 
   ngOnInit() {
