@@ -1,29 +1,39 @@
 <h1>Insights</h1>
 <div class="card p-2">
-  <div class="d-flex flex-wrap justify-content-around">
-    <div class="col-lg-4">
-      <app-total-profit-today></app-total-profit-today>
-    </div>
-    <div class="col-lg-4">
-      <app-total-sales-today></app-total-sales-today>
-    </div>
-    <div class="col-lg-4">
-      <app-total-purchases-today></app-total-purchases-today>
-    </div>
-    <div class="col-lg-6">
-      <app-daily-profit-margins-line-plot [from]="startDate" [to]="endDate"></app-daily-profit-margins-line-plot>
-    </div>
-    <div class="col-lg-6">
-      <app-daily-profit-line-plot [from]="startDate" [to]="endDate"></app-daily-profit-line-plot>
-    </div>
-    <div class="col-lg-6">
-      <app-daily-profit-per-product [from]="startDate" [to]="endDate"></app-daily-profit-per-product>
-    </div>
-    <div class="col-lg-6">
-      <app-daily-sale-line-plot [from]="startDate" [to]="endDate"></app-daily-sale-line-plot>
-    </div>
-    <div class="col-lg-6">
-      <app-todays-profit-per-product></app-todays-profit-per-product>
-    </div>
+  <div>
+    <tabset>
+      <tab heading="Today" id="tab1">
+        <div class="d-flex flex-wrap justify-content-start">
+          <div class="col-lg-4">
+            <app-total-profit-today></app-total-profit-today>
+          </div>
+          <div class="col-lg-4">
+            <app-total-sales-today></app-total-sales-today>
+          </div>
+          <div class="col-lg-4">
+            <app-total-purchases-today></app-total-purchases-today>
+          </div>
+          <div class="col-8">
+            <app-todays-profit-per-product></app-todays-profit-per-product>
+          </div>
+        </div>
+      </tab>
+      <tab heading="Past 1 Month">
+        <div class="d-flex flex-wrap justify-content-start">
+          <div class="col-lg-6">
+            <app-daily-profit-margins-line-plot [from]="startDate" [to]="endDate"></app-daily-profit-margins-line-plot>
+          </div>
+          <div class="col-lg-6">
+            <app-daily-profit-line-plot [from]="startDate" [to]="endDate"></app-daily-profit-line-plot>
+          </div>
+          <div class="col-lg-6">
+            <app-daily-profit-per-product [from]="startDate" [to]="endDate"></app-daily-profit-per-product>
+          </div>
+          <div class="col-lg-6">
+            <app-daily-sale-line-plot [from]="startDate" [to]="endDate"></app-daily-sale-line-plot>
+          </div>
+        </div>
+      </tab>
+    </tabset>
   </div>
 </div>
