@@ -1,14 +1,1 @@
-<div class="card card-stats">
-  <div class="card-header card-header-success card-header-icon">
-    <div class="card-icon">
-      <i class="icon-cart-plus"></i>
-    </div>
-    <p class="card-category">Sales</p>
-    <span class="card-title">{{ salesToday$ | async | currency}}</span>
-  </div>
-  <div class="card-footer">
-    <div class="stats">
-      <i class="icon-calendar-times-o"></i> Today
-    </div>
-  </div>
-</div>
+<app-dashboard-widget [value]="salesToday$ | async"></app-dashboard-widget>
