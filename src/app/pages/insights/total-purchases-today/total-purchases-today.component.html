@@ -1,0 +1,7 @@
+<app-dashboard-widget
+  title="purchases"
+  bg="danger"
+  icon="icon-down-bold"
+  [value]="salesToday$ | async ">
+</app-dashboard-widget>
+<pre class="text-light">{{ salesToday$ | async | json }}</pre>

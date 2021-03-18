@@ -1,10 +1,14 @@
 <div class="card card-stats">
-  <div class="card-header card-header-success card-header-icon">
+  <div class="card-header card-header-icon"
+    [class.card-header-success]="bg === 'success'"
+    [class.card-header-danger]="bg === 'danger'"
+    [class.card-header-warning]="bg === 'warning'"
+  >
     <div class="card-icon">
-      <i class="icon-cart-plus"></i>
+      <i [class]="icon"></i>
     </div>
-    <p class="card-category">Sales</p>
-    <span class="card-title">{{ value | currency}}</span>
+    <p class="card-category">{{ title | titlecase }}</p>
+    <span class="card-title">{{ value | currency:'KES ' }}</span>
   </div>
   <div class="card-footer">
     <div class="stats">
