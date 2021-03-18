@@ -11,7 +11,7 @@ import {SalesReportService} from '../../reports/services/sales-report.service';
 export class TotalSalesTodayComponent {
   salesToday$: Observable<number> = this.salesReportService.getReport({}).pipe(
     map((sales: any[]) => sales.reduce((prev, next) =>
-      prev + next.quantity * (next.sellingPrice - next.fifoPrice), 0))
+      prev + next.quantity * next.sellingPrice, 0))
   );
 
   constructor(private salesReportService: SalesReportService) {
