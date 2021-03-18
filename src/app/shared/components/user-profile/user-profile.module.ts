@@ -8,6 +8,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { UserSelectItemComponent } from './user-select-item/user-select-item.component';
 import { PasswordChangeFormModule } from 'src/app/pages/login/password-change-form/password-change-form.module';
 import { AppInputModule } from '../input/app-input.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 
@@ -24,7 +25,8 @@ import { AppInputModule } from '../input/app-input.module';
     ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    PasswordChangeFormModule
+    PasswordChangeFormModule,
+    ReactiveComponentModule
   ],
   exports: [
     UserProfileComponent,

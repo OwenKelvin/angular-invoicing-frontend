@@ -21,6 +21,7 @@ import { AppDatePickerModule } from 'src/app/shared/components/date-picker/date-
 import { AppPrintModule } from 'src/app/shared/print/print.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppInputModule } from 'src/app/shared/components/input/app-input.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AppInputModule } from 'src/app/shared/components/input/app-input.module
     AppDatePickerModule,
     AppPrintModule,
     NgSelectModule,
-    AppInputModule
+    AppInputModule,
+    ReactiveComponentModule
   ]
 })
 export class PurchasesModule { }

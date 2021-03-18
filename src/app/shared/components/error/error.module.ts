@@ -5,6 +5,7 @@ import { ErrorRoutingModule } from './error-routing.module';
 import { ErrorComponent } from './error.component';
 import { PageUnderMaintenanceComponent } from './page-under-maintenance/page-under-maintenance.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     CommonModule,
     ErrorRoutingModule,
+    ReactiveComponentModule,
 
 
   ],

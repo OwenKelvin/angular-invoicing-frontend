@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RolesAndPermissionsRoutingModule } from './roles-and-permissions-routing.module';
 import { RolesAndPermissionsComponent } from './roles-and-permissions.component';
 import { AppLinksModule } from 'src/app/shared/components/links/links.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 
@@ -12,7 +13,8 @@ import { AppLinksModule } from 'src/app/shared/components/links/links.module';
   imports: [
     CommonModule,
     RolesAndPermissionsRoutingModule,
-    AppLinksModule
+    AppLinksModule,
+    ReactiveComponentModule
   ]
 })
 export class RolesAndPermissionsModule { }

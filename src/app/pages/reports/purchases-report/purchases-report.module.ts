@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppLoadingBubbleModule} from '../../../shared/components/loading-bubble/app-loading-bubble';
 import {LoadProductsModule} from '../../products/load-products/load-products.module';
 import {AppPrintModule} from '../../../shared/print/print.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {AppPrintModule} from '../../../shared/print/print.module';
     AppLoadingBubbleModule,
     LoadProductsModule,
     AppPrintModule,
+    ReactiveComponentModule,
   ]
 })
 export class PurchasesReportModule { }

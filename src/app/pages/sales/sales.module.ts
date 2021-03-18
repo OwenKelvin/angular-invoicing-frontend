@@ -19,6 +19,7 @@ import { LoadMyProfileModule } from '../my-profile/load-my-profile.module';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AppInputModule } from 'src/app/shared/components/input/app-input.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AppInputModule } from 'src/app/shared/components/input/app-input.module
     LoadMyProfileModule,
     AppLoadingBubbleModule,
     NgSelectModule,
-    AppInputModule
+    AppInputModule,
+    ReactiveComponentModule
   ]
 })
 export class SalesModule { }

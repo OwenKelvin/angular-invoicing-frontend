@@ -1,4 +1,4 @@
-<section class="bg-dark p-2" *ngIf='vm$ | async as vm; else loading'>
+<section class="bg-dark p-2" *ngIf='vm$ | ngrxPush as vm; else loading'>
   <h2>Edit Product Quantity</h2>
   <section *ngIf='vm.product as product'>
 
@@ -43,8 +43,8 @@
         <section class="card-footer d-flex justify-content-between">
           <button [disabled]='inventoryAdjustementForm.invalid || !inventoryAdjustementForm.dirty' class="btn btn-success">
             Save Quantity
-            <i *ngIf='inventoryAdjustementForm.valid && (submitInProgressAction$ | async) === false' class='icon-ok'></i>
-            <i *ngIf='(submitInProgressAction$ | async)' class='icon-spin3 animate-spin'></i>
+            <i *ngIf='inventoryAdjustementForm.valid && (submitInProgressAction$ | ngrxPush) === false' class='icon-ok'></i>
+            <i *ngIf='(submitInProgressAction$ | ngrxPush)' class='icon-spin3 animate-spin'></i>
           </button>
           <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
               class="icon-cancel"></span>Cancel</button>

@@ -11,6 +11,7 @@ import { AppInputModule } from 'src/app/shared/components/input/app-input.module
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
 import { AppCheckboxModule } from 'src/app/shared/components/checkbox/checkbox.module';
 import { AppValidateSubmitButtonModule } from 'src/app/shared/components/validate-submit-buttons/app-validate-submit-buttons.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AppValidateSubmitButtonModule } from 'src/app/shared/components/validat
     RouterModule,
     AppCheckboxModule,
     AppInputModule,
-    AppValidateSubmitButtonModule
+    AppValidateSubmitButtonModule,
+    ReactiveComponentModule
   ]
 })
 export class RolesPermissionsModule { }

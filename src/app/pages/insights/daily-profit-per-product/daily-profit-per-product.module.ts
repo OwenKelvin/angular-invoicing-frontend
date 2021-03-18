@@ -4,6 +4,7 @@ import { DailyProfitPerProductComponent } from './daily-profit-per-product.compo
 import {LoadProductsModule} from '../../products/load-products/load-products.module';
 import {AppLayoutModule} from '../../../shared/modules/app-layout.module';
 import {HorizontalStackedBarPlotModule} from '../horizontal-stacked-bar-plot/horizontal-stacked-bar-plot.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 
@@ -15,7 +16,8 @@ import {HorizontalStackedBarPlotModule} from '../horizontal-stacked-bar-plot/hor
   imports: [
     CommonModule,
     LoadProductsModule,
-    HorizontalStackedBarPlotModule
+    HorizontalStackedBarPlotModule,
+    ReactiveComponentModule
   ]
 })
 export class DailyProfitPerProductModule { }

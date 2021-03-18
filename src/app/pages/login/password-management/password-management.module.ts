@@ -8,6 +8,7 @@ import { UserPasswordChangeModule } from '../user-password-change/user-password-
 import { RouterModule } from '@angular/router';
 import { LoadMyProfileModule } from '../../my-profile/load-my-profile.module';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble
     RouterModule,
     LoadMyProfileModule,
     AppLoadingBubbleModule,
-    LoadMyProfileModule
+    LoadMyProfileModule,
+    ReactiveComponentModule
   ]
 })
 export class PasswordManagementModule { }

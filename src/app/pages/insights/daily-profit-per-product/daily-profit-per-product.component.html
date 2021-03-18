@@ -1,6 +1,6 @@
 <app-horizontal-stacked-bar-plot
   title="Top 15 Profitable Products (Past 1 Month)"
-  [results]="monthsSale$ | async"
+  [results]="monthsSale$ | ngrxPush"
   yAxisLabel="Product"
   xAxisLabel="Profit"
 ></app-horizontal-stacked-bar-plot>

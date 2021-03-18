@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditSoldProductComponent } from '../edit-sold-product/edit-sold-product.component';
 import { DeleteSoldProductComponent } from '../delete-sold-product/delete-sold-product.component';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble
     AppDatePickerModule,
     ModalModule.forRoot(),
     AppInputModule,
-    AppLoadingBubbleModule
+    AppLoadingBubbleModule,
+    ReactiveComponentModule
   ],
   declarations: [
     EditSoldProductsComponent,

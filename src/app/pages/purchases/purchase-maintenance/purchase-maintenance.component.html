@@ -9,14 +9,14 @@
           <section class="col-lg-6 mt-3">
             <label class="control-label" for="product">Product</label>
             <ng-select placeholder='Choose a Product' id='product' formControlName='productId'>
-              <ng-option role='option' *ngFor="let item of products$ | async" [value]="item.id">
+              <ng-option role='option' *ngFor="let item of products$ | ngrxPush" [value]="item.id">
                 {{ item.name | titlecase}}
               </ng-option>
             </ng-select>
           </section>
           <section class="col-lg-6 mt-3">
             <label class="control-label" for="seller">Seller</label>
-            <ng-select placeholder='Choose a Seller' id='seller' [items]="sellers$ | async" bindLabel="name" bindValue="id" formControlName='sellerId'>
+            <ng-select placeholder='Choose a Seller' id='seller' [items]="sellers$ | ngrxPush" bindLabel="name" bindValue="id" formControlName='sellerId'>
             </ng-select>
           </section>
           <section class="col-lg-6 mt-3" >
@@ -32,7 +32,7 @@
                   </button>
                   <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu"
                     aria-labelledby="button-split">
-                    <li *ngFor='let currency of currencies$ | async'
+                    <li *ngFor='let currency of currencies$ | ngrxPush'
                       (click)='purchaseCurrency.setValue(currency)' role="menuitem"><span
                         class="dropdown-item">{{ currency }}</span>
                     </li>
@@ -59,8 +59,8 @@
       <section class="card-footer d-flex justify-content-between">
         <button [disabled]='purchaseForm.invalid || !purchaseForm.dirty' class="btn btn-success">
           Save
-          <i *ngIf='purchaseForm.valid && (submitInProgressAction$ | async) === false' class='icon-ok'></i>
-          <i *ngIf='submitInProgressAction$ | async' class='icon-spin3 animate-spin'></i>
+          <i *ngIf='purchaseForm.valid && (submitInProgressAction$ | ngrxPush) === false' class='icon-ok'></i>
+          <i *ngIf='submitInProgressAction$ | ngrxPush' class='icon-spin3 animate-spin'></i>
         </button>
         <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
             class="icon-cancel"></span>Cancel</button>

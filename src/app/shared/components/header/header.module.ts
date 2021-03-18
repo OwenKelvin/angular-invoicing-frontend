@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeaderCollapseComponent } from './header-collapse/header-collapse.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     ReactiveFormsModule,
     RouterModule,
     CollapseModule.forRoot(),
+    ReactiveComponentModule,
 
   ]
 })

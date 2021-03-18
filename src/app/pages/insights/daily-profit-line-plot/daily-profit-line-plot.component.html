@@ -1,5 +1,5 @@
 <app-line-plot
   title="Daily Profits (Past 1 Month)"
   yAxisLabel="Profits"
-  [results]="sales$ | async">
+  [results]="sales$ | ngrxPush">
 </app-line-plot>

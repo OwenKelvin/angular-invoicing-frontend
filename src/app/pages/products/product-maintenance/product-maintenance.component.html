@@ -23,7 +23,7 @@
                   </button>
                   <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
                     <li
-                      *ngFor='let currency of currencies$ | async'
+                      *ngFor='let currency of currencies$ | ngrxPush'
                       (click)='selectedBuyingPriceCurrency.setValue(currency)'
                       role="menuitem"><span class="dropdown-item">{{ currency }}</span>
                     </li>
@@ -45,7 +45,7 @@
                     <span class="sr-only">Change Currency</span>
                   </button>
                   <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split-1">
-                    <li *ngFor='let currency of currencies$ | async' (click)='selectedSellingPriceCurrency.setValue(currency)'
+                    <li *ngFor='let currency of currencies$ | ngrxPush' (click)='selectedSellingPriceCurrency.setValue(currency)'
                       role="menuitem"><span class="dropdown-item">{{ currency }}</span>
                     </li>
                   </ul>
@@ -71,8 +71,8 @@
     <section class="card-footer d-flex justify-content-between">
       <button [disabled]='productForm.invalid || !productForm.dirty' class="btn btn-success">
         Save
-        <i *ngIf='productForm.valid && ((submitInProgressAction$ | async) === false)' class='icon-ok'></i>
-        <i *ngIf='(submitInProgressAction$ | async)' class='icon-spin3 animate-spin'></i>
+        <i *ngIf='productForm.valid && ((submitInProgressAction$ | ngrxPush) === false)' class='icon-ok'></i>
+        <i *ngIf='(submitInProgressAction$ | ngrxPush)' class='icon-spin3 animate-spin'></i>
       </button>
       <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
           class="icon-cancel"></span>Cancel</button>

@@ -19,6 +19,7 @@ import { ViewUserInfoComponent } from './view-user/view-user-info/view-user-info
 import { AppUserProfileModule } from 'src/app/shared/components/user-profile/user-profile.module';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
 import { LoadUsersModule } from './load-users.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoadUsersModule } from './load-users.module';
     LoadUsersModule,
     AppPrintModule,
     AppUserProfileModule,
-    AppLoadingBubbleModule
+    AppLoadingBubbleModule,
+    ReactiveComponentModule
 
   ]
 })

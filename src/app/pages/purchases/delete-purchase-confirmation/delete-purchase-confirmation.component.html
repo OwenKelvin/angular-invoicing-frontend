@@ -4,7 +4,7 @@
       <section class="card-header">
         <h2>Delete Purchase Confirmation</h2>
       </section>
-      <section *ngIf='purchase$ | async as purchase'>
+      <section *ngIf='purchase$ | ngrxPush as purchase'>
         <table class="table table-dark">
           <thead>
             <tr>

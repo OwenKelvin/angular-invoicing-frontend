@@ -14,6 +14,7 @@ import {LoadProductsModule} from './load-products/load-products.module';
 import {AppLayoutModule} from 'src/app/shared/modules/app-layout.module';
 import {AppPrintModule} from 'src/app/shared/print/print.module';
 import {AppInputModule} from 'src/app/shared/components/input/app-input.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {AppInputModule} from 'src/app/shared/components/input/app-input.module';
     LoadProductsModule,
     AppLayoutModule,
     AppPrintModule,
-    AppInputModule
+    AppInputModule,
+    ReactiveComponentModule
   ]
 })
 export class ProductsModule {

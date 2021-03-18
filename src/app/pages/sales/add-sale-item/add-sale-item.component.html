@@ -6,10 +6,10 @@
         <span>
           <button disabled type="button" class="btn btn-success">
             <span class="icon-cart-plus mr-3">
-              <span class="badge badge-secondary pt-0">{{ cartItemsCount$ | async }}</span>
+              <span class="badge badge-secondary pt-0">{{ cartItemsCount$ | ngrxPush }}</span>
             </span>
 
-            Total : {{ cartItemsPrice$ | async | currency: 'KES ' }}
+            Total : {{ cartItemsPrice$ | ngrxPush | currency: 'KES ' }}
           </button>
           <button (click)='closeModal()' class="btn btn-success ml-2" type="button"><span class="icon-ok"></span>
             View Cart
@@ -21,7 +21,7 @@
           <section class="col-lg-6 mt-3">
             <label class="control-label" for="product">Product</label>
             <ng-select placeholder='Choose a Product' id='product' formControlName='productId'>
-              <ng-option role='option' *ngFor="let item of products$ | async" [value]="item.id">
+              <ng-option role='option' *ngFor="let item of products$ | ngrxPush" [value]="item.id">
                 {{ item.name | titlecase}}
               </ng-option>
             </ng-select>
@@ -54,7 +54,7 @@
                   </button>
                   <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu"
                     aria-labelledby="button-split">
-                    <li *ngFor='let currency of currencies$ | async' (click)='saleCurrency.setValue(currency)'
+                    <li *ngFor='let currency of currencies$ | ngrxPush' (click)='saleCurrency.setValue(currency)'
                       role="menuitem">
                       <span class="dropdown-item">{{ currency }}</span>
                     </li>
@@ -73,7 +73,7 @@
             Add To Cart
             <span class="icon-cart-plus"></span>
           </button>
-          <span *ngIf='cartAdditionAction$ | async' class="text-success m-2">Item added to cart!</span></section>
+          <span *ngIf='cartAdditionAction$ | ngrxPush' class="text-success m-2">Item added to cart!</span></section>
         <button [disabled]='!newSaleItemForm.dirty' (click)='resetForm()' class="btn btn-secondary mr-3"
           type="button"><span class="icon-cancel"></span>Clear</button>
 

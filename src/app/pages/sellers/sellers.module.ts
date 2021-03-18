@@ -11,6 +11,7 @@ import {
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
     ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    AppLayoutModule
+    AppLayoutModule,
+    ReactiveComponentModule
   ]
 })
 export class SellersModule { }

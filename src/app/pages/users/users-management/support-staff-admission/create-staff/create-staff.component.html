@@ -1,5 +1,5 @@
 <h1>New Staff Creation
-  <ng-container *ngIf='staffType$ | async as staffType'>
+  <ng-container *ngIf='staffType$ | ngrxPush as staffType'>
     <span class="icon-right-dir"></span>
   <span>{{ staffType.name | titlecase }}</span>
   </ng-container>
@@ -76,7 +76,7 @@
   </div>
 
   <section class="p-2">
-    <app-validate-submit-buttons [isSubmitting]='submittingAction$ | async'
+    <app-validate-submit-buttons [isSubmitting]='submittingAction$ | ngrxPush'
       (validationButtonClicked)='triggerValidation = !triggerValidation' [formItem]='newStaffForm'>
       <!-- Create Staff -->
     </app-validate-submit-buttons>

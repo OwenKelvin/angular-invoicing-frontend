@@ -1,4 +1,4 @@
-<div class='d-flex' [class.toggled]='(isMenuOpen$ | async) === false' id='wrapper'>
+<div class='d-flex' [class.toggled]='(isMenuOpen$ | ngrxPush) === false' id='wrapper'>
   <app-sidebar></app-sidebar>
   <div id='page-content-wrapper'>
     <header>

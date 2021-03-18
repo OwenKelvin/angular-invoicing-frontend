@@ -6,6 +6,7 @@ import { ProductsEffects } from '../store/effects/products.effects';
 import { CurrencyEffects } from '../store/effects/currency.effects';
 import * as fromProducts from '../store/reducers/products.reducer';
 import * as fromCurrency from '../store/reducers/currency.reducer';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import * as fromCurrency from '../store/reducers/currency.reducer';
     StoreModule.forFeature(fromProducts.productsFeatureKey, fromProducts.reducer),
     EffectsModule.forFeature([ProductsEffects, CurrencyEffects]),
     StoreModule.forFeature(fromCurrency.currencyFeatureKey, fromCurrency.reducer),
+    ReactiveComponentModule,
   ]
 })
 export class LoadProductsModule { }

@@ -28,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngIf='products$ | async  as products'>
+      <ng-container *ngIf='products$ | ngrxPush  as products'>
         <tr *ngFor='let product of products' [class.bg-danger]='!product.sellingPrice || !product.buyingPrice'>
           <td>#{{ product.id }}</td>
           <td>{{ product.name | titlecase }}</td>

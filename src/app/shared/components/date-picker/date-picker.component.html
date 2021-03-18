@@ -1,6 +1,6 @@
 <label for="date">{{ label }}</label>
 
-<ng-container *ngIf='disabledDates$ | async as disabledDates'>
+<ng-container *ngIf='disabledDates$ | ngrxPush as disabledDates'>
   <input
   id="date"
   type="text"

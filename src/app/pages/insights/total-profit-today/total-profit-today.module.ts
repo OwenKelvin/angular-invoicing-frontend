@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TotalProfitTodayComponent } from './total-profit-today.component';
 import {DashboardWidgetModule} from '../dashboard-widget/dashboard-widget.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 
@@ -12,7 +13,8 @@ import {DashboardWidgetModule} from '../dashboard-widget/dashboard-widget.module
     ],
   imports: [
     CommonModule,
-    DashboardWidgetModule
+    DashboardWidgetModule,
+    ReactiveComponentModule
   ]
 })
 export class TotalProfitTodayModule { }

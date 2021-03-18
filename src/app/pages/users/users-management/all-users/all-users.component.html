@@ -3,7 +3,7 @@
   <app-print selector='.printable'></app-print>
 </section>
 <section class="printable">
-  <table class="table table-dark" *ngIf='users$ | async as users'>
+  <table class="table table-dark" *ngIf='users$ | ngrxPush as users'>
     <thead>
       <tr>
         <th>ID</th>

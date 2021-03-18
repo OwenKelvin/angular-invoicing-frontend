@@ -1,5 +1,5 @@
 
-<ng-container *ngIf='toast$ | async as toast async'>
+<ng-container *ngIf='toast$ | ngrxPush as toast async'>
   <div *ngIf='toast.showMessage' class='toast' style='z-index: 3000; position: absolute; top: 0; right: 0;'>
     <div class='toast-header slideInDown slideOutUp'>
       <strong class='mr-auto'>{{ toast.toastHeader }}</strong>

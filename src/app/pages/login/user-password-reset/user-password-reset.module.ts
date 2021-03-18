@@ -4,6 +4,7 @@ import { UserPasswordResetComponent } from './user-password-reset.component';
 import { ErrorModule } from 'src/app/shared/components/error/error.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppInputModule } from 'src/app/shared/components/input/app-input.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AppInputModule } from 'src/app/shared/components/input/app-input.module
     CommonModule,
     ErrorModule,
     ReactiveFormsModule,
-    AppInputModule
+    AppInputModule,
+    ReactiveComponentModule
   ]
 })
 export class UserPasswordResetModule { }

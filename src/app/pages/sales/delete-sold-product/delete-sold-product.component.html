@@ -4,7 +4,7 @@
       <section class="card-header">
         <h2>Delete Sold Product</h2>
       </section>
-      <section *ngIf='soldProduct$ | async as soldProduct; else loading'>
+      <section *ngIf='soldProduct$ | ngrxPush as soldProduct; else loading'>
         <table class="table table-dark">
           <thead>
             <tr>
@@ -35,8 +35,8 @@
       <section class="card-footer d-flex justify-content-between">
         <button [disabled]='productSoldForm.invalid || !productSoldForm.dirty' class="btn btn-danger">
           Delete Sale
-          <i *ngIf='((submitInProgressAction$ | async) === false)' class='icon-trash'></i>
-          <i *ngIf='(submitInProgressAction$ | async)' class='icon-spin3 animate-spin'></i>
+          <i *ngIf='((submitInProgressAction$ | ngrxPush) === false)' class='icon-trash'></i>
+          <i *ngIf='(submitInProgressAction$ | ngrxPush)' class='icon-spin3 animate-spin'></i>
         </button>
         <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
             class="icon-cancel"></span>Cancel</button>

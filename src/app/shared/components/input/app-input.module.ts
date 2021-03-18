@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InputComponent } from './input.component';
 import { PasswordMeterModule } from 'src/app/pages/login/password-meter/password-meter.module';
 import { ShowPasswordDirective } from './directives/show-password.directive';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ShowPasswordDirective } from './directives/show-password.directive';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    PasswordMeterModule
+    PasswordMeterModule,
+    ReactiveComponentModule
   ]
 })
 export class AppInputModule { }

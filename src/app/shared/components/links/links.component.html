@@ -1,5 +1,5 @@
 <ul class='d-flex flex-wrap justify-content-between justify-content-sm-around align-items-center mt-xl-3'>
-  <li *ngFor='let link of links$ | async'
+  <li *ngFor='let link of links$ | ngrxPush'
     class='dashboard-link-item col-xl-3 col-lg-4 col-md-5 col-sm-8 d-flex flex-wrap justify-content-center flex-column p-0'>
     <app-link [link]='link'></app-link>
   </li>

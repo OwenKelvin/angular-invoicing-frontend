@@ -21,8 +21,8 @@
     <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-md-2 mt-sm-2">
       <button [disabled]='salesReportForm.invalid' class="btn btn-primary">
         Generate Report
-        <i *ngIf='salesReportForm.valid && (isSubmittingAction$ | async) === false' class='icon-ok'></i>
-        <i *ngIf='isSubmittingAction$ | async' class='icon-spin3 animate-spin'></i>
+        <i *ngIf='salesReportForm.valid && (isSubmittingAction$ | ngrxPush) === false' class='icon-ok'></i>
+        <i *ngIf='isSubmittingAction$ | ngrxPush' class='icon-spin3 animate-spin'></i>
       </button>
     </section>
   </section>
@@ -44,7 +44,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let sale of filteredData$ | async'>
+      <tr *ngFor='let sale of filteredData$ | ngrxPush'>
         <td [attr.title]="sale.date + ' ' + sale.time" class="d-none d-xl-inline-block">{{ sale.date }}</td>
         <td class="d-none d-lg-inline-block">#{{ sale.productId }}</td>
         <td>{{ sale.productName | titlecase }}</td>

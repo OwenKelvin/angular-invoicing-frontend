@@ -11,6 +11,7 @@ import * as fromAdmissions from './store/reducers/index';
 import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
 import { LoadUsersModule } from './users-management/load-users.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     EffectsModule.forFeature([AdmissionsEffects]),
     AppLayoutModule,
     LoadUsersModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ReactiveComponentModule
   ]
 })
 export class UsersModule { }

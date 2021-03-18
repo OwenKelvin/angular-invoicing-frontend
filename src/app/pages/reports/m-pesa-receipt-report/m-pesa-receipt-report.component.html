@@ -12,8 +12,8 @@
     <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-md-2 mt-sm-2">
       <button [disabled]='itemForm.invalid' class="btn btn-primary">
         Generate Report
-        <i *ngIf='itemForm.valid && (submitInProgressAction$ | async) === false' class='icon-ok'></i>
-        <i *ngIf='submitInProgressAction$ | async' class='icon-spin3 animate-spin'></i>
+        <i *ngIf='itemForm.valid && (submitInProgressAction$ | ngrxPush) === false' class='icon-ok'></i>
+        <i *ngIf='submitInProgressAction$ | ngrxPush' class='icon-spin3 animate-spin'></i>
       </button>
     </section>
   </section>
@@ -24,7 +24,7 @@
 </section>
 <section class="printable">
   
-  <table class="table table-dark mt-3" *ngIf='(receipts$ | async) as receipts'>
+  <table class="table table-dark mt-3" *ngIf='(receipts$ | ngrxPush) as receipts'>
     <thead>
       <tr>
         <th>Date Time</th>

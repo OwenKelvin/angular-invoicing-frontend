@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardWidgetComponent } from './dashboard-widget.component';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 
@@ -10,7 +11,8 @@ import { DashboardWidgetComponent } from './dashboard-widget.component';
         DashboardWidgetComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        ReactiveComponentModule
     ]
 })
 export class DashboardWidgetModule { }

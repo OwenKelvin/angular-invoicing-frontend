@@ -5,6 +5,7 @@ import {InventoryMovementManagementComponent} from './inventory-movement-managem
 import {Minus2parenthesisModule} from '../../../shared/pipes/minus2parenthesis/minus2parenthesis.module';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {LoadSellersModule} from '../../sellers/load-sellers/load-sellers.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import {LoadSellersModule} from '../../sellers/load-sellers/load-sellers.module'
     InventoryMovementManagementRoutingModule,
     Minus2parenthesisModule,
     ModalModule.forRoot(),
-    LoadSellersModule
+    LoadSellersModule,
+    ReactiveComponentModule
   ],
   declarations: [InventoryMovementManagementComponent]
 })

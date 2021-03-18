@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from './date-picker.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule } from '@angular/forms';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     BsDatepickerModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ReactiveComponentModule
   ],
   exports: [DatePickerComponent]
 })

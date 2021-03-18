@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadProductsModule } from '../../products/load-products/load-products.module';
 import { AppPrintModule } from 'src/app/shared/print/print.module';
 import { AppCheckboxModule } from 'src/app/shared/components/checkbox/checkbox.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AppCheckboxModule } from 'src/app/shared/components/checkbox/checkbox.m
     ReactiveFormsModule,
     LoadProductsModule,
     AppPrintModule,
-    AppCheckboxModule
+    AppCheckboxModule,
+    ReactiveComponentModule
   ]
 })
 export class SalesReportModule { }

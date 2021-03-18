@@ -13,6 +13,7 @@ import {TotalSalesTodayModule} from './total-sales-today/total-sales-today.modul
 import {TotalPurchasesTodayModule} from './total-purchases-today/total-purchases-today.module';
 
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ReactiveComponentModule } from '@ngrx/component';
 @NgModule({
   declarations: [InsightsComponent],
   imports: [
@@ -27,7 +28,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     TotalProfitTodayModule,
     TotalSalesTodayModule,
     TotalPurchasesTodayModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ReactiveComponentModule
   ]
 })
 export class InsightsModule {

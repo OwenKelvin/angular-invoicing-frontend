@@ -25,6 +25,7 @@
     "@angular/router": "~11.2.5",
     "@angular/service-worker": "~11.2.5",
     "@ng-select/ng-select": "^6.1.0",
+    "@ngrx/component": "^11.0.1",
     "@ngrx/effects": "^11.0.1",
     "@ngrx/entity": "^11.0.1",
     "@ngrx/store": "^11.0.1",

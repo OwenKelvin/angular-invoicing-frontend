@@ -8,6 +8,7 @@ import { LoadMyProfileModule } from './load-my-profile.module';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
 import { AppUserProfileModule } from 'src/app/shared/components/user-profile/user-profile.module';
 import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
     MyProfileRoutingModule,
     AppUserProfileModule,
     AppLoadingBubbleModule,
-    AppLayoutModule
+    AppLayoutModule,
+    ReactiveComponentModule
   ]
 })
 export class MyProfileModule { }

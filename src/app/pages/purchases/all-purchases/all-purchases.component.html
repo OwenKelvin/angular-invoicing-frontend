@@ -30,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngIf='filteredPurchases$ | async  as purchases'>
+      <ng-container *ngIf='filteredPurchases$ | ngrxPush  as purchases'>
         <tr *ngIf='purchases.length < 1'>
           <td colspan="4" class="alert alert-info p-2 m-2">
             No purchases on this date found!

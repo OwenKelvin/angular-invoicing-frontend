@@ -26,8 +26,8 @@
       <section class="card-footer d-flex justify-content-between">
         <button [disabled]='sellerForm.invalid || !sellerForm.dirty' class="btn btn-success">
           Save
-          <i *ngIf='sellerForm.valid && ((submitInProgressAction$ | async) === false)' class='icon-ok'></i>
-          <i *ngIf='(submitInProgressAction$ | async)' class='icon-spin3 animate-spin'></i>
+          <i *ngIf='sellerForm.valid && ((submitInProgressAction$ | ngrxPush) === false)' class='icon-ok'></i>
+          <i *ngIf='(submitInProgressAction$ | ngrxPush)' class='icon-spin3 animate-spin'></i>
         </button>
         <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
             class="icon-cancel"></span>Cancel</button>

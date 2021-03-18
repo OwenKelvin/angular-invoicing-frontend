@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 import { LoadMyProfileModule } from '../my-profile/load-my-profile.module';
 import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
 import { AppLinksModule } from 'src/app/shared/components/links/links.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AppLinksModule } from 'src/app/shared/components/links/links.module';
     DashboardRoutingModule,
     AppLayoutModule,
     AppLinksModule,
-    LoadMyProfileModule
+    LoadMyProfileModule,
+    ReactiveComponentModule
   ]
 })
 export class DashboardModule { }

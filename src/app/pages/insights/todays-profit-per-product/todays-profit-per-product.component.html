@@ -1,6 +1,6 @@
 <app-horizontal-stacked-bar-plot
   title="Profit By Product (Today)"
-  [results]="todaysSale$ | async"
+  [results]="todaysSale$ | ngrxPush"
   yAxisLabel="Product"
   xAxisLabel="Profit"
 ></app-horizontal-stacked-bar-plot>

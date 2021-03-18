@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppInputModule } from './input/app-input.module';
 import { AppFullWidthCenteredContentModule } from './full-width-centered-content/app-full-width-centered-content.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AppFullWidthCenteredContentModule } from './full-width-centered-content
     FormsModule,
     ReactiveFormsModule,
     AppInputModule,
-    AppFullWidthCenteredContentModule
+    AppFullWidthCenteredContentModule,
+    ReactiveComponentModule
   ],
   exports: [
     PasswordResetComponent,

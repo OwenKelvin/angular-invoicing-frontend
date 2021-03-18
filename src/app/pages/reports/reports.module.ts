@@ -6,6 +6,7 @@ import { ReportsComponent } from './reports.component';
 import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
 import { AppLinksModule } from 'src/app/shared/components/links/links.module';
 import {LoadProductsModule} from '../products/load-products/load-products.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {LoadProductsModule} from '../products/load-products/load-products.module
     AppLinksModule,
     AppLayoutModule,
     LoadProductsModule,
+    ReactiveComponentModule,
   ]
 })
 export class ReportsModule { }

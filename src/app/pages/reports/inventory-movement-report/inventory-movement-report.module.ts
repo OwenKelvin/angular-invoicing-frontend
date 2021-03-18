@@ -9,6 +9,7 @@ import { LoadProductsModule } from '../../products/load-products/load-products.m
 import {Minus2parenthesisModule} from '../../../shared/pipes/minus2parenthesis/minus2parenthesis.module';
 import {AppInputModule} from '../../../shared/components/input/app-input.module';
 import {AppPrintModule} from '../../../shared/print/print.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {AppPrintModule} from '../../../shared/print/print.module';
     Minus2parenthesisModule,
     AppInputModule,
     AppPrintModule,
+    ReactiveComponentModule,
   ]
 })
 export class InventoryMovementReportModule { }

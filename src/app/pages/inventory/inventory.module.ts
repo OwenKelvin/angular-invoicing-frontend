@@ -11,6 +11,7 @@ import { AppLayoutModule } from 'src/app/shared/modules/app-layout.module';
 import { AppLoadingBubbleModule } from 'src/app/shared/components/loading-bubble/app-loading-bubble';
 import { AppCheckboxModule } from 'src/app/shared/components/checkbox/checkbox.module';
 import { AppPrintModule } from 'src/app/shared/print/print.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AppPrintModule } from 'src/app/shared/print/print.module';
     AppLayoutModule,
     AppLoadingBubbleModule,
     AppCheckboxModule,
-    AppPrintModule
+    AppPrintModule,
+    ReactiveComponentModule
   ]
 })
 export class InventoryModule { }

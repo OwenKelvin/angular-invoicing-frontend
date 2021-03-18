@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngIf='salesFiltered$ | async  as sales'>
+        <ng-container *ngIf='salesFiltered$ | ngrxPush  as sales'>
           <tr *ngIf='sales.length < 1'>
             <td colspan="6" class="alert alert-info p-2 m-2">
               No sale on this date found!

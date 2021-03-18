@@ -24,6 +24,7 @@ import {NetworkLoadingModule, NetworkLoadingInterceptor} from './shared/network-
 import {ErrorModule} from './shared/components/error/error.module';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {AppToastModule} from './shared/components/toast/toast.module';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {AppToastModule} from './shared/components/toast/toast.module';
     ComponentsModule,
     NetworkLoadingModule,
     ErrorModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    ReactiveComponentModule
   ],
   providers: [
     {provide: 'API_URL', useValue: environment.API_URL},
