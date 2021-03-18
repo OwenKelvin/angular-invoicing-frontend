@@ -5,11 +5,11 @@ import {map, mergeMap} from 'rxjs/operators';
 import {ILinePlot} from '../line-plot/line-plot.component';
 
 @Component({
-  selector: 'app-daily-profit-line-plot',
-  templateUrl: './daily-profit-line-plot.component.html',
-  styleUrls: ['./daily-profit-line-plot.component.less']
+  selector: 'app-daily-profit-margins-line-plot',
+  templateUrl: './daily-profit-margins-line-plot.component.html',
+  styleUrls: ['./daily-profit-margins-line-plot.component.less']
 })
-export class DailyProfitLinePlotComponent implements OnInit {
+export class DailyProfitMarginsLinePlotComponent implements OnInit {
   @Input() from = '';
   @Input() to = '';
   dateRanges$ = new BehaviorSubject<{ startDate: string, endDate: string }>({startDate: '', endDate: ''});
@@ -18,13 +18,15 @@ export class DailyProfitLinePlotComponent implements OnInit {
     mergeMap(({startDate, endDate}) => this.salesReportService.getReport({startDate, endDate})
     ),
     map((sales: any[]) => sales.reduce((prev, next) => {
-        const daySale = (next.quantity * (next.sellingPrice - next.fifoPrice)) + (prev[next.date] ? prev[next.date] : 0);
-        return {...prev, [next.date]: daySale};
+        const currentSalePurchases = prev[next.date] ? prev[next.date] : {purchase: 0, sale: 0};
+        const sale = (next.quantity * (next.sellingPrice)) + currentSalePurchases.sale;
+        const purchase = (next.quantity * (next.fifoPrice)) + currentSalePurchases.purchase;
+        return {...prev, [next.date]: {purchase, sale}};
       }, {})
     ),
     map(dailySales => ([{
       name: 'Daily Profits', series: Object.entries(dailySales)
-        .map(([name, value]: [string, number]) => ({name, value}))
+        .map(([name, value]: [string, any]) => ({name, value: 100 * (value.sale - value.purchase) / value.purchase}))
     }]))
   );
 

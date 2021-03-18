@@ -1,0 +1,20 @@
+<div class="dark">
+  <h2 class="text-primary">{{ title }}</h2>
+  <div #containerRef style="width: 100%">
+    <ngx-charts-line-chart
+      [view]="[containerRef.offsetWidth, containerRef.offsetWidth * 2 / 3]"
+      [legend]="false"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      xAxisLabel="Date"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="true"
+      [results]="results"
+      [autoScale]="true"
+      [xAxisTickFormatting]="removeYear"
+    >
+    </ngx-charts-line-chart>
+  </div>
+</div>

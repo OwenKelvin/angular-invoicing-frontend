@@ -1,19 +1,5 @@
-<div class="card bg-light text-dark">
-  <h2 class="text-primary">Daily Profit</h2>
-  <div #containerRef style="width: 100%">
-    <ngx-charts-line-chart
-      [view]="[containerRef.offsetWidth, containerRef.offsetWidth * 2 / 3]"
-      [legend]="false"
-      [showXAxisLabel]="false"
-      [showYAxisLabel]="true"
-      [xAxis]="false"
-      [yAxis]="true"
-      xAxisLabel="Date"
-      yAxisLabel="Profit"
-      [timeline]="true"
-      [results]="sales$ | async"
-      [autoScale]="true"
-    >
-    </ngx-charts-line-chart>
-  </div>
-</div>
+<app-line-plot
+  title="Daily Profits (Past 1 Month)"
+  yAxisLabel="Profits"
+  [results]="sales$ | async">
+</app-line-plot>

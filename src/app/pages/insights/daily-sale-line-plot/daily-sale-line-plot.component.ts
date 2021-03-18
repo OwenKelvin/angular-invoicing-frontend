@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject, combineLatest, Subject} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {SalesReportService} from '../../reports/services/sales-report.service';
 import {map, mergeMap, tap} from 'rxjs/operators';
+import {ILinePlot} from '../line-plot/line-plot.component';
 
 @Component({
   selector: 'app-daily-sale-line-plot',
@@ -12,7 +13,7 @@ export class DailySaleLinePlotComponent implements OnInit {
   @Input() from = '';
   @Input() to = '';
   dateRanges$ = new BehaviorSubject<{ startDate: string, endDate: string }>({startDate: '', endDate: ''});
-  sales$ = combineLatest([this.dateRanges$.asObservable()]).pipe(
+  sales$: Observable<ILinePlot[]> = combineLatest([this.dateRanges$.asObservable()]).pipe(
     map(([dateRanges]) => dateRanges),
     mergeMap(({startDate, endDate}) => this.salesReportService.getReport({startDate, endDate})
     ),
@@ -21,7 +22,11 @@ export class DailySaleLinePlotComponent implements OnInit {
         return {...prev, [next.date]: daySale};
       }, {})
     ),
-    map(dailySales => ([{name: 'Daily Profits', series: Object.entries(dailySales).map(([name, value]) => ({name, value}))}]))
+    map(dailySales =>
+      ([{
+        name: 'Daily Profits', series: Object.entries(dailySales)
+          .map(([name, value]: [string, number]) => ({name, value}))
+      }]))
   );
 
   constructor(private salesReportService: SalesReportService) {
@@ -30,6 +35,7 @@ export class DailySaleLinePlotComponent implements OnInit {
   ngOnInit() {
     this.dateRanges$.next({startDate: this.from, endDate: this.to});
   }
+
   axisFormat(val: any) {
     console.log(val);
     return val;

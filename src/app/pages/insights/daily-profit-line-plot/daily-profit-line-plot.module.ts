@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DailyProfitLinePlotComponent} from './daily-profit-line-plot.component';
-import {LineChartModule} from '@swimlane/ngx-charts';
+import {LinePlotModule} from '../line-plot/line-plot.module';
 
 
 @NgModule({
   declarations: [DailyProfitLinePlotComponent],
   imports: [
     CommonModule,
-    LineChartModule
+    LinePlotModule
   ],
   exports: [DailyProfitLinePlotComponent],
 })
