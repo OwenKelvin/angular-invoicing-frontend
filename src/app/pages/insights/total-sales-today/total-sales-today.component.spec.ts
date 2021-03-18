@@ -1,17 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import { TotalSalesTodayComponent } from './total-sales-today.component';
+import {DashboardWidgetModule} from '../dashboard-widget/dashboard-widget.module';
 
 describe('TotalProfitTodayComponent', () => {
   let component: TotalSalesTodayComponent;
   let fixture: ComponentFixture<TotalSalesTodayComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync( () => {
+    TestBed.configureTestingModule({
+      imports: [DashboardWidgetModule],
       declarations: [ TotalSalesTodayComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TotalSalesTodayComponent);

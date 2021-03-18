@@ -32,6 +32,7 @@ export class GuestGuard implements CanActivate {
         toastBody: 'Successfully authenticated!'
       }
     }));
-    return from(this.router.navigate(['/dashboard']));
+    this.router.navigate(['/dashboard']).then();
+    return false;
   }
 }

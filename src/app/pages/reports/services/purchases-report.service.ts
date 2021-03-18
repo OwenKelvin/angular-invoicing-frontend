@@ -10,7 +10,7 @@ export class PurchasesReportService {
   purchases$: (q: { [key: string]: string }) => Observable<any[]> = (q) => {
     console.log({q});
     return this.http.get<any[]>(`api/reports/purchases`, {params: q});
-  };
+  }
 
   constructor(
     private http: HttpClient,
@@ -27,7 +27,7 @@ export class PurchasesReportService {
     unitPrice: data.unit_price,
     purchaseDate: data.purchase_date,
     total: data.quantity * data.unit_price
-  }));
+  }))
 
   getReport({startDate, endDate}: { startDate: string, endDate: string }): Observable<any> {
 

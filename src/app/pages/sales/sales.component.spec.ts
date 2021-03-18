@@ -4,6 +4,7 @@ import { SalesComponent } from './sales.component';
 import {StoreModule} from '@ngrx/store';
 import {metaReducers, REDUCER_TOKEN, reducerProvider, reducers} from '../../store/reducers';
 import {reducer} from '../my-profile/store/reducers/my-profile.reducer';
+import {AppLinksModule} from '../../shared/components/links/links.module';
 
 describe('SalesComponent', () => {
   let component: SalesComponent;
@@ -20,7 +21,8 @@ describe('SalesComponent', () => {
           }
         }),
         StoreModule.forFeature('app', reducers),
-        StoreModule.forFeature('myProfile', reducer)
+        StoreModule.forFeature('myProfile', reducer),
+        AppLinksModule
       ],
       declarations: [ SalesComponent ],
       providers: [reducerProvider]

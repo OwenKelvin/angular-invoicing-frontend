@@ -1,6 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TodaysProfitPerProductComponent } from './todays-profit-per-product.component';
+import {TodaysProfitPerProductComponent} from './todays-profit-per-product.component';
+import {LoadProductsModule} from '../../products/load-products/load-products.module';
+import {HorizontalStackedBarPlotModule} from '../horizontal-stacked-bar-plot/horizontal-stacked-bar-plot.module';
+import {EffectsModule} from '@ngrx/effects';
+import {ProductsEffects} from '../../products/store/effects/products.effects';
+import {CurrencyEffects} from '../../products/store/effects/currency.effects';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('TodaysProfitPerProductComponent', () => {
   let component: TodaysProfitPerProductComponent;
@@ -8,9 +14,16 @@ describe('TodaysProfitPerProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodaysProfitPerProductComponent ]
+      imports: [
+        LoadProductsModule,
+        EffectsModule.forRoot(),
+        EffectsModule.forFeature([ProductsEffects, CurrencyEffects]),
+        HorizontalStackedBarPlotModule,
+        BrowserAnimationsModule
+      ],
+      declarations: [TodaysProfitPerProductComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

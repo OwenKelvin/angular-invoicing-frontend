@@ -6,6 +6,7 @@ import { REDUCER_TOKEN, metaReducers, AppState, reducerProvider } from 'src/app/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {AppLinksModule} from '../../shared/components/links/links.module';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -25,7 +26,8 @@ describe('DashboardComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         NgSelectModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        AppLinksModule
       ],
       declarations: [DashboardComponent],
       providers: [reducerProvider]
