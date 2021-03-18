@@ -15,7 +15,7 @@ import { map, filter, tap } from 'rxjs/operators';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  appVersion = 'V 1.2.1';
+  appVersion = 'V 1.3.0';
   isMenuClosed$: Observable<boolean>;
   listItems$: Observable<ILink[]>;
   isMenuClosed: boolean;
