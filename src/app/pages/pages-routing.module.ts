@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from '../shared/components/layout/layout.component';
-import { GuestGuard } from '../shared/guards/guest.guard';
-import { AuthGuard } from '../shared/guards/auth.guard';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {LayoutComponent} from '../shared/components/layout/layout.component';
+import {GuestGuard} from '../shared/guards/guest.guard';
+import {AuthGuard} from '../shared/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -101,4 +101,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PagesRoutingModule { }
+export class PagesRoutingModule {
+}
