@@ -1,7 +1,7 @@
 <div class="dark">
   <h2 class="text-primary">{{ title }}</h2>
   <div #containerRef style="width: 100%">
-    <ngx-charts-bar-horizontal
+    <ngx-charts-bar-vertical
       [view]="[containerRef.offsetWidth, containerRef.offsetWidth * 2 / 3]"
       [legend]="false"
       [gradient]="true"
@@ -15,6 +15,6 @@
       [results]="results"
       [xAxisTickFormatting]="shortenName"
     >
-    </ngx-charts-bar-horizontal>
+    </ngx-charts-bar-vertical>
   </div>
 </div>

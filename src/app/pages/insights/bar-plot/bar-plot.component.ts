@@ -6,11 +6,11 @@ export interface IBarPlot {
 }
 
 @Component({
-  selector: 'app-horizontal-stacked-bar-plot',
-  templateUrl: './horizontal-stacked-bar-plot.component.html',
-  styleUrls: ['./horizontal-stacked-bar-plot.component.less']
+  selector: 'app-bar-plot',
+  templateUrl: './bar-plot.component.html',
+  styleUrls: ['./bar-plot.component.less']
 })
-export class HorizontalStackedBarPlotComponent implements OnInit {
+export class BarPlotComponent implements OnInit {
   @Input() title = '';
   @Input() xAxisLabel = '';
   @Input() yAxisLabel = '';

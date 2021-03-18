@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { UserProfileComponent } from './user-profile.component';
-import { RouterModule } from '@angular/router';
-import { NameItemComponent } from './name-item/name-item.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { UserSelectItemComponent } from './user-select-item/user-select-item.component';
-import { PasswordChangeFormModule } from 'src/app/pages/login/password-change-form/password-change-form.module';
-import { AppInputModule } from '../input/app-input.module';
-import { ReactiveComponentModule } from '@ngrx/component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {UserProfileComponent} from './user-profile.component';
+import {RouterModule} from '@angular/router';
+import {NameItemComponent} from './name-item/name-item.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import {UserSelectItemComponent} from './user-select-item/user-select-item.component';
+import {PasswordChangeFormModule} from 'src/app/pages/login/password-change-form/password-change-form.module';
+import {AppInputModule} from '../input/app-input.module';
+import {ReactiveComponentModule} from '@ngrx/component';
 
 
 @NgModule({
@@ -34,4 +33,5 @@ import { ReactiveComponentModule } from '@ngrx/component';
     NameItemComponent
   ]
 })
-export class AppUserProfileModule { }
+export class AppUserProfileModule {
+}

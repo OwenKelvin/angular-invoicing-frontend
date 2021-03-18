@@ -1,25 +1,25 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { HorizontalStackedBarPlotComponent } from './horizontal-stacked-bar-plot.component';
+import { BarPlotComponent } from './bar-plot.component';
 import {BarChartModule} from '@swimlane/ngx-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('HorizontalStackedBarPlotComponent', () => {
-  let component: HorizontalStackedBarPlotComponent;
-  let fixture: ComponentFixture<HorizontalStackedBarPlotComponent>;
+  let component: BarPlotComponent;
+  let fixture: ComponentFixture<BarPlotComponent>;
 
   beforeEach(waitForAsync( () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
         BarChartModule],
-      declarations: [ HorizontalStackedBarPlotComponent ]
+      declarations: [ BarPlotComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HorizontalStackedBarPlotComponent);
+    fixture = TestBed.createComponent(BarPlotComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

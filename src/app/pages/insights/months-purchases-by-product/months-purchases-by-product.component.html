@@ -1,1 +1,6 @@
-<p>months-purchases-by-product works!</p>
+<app-bar-plot
+  title="Top 15 Profitable Products (Past 1 Month)"
+  [results]="purchases$ | ngrxPush"
+  yAxisLabel="Product"
+  xAxisLabel="Profit"
+></app-bar-plot>

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HorizontalStackedBarPlotComponent } from './horizontal-stacked-bar-plot.component';
+import { BarPlotComponent } from './bar-plot.component';
 import {BarChartModule} from '@swimlane/ngx-charts';
 import { ReactiveComponentModule } from '@ngrx/component';
 
 
 
 @NgModule({
-    declarations: [HorizontalStackedBarPlotComponent],
+    declarations: [BarPlotComponent],
     exports: [
-        HorizontalStackedBarPlotComponent
+        BarPlotComponent
     ],
   imports: [
     CommonModule,
@@ -17,4 +17,4 @@ import { ReactiveComponentModule } from '@ngrx/component';
     ReactiveComponentModule
   ]
 })
-export class HorizontalStackedBarPlotModule { }
+export class BarPlotModule { }
