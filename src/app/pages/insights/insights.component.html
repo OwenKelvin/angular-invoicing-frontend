@@ -1,6 +1,15 @@
 <h1>Insights</h1>
 <div class="card p-2">
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap justify-content-around">
+    <div class="col-lg-4">
+      <app-total-profit-today></app-total-profit-today>
+    </div>
+    <div class="col-lg-4">
+      <app-total-profit-today></app-total-profit-today>
+    </div>
+    <div class="col-lg-4">
+      <app-total-profit-today></app-total-profit-today>
+    </div>
     <div class="col-lg-6">
       <app-daily-profit-margins-line-plot [from]="startDate" [to]="endDate"></app-daily-profit-margins-line-plot>
     </div>

@@ -8,6 +8,7 @@ import {TodaysProfitPerProductModule} from './todays-profit-per-product/todays-p
 import {AppLayoutModule} from '../../shared/modules/app-layout.module';
 import {DailyProfitMarginsLinePlotModule} from './daily-profit-margins-line-plot/daily-profit-margins-line-plot.module';
 import {DailyProfitPerProductModule} from './daily-profit-per-product/daily-profit-per-product.module';
+import {TotalProfitTodayModule} from './total-profit-today/total-profit-today.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {DailyProfitPerProductModule} from './daily-profit-per-product/daily-prof
     DailySaleLinePlotModule,
     TodaysProfitPerProductModule,
     DailyProfitMarginsLinePlotModule,
-    DailyProfitPerProductModule
+    DailyProfitPerProductModule,
+    TotalProfitTodayModule
   ]
 })
 export class InsightsModule {
