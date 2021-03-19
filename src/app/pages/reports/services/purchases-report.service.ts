@@ -8,7 +8,6 @@ import {map} from 'rxjs/operators';
 })
 export class PurchasesReportService {
   purchases$: (q: { [key: string]: string }) => Observable<any[]> = (q) => {
-    console.log({q});
     return this.http.get<any[]>(`api/reports/purchases`, {params: q});
   }
 

@@ -1,19 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IPurchase } from '../shared/interfaces/purchase.interface';
-import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
-import { Store, select } from '@ngrx/store';
-import { PurchaseService } from '../shared/services/purchase.service';
-import { CurrencyService } from 'src/app/shared/services/currency.service';
-import { loadModals, closeModals } from 'src/app/store/actions/modal.actions';
-import { selectPurchaseById } from '../store/selectors/purchase.selectors';
-import {tap, takeUntil, filter} from 'rxjs/operators';
-import { loadPurchasesSuccess, updatePurchase } from '../store/actions/purchase.actions';
-import { ProductsService } from 'src/app/shared/services/products.service';
-import { SellerService } from '../../sellers/shared/services/seller.service';
-import { ISeller } from '../../sellers/shared/interfaces/seller.interface';
-import { subscribedContainerMixin } from 'src/app/mixins/subscribed-container.mixin';
-import { formMixin } from 'src/app/mixins/form.mixin';
+import {Component, OnInit, Input} from '@angular/core';
+import {Observable} from 'rxjs';
+import {IPurchase} from '../shared/interfaces/purchase.interface';
+import {FormGroup, Validators, FormBuilder, FormControl} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {PurchaseService} from '../shared/services/purchase.service';
+import {CurrencyService} from 'src/app/shared/services/currency.service';
+import {loadModals, closeModals} from 'src/app/store/actions/modal.actions';
+import {tap, takeUntil} from 'rxjs/operators';
+import {updatePurchase} from '../store/actions/purchase.actions';
+import {ProductsService} from 'src/app/shared/services/products.service';
+import {SellerService} from '../../sellers/shared/services/seller.service';
+import {ISeller} from '../../sellers/shared/interfaces/seller.interface';
+import {subscribedContainerMixin} from 'src/app/mixins/subscribed-container.mixin';
+import {formMixin} from 'src/app/mixins/form.mixin';
 
 @Component({
   selector: 'app-purchase-maintenance',
@@ -47,37 +46,27 @@ export class PurchaseMaintenanceComponent extends formMixin(subscribedContainerM
     private productsService: ProductsService,
     private currencyService: CurrencyService,
     private sellerService: SellerService
-  ) { super(); }
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.purchase$ = this.purchaseService.getPurchaseWithId(this.id).pipe(
-      tap(val => this.purchaseForm.patchValue(val))
-    );
+    if (this.id !== 0) {
+      this.purchase$ = this.purchaseService.getPurchaseWithId(this.id).pipe(
+        tap(val => this.purchaseForm.patchValue(val))
+      );
+      this.purchase$.subscribe();
+    }
     this.store.dispatch(loadModals());
-    // this.purchase$ = this.store.pipe(
-    //   select(selectPurchaseById({ id: this.id })),
-    //   filter(purchase => !!purchase),
-    //   tap(purchase => {
-    //     const formData: IPurchase = {
-    //       id: purchase.id,
-    //       productId: purchase.productId,
-    //       quantityPurchased: purchase.quantityPurchased,
-    //       unitPrice: purchase.unitPrice,
-    //       sellerId: purchase.sellerId,
-    //       purchaseCurrency: purchase.purchaseCurrency,
-    //       purchaseDate: purchase.purchaseDate
-    //     };
-    //     this.purchaseForm.setValue(formData);
-    //     this.purchaseForm.updateValueAndValidity();
-    //   }),
-    //   takeUntil(this.destroyed$)
-    // );
-    this.purchase$.subscribe();
   }
+
   closeModal() {
     this.itemForm = this.purchaseForm;
-    if (this.closeFormDialog()) { this.store.dispatch(closeModals()); }
+    if (this.closeFormDialog()) {
+      this.store.dispatch(closeModals());
+    }
   }
+
   purchaseFormSubmit() {
     if (this.purchaseForm.valid) {
       this.submitInProgressSubject$.next(true);
@@ -88,7 +77,7 @@ export class PurchaseMaintenanceComponent extends formMixin(subscribedContainerM
           next: (data) => {
             this.submitInProgressSubject$.next(false);
             this.store.dispatch(closeModals());
-            this.store.dispatch(updatePurchase({ data }));
+            this.store.dispatch(updatePurchase({data}));
           },
           error: () => this.submitInProgressSubject$.next(false)
         });

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../../../shared/services/products.service';
 import {formMixin} from '../../../mixins/form.mixin';
-import {FormArray, FormBuilder, FormControl} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {IProduct} from '../../../shared/interfaces/products.interface';
 import {tap} from 'rxjs/operators';
 import {SaleService} from '../services/sale.service';
@@ -22,10 +22,10 @@ export class SimpleSaleComponent extends formMixin() {
 
   generateCartItem() {
     return this.fb.group({
-      productId: [],
+      productId: [null, [Validators.required]],
       saleCurrency: ['KES'],
-      saleQuantity: [],
-      salePrice: [null]
+      saleQuantity: [null, [Validators.required]],
+      salePrice: [null, [Validators.required]],
     });
   }
 
@@ -34,6 +34,10 @@ export class SimpleSaleComponent extends formMixin() {
   }
 
   setPrice(index: number) {
+    const currentQuantity = (this.cartItems.controls[index].get('saleQuantity') as FormControl).value;
+    if (currentQuantity < 1) {
+      (this.cartItems.controls[index].get('saleQuantity') as FormControl).setValue(1);
+    }
     const productId = (this.cartItems.controls[index].get('productId') as FormControl).value;
     const sellingPrice = this.products.find(({id}) => id === productId)?.sellingPrice;
     (this.cartItems.controls[index].get('salePrice') as FormControl).setValue(sellingPrice);
