@@ -112,6 +112,7 @@ export class SaleSummaryComponent
   }
 
   submitCart() {
+    console.log({hard: this.cartItems})
     this.submitInProgressSubject$.next(true);
     this.saleService.saveSale({
       discount: {type: this.discountType, amount: this.discountAmount},

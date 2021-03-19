@@ -1,4 +1,4 @@
-<form (submit)='submitFormItem()' action="" [formGroup]='itemForm'>
+<form (ngSubmit)='submitFormItem()' action="" [formGroup]='itemForm'>
   <section class='d-flex flex-wrap'>
     <div *ngIf='editable' class="edit-field p-3 pt-0">
       <label [attr.for]='"editItem + label"'>{{ label | titlecase }}</label>

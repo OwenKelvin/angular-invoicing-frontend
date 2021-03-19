@@ -4,7 +4,7 @@
       <h1>Password Reset</h1>
     </section>
     <section class='card-body'>
-      <form (submit)='submitPasswordResetForm()' [formGroup]='passwordResetForm' class='form-horizontal'>
+      <form (ngSubmit)='submitPasswordResetForm()' [formGroup]='passwordResetForm' class='form-horizontal'>
         <app-input label='Email' placeholder='email@example.com' id='email' formControlName='email'
           prependIcon='icon-mail' [autofocus]="true"></app-input>
         <section class='d-flex justify-content-between'>

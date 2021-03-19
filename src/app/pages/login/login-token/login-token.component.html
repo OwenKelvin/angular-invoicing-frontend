@@ -7,7 +7,7 @@
       <h1>Password Token</h1>
     </section>
     <section class='card-body'>
-      <form (submit)='submitTokenLoginForm()' [formGroup]='tokenLoginForm' class='form-horizontal'>
+      <form (ngSubmit)='submitTokenLoginForm()' [formGroup]='tokenLoginForm' class='form-horizontal'>
         <textarea class="form-control mb-2" placeholder='Enter Token' id='token' formControlName='token'
           prependIcon='icon-mail' [autofocus]=[true]></textarea>
         <section class='d-flex justify-content-between'>

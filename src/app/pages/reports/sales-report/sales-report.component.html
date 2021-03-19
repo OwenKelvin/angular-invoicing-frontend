@@ -1,5 +1,5 @@
 <h1>Sales Report</h1>
-<form (submit)='getSalesReport()' [formGroup]='salesReportForm'>
+<form (ngSubmit)='getSalesReport()' [formGroup]='salesReportForm'>
   <section class="d-flex align-items-end flex-wrap">
     <section class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
       <label class="control-label" for="startDate">From</label>
@@ -62,7 +62,7 @@
       </tr>
     </tfoot>
   </table>
-  
+
   <section class="card mt-3">
     <section class="d-flex justify-content-around flex-wrap">
       <section class="col-lg-5 d-flex justify-content-between p-3">

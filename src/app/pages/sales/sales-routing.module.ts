@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { SaleSummaryComponent } from './sale-summary/sale-summary.component';
-import { SalesComponent } from './sales.component';
-import { CanDeactivateGuard } from 'src/app/shared/guards/can-deactivate.guard';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {SaleSummaryComponent} from './sale-summary/sale-summary.component';
+import {SalesComponent} from './sales.component';
+import {CanDeactivateGuard} from 'src/app/shared/guards/can-deactivate.guard';
+import {SimpleSaleComponent} from './simple-sale/simple-sale.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,14 @@ const routes: Routes = [
     canDeactivate: [CanDeactivateGuard]
   },
   {
+    path: 'simple-sale',
+    data: {
+      breadcrumb: 'Make Sale'
+    },
+    component: SimpleSaleComponent,
+    canDeactivate: [CanDeactivateGuard]
+  },
+  {
     path: 'edit-sale',
     data: {
       breadcrumb: 'Edit Sale'
@@ -34,4 +43,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SalesRoutingModule { }
+export class SalesRoutingModule {
+}

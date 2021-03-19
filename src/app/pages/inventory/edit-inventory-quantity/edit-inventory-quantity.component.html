@@ -21,7 +21,7 @@
       </tbody>
     </table>
 
-    <form (submit)='submitInventoryAdjustement()' [formGroup]='inventoryAdjustementForm'>
+    <form (ngSubmit)='submitInventoryAdjustement()' [formGroup]='inventoryAdjustementForm'>
       <section class="card p-2">
         <section class="d-flex flex-wrap align-items-end justify-content-between">
           <section class="col-lg-5">
@@ -37,9 +37,9 @@
             <label class="control-label" for="reasonForAdjustment">Reason For Adjustment</label>
             <textarea formControlName='reasonForAdjustment' class="form-control" id='reasonForAdjustment'></textarea>
           </section>
-        
+
         </section>
-        
+
         <section class="card-footer d-flex justify-content-between">
           <button [disabled]='inventoryAdjustementForm.invalid || !inventoryAdjustementForm.dirty' class="btn btn-success">
             Save Quantity
@@ -48,7 +48,7 @@
           </button>
           <button (click)='closeModal()' class="btn btn-secondary" type="button"><span
               class="icon-cancel"></span>Cancel</button>
-        
+
         </section>
       </section>
     </form>

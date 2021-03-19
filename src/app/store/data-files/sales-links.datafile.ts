@@ -7,6 +7,12 @@ export const SalesLinks: ILink[] = [
     permissions: ['make sale']
   },
   {
+    name: 'simple Sale',
+    icon: 'icon-cart-plus',
+    link: 'sales/simple-sale',
+    permissions: ['make sale']
+  },
+  {
     name: 'Edit Sale',
     icon: 'icon-edit',
     link: 'sales/edit-sale',

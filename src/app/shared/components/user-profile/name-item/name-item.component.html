@@ -1,5 +1,5 @@
 <section>
-  <form (submit)='submitFormItem()' [formGroup]='itemForm' class='d-flex flex-wrap align-items-center'>
+  <form (ngSubmit)='submitFormItem()' [formGroup]='itemForm' class='d-flex flex-wrap align-items-center'>
     <div *ngIf='editable' class="edit-field p-3 pt-0">
 
       <app-input [type]='type' [label]='label' type="text"

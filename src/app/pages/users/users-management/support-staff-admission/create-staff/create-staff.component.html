@@ -4,7 +4,7 @@
   <span>{{ staffType.name | titlecase }}</span>
   </ng-container>
 </h1>
-<form [formGroup]='newStaffForm' (submit)='submitNewStaffForm()'>
+<form [formGroup]='newStaffForm' (ngSubmit)='submitNewStaffForm()'>
   <div class="card p-2 mt-1 pb-4">
     <fieldset>
       <legend>

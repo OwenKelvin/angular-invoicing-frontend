@@ -2,7 +2,7 @@
 
   <h1>Roles and Permission Edit <span class="icon-right-dir"></span> {{ role.name | titlecase }} </h1>
 
-  <form [formGroup]='permissionsForm' (submit)='submitPermission()'>
+  <form [formGroup]='permissionsForm' (ngSubmit)='submitPermission()'>
 
     <fieldset formArrayName='permissions'>
       <legend >Permissions</legend>
