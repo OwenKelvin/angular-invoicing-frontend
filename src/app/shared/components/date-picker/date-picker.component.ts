@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 
 @Component({
@@ -8,7 +8,7 @@ import {map, tap} from 'rxjs/operators';
   styleUrls: ['./date-picker.component.less']
 })
 export class DatePickerComponent implements OnInit {
-  @Input() enabledDates$: Observable<string[]>;
+  @Input() enabledDates$: Observable<string[]> = of([]);
   @Input() label: string;
   disabledDates$: Observable<Date[]>;
   minDate: Date;

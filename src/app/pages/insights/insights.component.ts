@@ -6,10 +6,12 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./insights.component.less']
 })
 export class InsightsComponent implements OnInit {
-  private currentDate = new Date();
-  endDate = this.currentDate.toISOString().substr(0, 10);
-  startDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() - 1))
+  currentDate = new Date();
+  endDate = new Date().toISOString().substr(0, 10);
+  startDate = new Date(new Date().setMonth(new Date().getMonth() - 1))
     .toISOString().substr(0, 10);
+
+  summaryDate = new Date();
 
   constructor() {
   }

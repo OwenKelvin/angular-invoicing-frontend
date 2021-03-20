@@ -12,9 +12,12 @@ import {TotalProfitTodayModule} from './total-profit-today/total-profit-today.mo
 import {TotalSalesTodayModule} from './total-sales-today/total-sales-today.module';
 import {TotalPurchasesTodayModule} from './total-purchases-today/total-purchases-today.module';
 
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ReactiveComponentModule } from '@ngrx/component';
+import {TabsModule} from 'ngx-bootstrap/tabs';
+import {ReactiveComponentModule} from '@ngrx/component';
 import {MonthsPurchasesByProductModule} from './months-purchases-by-product/months-purchases-by-product.module';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {FormsModule} from '@angular/forms';
+
 @NgModule({
   declarations: [InsightsComponent],
   imports: [
@@ -31,7 +34,9 @@ import {MonthsPurchasesByProductModule} from './months-purchases-by-product/mont
     TotalPurchasesTodayModule,
     TabsModule.forRoot(),
     ReactiveComponentModule,
-    MonthsPurchasesByProductModule
+    MonthsPurchasesByProductModule,
+    BsDatepickerModule.forRoot(),
+    FormsModule
   ]
 })
 export class InsightsModule {

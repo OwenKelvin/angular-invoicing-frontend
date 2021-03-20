@@ -1,4 +1,5 @@
 <h1>Make Sale</h1>
+{{ totalCartValue | json }}
 <form (ngSubmit)="submitCart()" class="card p-2" [formGroup]="itemForm" *ngIf="products$ | ngrxPush as products; else loading">
   <div formArrayName="cartItems" class="d-flex flex-wrap">
     <div *ngFor="let catItem of cartItems.controls; let i = index" [formGroupName]="i" class="col-12 d-flex flex-wrap">

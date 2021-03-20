@@ -32,6 +32,9 @@ export class SimpleSaleComponent extends formMixin() {
   get cartItems() {
     return this.itemForm.get('cartItems') as FormArray;
   }
+  get totalCartValue() {
+    return this.cartItems.value.reduce((sum: any, {salePrice, saleQuantity}: any) => sum + saleQuantity * salePrice, 0);
+  }
 
   setPrice(index: number) {
     const currentQuantity = (this.cartItems.controls[index].get('saleQuantity') as FormControl).value;

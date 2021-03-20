@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PrintComponent } from './components/print/print.component';
-import { ReactiveComponentModule } from '@ngrx/component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PrintComponent} from './components/print/print.component';
+import {ReactiveComponentModule} from '@ngrx/component';
 
 
 @NgModule({
@@ -13,4 +12,5 @@ import { ReactiveComponentModule } from '@ngrx/component';
     ReactiveComponentModule
   ]
 })
-export class AppPrintModule { }
+export class AppPrintModule {
+}

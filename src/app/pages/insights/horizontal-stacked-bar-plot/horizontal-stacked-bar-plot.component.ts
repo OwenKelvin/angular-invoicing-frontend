@@ -15,6 +15,7 @@ export class HorizontalStackedBarPlotComponent implements OnInit {
   @Input() xAxisLabel = '';
   @Input() yAxisLabel = '';
   @Input() results: IBarPlot[] = [];
+  @Input() view = [];
 
   constructor() {
   }

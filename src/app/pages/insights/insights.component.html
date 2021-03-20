@@ -2,10 +2,23 @@
 <div class="card p-2">
   <div>
     <tabset>
-      <tab heading="Today" id="tab1">
+      <tab heading="Daily Insights" id="tab1">
         <div class="d-flex flex-wrap justify-content-start">
+          <div class="col-12 mt-2">
+            <input
+              id="date"
+              aria-label="Select Insight Date"
+              type="text"
+              placeholder="Datepicker"
+              class="form-control"
+              bsDatepicker
+              [bsConfig]="{containerClass:'theme-default'}"
+              [(ngModel)]='summaryDate'
+              [maxDate]="currentDate"
+            >
+          </div>
           <div class="col-lg-4">
-            <app-total-profit-today></app-total-profit-today>
+            <app-total-profit-today [date]="summaryDate"></app-total-profit-today>
           </div>
           <div class="col-lg-4">
             <app-total-sales-today></app-total-sales-today>

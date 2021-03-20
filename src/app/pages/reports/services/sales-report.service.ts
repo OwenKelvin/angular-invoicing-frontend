@@ -20,12 +20,12 @@ export class SalesReportService {
 
   getReport(data: any): Observable<any> {
 
-    const queryStringParams = require('querystring').stringify({
-      start_date: data.startDate,
-      end_date: data.endDate
-    });
+    const queryStringParams = {
+      start_date: data.startDate || '',
+      end_date: data.endDate || ''
+    };
 
-    const sales$: Observable<any[]> = this.http.get<any[]>(`api/reports/sales?${queryStringParams}`)
+    const sales$: Observable<any[]> = this.http.get<any[]>(`api/reports/sales`, {params: queryStringParams})
       .pipe(
         map(res => res.map(item => ({
           quantity: item.quantity,

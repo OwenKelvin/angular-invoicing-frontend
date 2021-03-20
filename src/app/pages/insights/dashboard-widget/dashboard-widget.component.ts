@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class DashboardWidgetComponent implements OnInit {
 
+  @Input() date = new Date();
   @Input() icon = 'icon-cart-plus';
   @Input() title = 'Profit';
   @Input() bg = 'success';

@@ -29,7 +29,7 @@ import { ReactiveComponentModule } from '@ngrx/component';
 @NgModule({
   declarations: [
     AppComponent,
-    ScrollSpyDirective,
+    ScrollSpyDirective
   ],
   imports: [
     BrowserAnimationsModule,
