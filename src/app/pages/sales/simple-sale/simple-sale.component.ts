@@ -68,6 +68,7 @@ export class SimpleSaleComponent extends formMixin() {
       .subscribe({
         next: () => {
           this.submitInProgressSubject$.next(false);
+          this.itemForm.reset();
           // this.isDiscounted = false;
           // this.discountType = 'percentage';
           // this.discountAmount = 0;

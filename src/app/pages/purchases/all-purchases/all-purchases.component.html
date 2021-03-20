@@ -1,35 +1,36 @@
 <h1>Purchases</h1>
 
-<div class="d-flex flex-wrap align-items-end">
-  <section class="col-md-4 col-xl-3 col-lg-3 col-sm-4">
-    <button (click)='maintainPurchase(0)' class="btn btn-primary btn-block">
-      <span class="icon-plus-circled">New Purchase</span>
-    </button>
-  </section>
-  <section class="col-md-4 col-xl-3 col-lg-3 col-sm-4">
-    <app-date-picker label='Purchase Date' (ngModelChange)='purchaseDateSubject$.next($event)'
-      [enabledDates$]='purchaseDates$'></app-date-picker>
-  </section>
-  <section class="col-md-4 col-xl-3 col-lg-6 col-sm-4">
-    <label for="searchProducts">Search <span class="icon-search"></span></label>
-    <input (keyup)='filterStringSubject$.next($event.target.value)' id="searchProducts" type="search"
-      class="form-control">
-  </section>
-  <section class="col-xl-2 col-md-2 text-md-right col-lg-2 text-right mt-3">
-    <app-print selector='.printable'></app-print>
-  </section>
-</div>
-<div class="printable">
-  <table class="mt-2 table table-sm table-dark">
-    <thead>
+<div class="card p-2">
+  <div class="d-flex flex-wrap align-items-end">
+    <section class="col-md-4 col-xl-3 col-lg-3 col-sm-4">
+      <button (click)='maintainPurchase(0)' class="btn btn-primary btn-block">
+        <span class="icon-plus-circled">New Purchase</span>
+      </button>
+    </section>
+    <section class="col-md-4 col-xl-3 col-lg-3 col-sm-4">
+      <app-date-picker label='Purchase Date' (ngModelChange)='purchaseDateSubject$.next($event)'
+                       [enabledDates$]='purchaseDates$'></app-date-picker>
+    </section>
+    <section class="col-md-4 col-xl-3 col-lg-6 col-sm-4">
+      <label for="searchProducts">Search <span class="icon-search"></span></label>
+      <input (keyup)='filterStringSubject$.next($event.target.value)' id="searchProducts" type="search"
+             class="form-control">
+    </section>
+    <section class="col-xl-2 col-md-2 text-md-right col-lg-2 text-right mt-3">
+      <app-print selector='.printable'></app-print>
+    </section>
+  </div>
+  <div class="printable">
+    <table class="mt-2 table table-sm table-dark">
+      <thead>
       <tr>
         <th>Purchase Id</th>
         <th>Product Name</th>
         <th>Quantity</th>
         <th>Actions</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <ng-container *ngIf='filteredPurchases$ | ngrxPush  as purchases'>
         <tr *ngIf='purchases.length < 1'>
           <td colspan="4" class="alert alert-info p-2 m-2">
@@ -44,12 +45,13 @@
           <!-- <td><button aria-label="View Item" class="btn btn-info"><span class="icon-eye"></span></button></td> -->
           <td>
             <button (click)='maintainPurchase(purchase.id)' aria-label="Edit Item"
-              class="btn btn-sm btn-primary mr-2"><span class="icon-edit"></span></button>
+                    class="btn btn-sm btn-primary mr-2"><span class="icon-edit"></span></button>
             <button (click)='delete(purchase.id)' aria-label="Delete" class="btn btn-sm btn-danger"><span
-                class="icon-trash"></span></button>
+              class="icon-trash"></span></button>
           </td>
         </tr>
       </ng-container>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

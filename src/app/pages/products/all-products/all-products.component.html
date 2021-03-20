@@ -1,22 +1,23 @@
 <h1>Products</h1>
-<section class="mt-1 d-flex flex-wrap justify-content-between align-items-end">
-  <section class="col-md-5 col-xl-3 col-lg-4 col-sm-5">
-    <button (click)='maintainProduct(0)' class="btn btn-primary"><span class="icon-plus-circled">Add
+<div class="card p-2">
+  <section class="mt-1 d-flex flex-wrap justify-content-between align-items-end">
+    <section class="col-md-5 col-xl-3 col-lg-4 col-sm-5">
+      <button (click)='maintainProduct(0)' class="btn btn-primary"><span class="icon-plus-circled">Add
         Product</span></button>
+    </section>
+    <section class="col-md-7 col-xl-7 col-lg-6 col-sm-7">
+      <label for="searchProducts">Search <span class="icon-search"></span></label>
+      <input [(ngModel)]='filterString' (ngModelChange)='onFilterChange()' id="searchProducts" type="search"
+             class="form-control">
+    </section>
+    <section class="col-xl-2 col-md-12 text-md-right col-lg-2 text-right mt-3">
+      <app-print selector='.printable'></app-print>
+    </section>
   </section>
-  <section class="col-md-7 col-xl-7 col-lg-6 col-sm-7">
-    <label for="searchProducts">Search <span class="icon-search"></span></label>
-    <input [(ngModel)]='filterString' (ngModelChange)='onFilterChange()' id="searchProducts" type="search"
-      class="form-control">
-  </section>
-  <section class="col-xl-2 col-md-12 text-md-right col-lg-2 text-right mt-3">
-    <app-print selector='.printable'></app-print>
-  </section>
-</section>
 
-<div class="printable">
-  <table class="mt-2 table table-sm table-dark">
-    <thead>
+  <div class="printable">
+    <table class="mt-2 table table-sm table-dark">
+      <thead>
       <tr>
         <th>Product Id</th>
         <th>Product Name</th>
@@ -26,8 +27,8 @@
         <th>Gross Margin</th>
         <th class="d-print-none">Actions</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <ng-container *ngIf='products$ | ngrxPush  as products'>
         <tr *ngFor='let product of products' [class.bg-danger]='!product.sellingPrice || !product.buyingPrice'>
           <td>#{{ product.id }}</td>
@@ -39,12 +40,13 @@
           <td class="d-print-none">
             <!-- <button aria-label="View Item" class="btn btn-info btn-sm mr-2"><span class="icon-eye"></span></button> -->
             <button (click)='maintainProduct(product.id)' aria-label="Edit Item"
-              class="btn btn-primary btn-sm mr-2"><span class="icon-edit"></span></button>
+                    class="btn btn-primary btn-sm mr-2"><span class="icon-edit"></span></button>
             <button (click)='delete(product.id)' aria-label="Delete" class="btn btn-danger  btn-sm mr-2"><span
-                class="icon-trash"></span></button>
+              class="icon-trash"></span></button>
           </td>
         </tr>
       </ng-container>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

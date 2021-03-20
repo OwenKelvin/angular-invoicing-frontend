@@ -1,5 +1,5 @@
 <h1>Make Sale</h1>
-{{ totalCartValue | json }}
+
 <form (ngSubmit)="submitCart()" class="card p-2" [formGroup]="itemForm" *ngIf="products$ | ngrxPush as products; else loading">
   <div formArrayName="cartItems" class="d-flex flex-wrap">
     <div *ngFor="let catItem of cartItems.controls; let i = index" [formGroupName]="i" class="col-12 d-flex flex-wrap">
@@ -19,9 +19,16 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary btn-sm" (click)="addItem()">
-    <span class="icon-plus-circled"></span>Add Item
-  </button>
+  <div class="d-flex align-items-end mt-3 ml-3">
+    <div class="col-lg-2">
+      <button type="button" class="btn btn-primary btn-sm" (click)="addItem()">
+        <span class="icon-plus-circled"></span>Add Item
+      </button>
+    </div>
+    <div class="col">
+      TOTAL SALE: {{ totalCartValue }}
+    </div>
+  </div>
   <div class="col-12 p-2">
     <app-validate-submit-buttons [isSubmitting]='submitInProgressSubject$ | ngrxPush' [formItem]='itemForm'>
     </app-validate-submit-buttons>
