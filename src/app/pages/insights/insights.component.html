@@ -42,7 +42,7 @@
               placeholder="Datepicker"
               class="form-control col-lg-3"
               bsDatepicker
-              [bsConfig]="{containerClass:'theme-default'}"
+              [bsConfig]="{containerClass:'theme-default', startView: 'month'}"
               [(ngModel)]='rangeStartDate'
               [maxDate]="currentDate"
             >
@@ -54,7 +54,7 @@
               placeholder="Datepicker"
               class="form-control col-lg-3"
               bsDatepicker
-              [bsConfig]="{containerClass:'theme-default'}"
+              [bsConfig]="{containerClass:'theme-default', startView: 'month'}"
               [(ngModel)]='rangeEndDate'
               [maxDate]="currentDate"
               [minDate]="rangeStartDate"
