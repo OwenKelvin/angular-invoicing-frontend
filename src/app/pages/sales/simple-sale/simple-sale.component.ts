@@ -55,7 +55,6 @@ export class SimpleSaleComponent extends formMixin() {
   }
 
   submitCart() {
-    console.log({simple: this.cartItems.value});
     this.submitInProgressSubject$.next(true);
     this.saleService.saveSale({
       discount: {type: 'absolute', amount: 0},
@@ -68,6 +67,8 @@ export class SimpleSaleComponent extends formMixin() {
       .subscribe({
         next: () => {
           this.submitInProgressSubject$.next(false);
+          this.cartItems.clear();
+          this.addItem();
           this.itemForm.reset();
           // this.isDiscounted = false;
           // this.discountType = 'percentage';
@@ -84,4 +85,10 @@ export class SimpleSaleComponent extends formMixin() {
   }
 
 
+  deleteItem(i: number) {
+    const confirmedDeletion = confirm('Do you wish to remove item from cart?');
+    if (confirmedDeletion) {
+      this.cartItems.removeAt(i);
+    }
+  }
 }

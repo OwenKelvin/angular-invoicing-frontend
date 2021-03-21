@@ -2,8 +2,9 @@
 
 <form (ngSubmit)="submitCart()" class="card p-2" [formGroup]="itemForm" *ngIf="products$ | ngrxPush as products; else loading">
   <div formArrayName="cartItems" class="d-flex flex-wrap">
-    <div *ngFor="let catItem of cartItems.controls; let i = index" [formGroupName]="i" class="col-12 d-flex flex-wrap">
-     <div class="col-lg-4">
+    <fieldset style="border-left: rgba(194, 255, 238, 0.7) 3px solid; background: rgba(194, 255, 238, 0.1)" *ngFor="let catItem of cartItems.controls; let i = index" [formGroupName]="i" class="p-2 mt-2 col-12 d-flex flex-wrap">
+     <legend class="col-12">item {{ i + 1}}</legend>
+      <div class="col-lg-4">
        <label for='product'>Select Product</label>
        <ng-select placeholder='Choose a Product' id='product' formControlName='productId' (change)="setPrice(i)">
          <ng-option role='option' *ngFor="let item of products " [value]="item.id">
@@ -17,7 +18,10 @@
       <div class="col-lg-3">
         <app-input placeholder="Selling Price" label="Selling Price" type="number" formControlName="salePrice"></app-input>
       </div>
-    </div>
+      <div class="col-lg-3">
+        <button (click)="deleteItem(i)" type="button" [disabled]="cartItems.controls.length === 1" aria-label="delete item" class="mt-lg-4 btn btn-danger btn-sm"><i class="icon-trash"></i></button>
+      </div>
+    </fieldset>
   </div>
   <div class="d-flex align-items-end mt-3 ml-3">
     <div class="col-lg-2">
