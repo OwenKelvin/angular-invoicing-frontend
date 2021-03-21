@@ -1,5 +1,5 @@
 <app-line-plot
-  title="Daily Sales (Past 1 Month)"
+  [title]="'Daily Sales (' + from + ' - '+to + ')'"
   yAxisLabel="Sales"
   [results]="sales$ | ngrxPush">
 </app-line-plot>

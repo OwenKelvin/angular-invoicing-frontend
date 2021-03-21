@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {SalesReportService} from '../../reports/services/sales-report.service';
 import {ProductsService} from '../../../shared/services/products.service';
-import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
-import {map, mergeMap, switchMap, tap} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {IBarPlot} from '../horizontal-stacked-bar-plot/horizontal-stacked-bar-plot.component';
 
 @Component({
@@ -10,7 +10,7 @@ import {IBarPlot} from '../horizontal-stacked-bar-plot/horizontal-stacked-bar-pl
   templateUrl: './daily-profit-per-product.component.html',
   styleUrls: ['./daily-profit-per-product.component.less']
 })
-export class DailyProfitPerProductComponent implements OnInit{
+export class DailyProfitPerProductComponent implements OnChanges{
   @Input() from = '';
   @Input() to = '';
   dateSubject$ = new BehaviorSubject({startDate: '', endDate: ''});
@@ -35,7 +35,7 @@ export class DailyProfitPerProductComponent implements OnInit{
     ),
     tap(console.log)
   );
-  ngOnInit() {
+  ngOnChanges() {
     this.dateSubject$.next({ startDate: this.from, endDate: this.to });
   }
 }

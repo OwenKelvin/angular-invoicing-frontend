@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges } from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {SalesReportService} from '../../reports/services/sales-report.service';
 import {map, mergeMap} from 'rxjs/operators';
@@ -9,7 +9,7 @@ import {ILinePlot} from '../line-plot/line-plot.component';
   templateUrl: './daily-profit-margins-line-plot.component.html',
   styleUrls: ['./daily-profit-margins-line-plot.component.less']
 })
-export class DailyProfitMarginsLinePlotComponent implements OnInit {
+export class DailyProfitMarginsLinePlotComponent implements OnChanges {
   @Input() from = '';
   @Input() to = '';
   dateRanges$ = new BehaviorSubject<{ startDate: string, endDate: string }>({startDate: '', endDate: ''});
@@ -33,7 +33,7 @@ export class DailyProfitMarginsLinePlotComponent implements OnInit {
   constructor(private salesReportService: SalesReportService) {
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.dateRanges$.next({startDate: this.from, endDate: this.to});
   }
 

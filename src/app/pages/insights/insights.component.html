@@ -4,13 +4,13 @@
     <tabset>
       <tab heading="Daily Insights" id="tab1">
         <div class="d-flex flex-wrap justify-content-start">
-          <div class="col-12 mt-2">
+          <div class="col-12 mt-2 d-flex">
             <input
               id="date"
               aria-label="Select Insight Date"
               type="text"
               placeholder="Datepicker"
-              class="form-control"
+              class="form-control col-lg-3"
               bsDatepicker
               [bsConfig]="{containerClass:'theme-default'}"
               [(ngModel)]='summaryDate'
@@ -31,8 +31,35 @@
           </div>
         </div>
       </tab>
-      <tab heading="Past 1 Month">
+      <tab heading="Range Insights">
         <div class="d-flex flex-wrap justify-content-start">
+          <div class="col-12 mt-2 mb-2 d-flex justify-content-start align-items-center">
+
+            <input
+              id="start-date"
+              aria-label="Select Start Date"
+              type="text"
+              placeholder="Datepicker"
+              class="form-control col-lg-3"
+              bsDatepicker
+              [bsConfig]="{containerClass:'theme-default'}"
+              [(ngModel)]='rangeStartDate'
+              [maxDate]="currentDate"
+            >
+            <span class="ml-2 mr-2">TO</span>
+            <input
+              id="end-date"
+              aria-label="Select Start Date"
+              type="text"
+              placeholder="Datepicker"
+              class="form-control col-lg-3"
+              bsDatepicker
+              [bsConfig]="{containerClass:'theme-default'}"
+              [(ngModel)]='rangeEndDate'
+              [maxDate]="currentDate"
+              [minDate]="rangeStartDate"
+            >
+          </div>
           <div class="col-lg-6">
             <app-daily-profit-margins-line-plot [from]="startDate" [to]="endDate"></app-daily-profit-margins-line-plot>
           </div>

@@ -9,5 +9,5 @@ import {COMPANY_NAME} from '../../../environments/environment';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent {
-  title = COMPANY_NAME + 'Sales Management';
+  title = COMPANY_NAME + ' Sales Management';
 }

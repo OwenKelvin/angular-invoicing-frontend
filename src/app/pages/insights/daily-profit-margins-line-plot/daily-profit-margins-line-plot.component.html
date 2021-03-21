@@ -1,5 +1,5 @@
 <app-line-plot
-  title="Daily Profits Margins (Past 1 Month)"
+  [title]="'Daily Profits Margins (' + from + ' - '+to + ')'"
   yAxisLabel="Profit Margin (%)"
   [results]="sales$ | ngrxPush">
 </app-line-plot>

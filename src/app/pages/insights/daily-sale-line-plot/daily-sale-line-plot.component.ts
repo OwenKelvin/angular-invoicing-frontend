@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
+import {Component, Input, OnChanges} from '@angular/core';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {SalesReportService} from '../../reports/services/sales-report.service';
 import {map, mergeMap, tap} from 'rxjs/operators';
 import {ILinePlot} from '../line-plot/line-plot.component';
@@ -9,7 +9,7 @@ import {ILinePlot} from '../line-plot/line-plot.component';
   templateUrl: './daily-sale-line-plot.component.html',
   styleUrls: ['./daily-sale-line-plot.component.less']
 })
-export class DailySaleLinePlotComponent implements OnInit {
+export class DailySaleLinePlotComponent implements OnChanges{
   @Input() from = '';
   @Input() to = '';
   dateRanges$ = new BehaviorSubject<{ startDate: string, endDate: string }>({startDate: '', endDate: ''});
@@ -32,12 +32,11 @@ export class DailySaleLinePlotComponent implements OnInit {
   constructor(private salesReportService: SalesReportService) {
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.dateRanges$.next({startDate: this.from, endDate: this.to});
   }
 
   axisFormat(val: any) {
-    console.log(val);
     return val;
   }
 }

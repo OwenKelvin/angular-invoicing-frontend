@@ -1,5 +1,5 @@
 <app-bar-plot
-  title="Top 15 Profitable Products (Past 1 Month)"
+  [title]="'Top 15 Purchases (' + from + ' - '+to + ')'"
   [results]="purchases$ | ngrxPush"
   yAxisLabel="Product"
   xAxisLabel="Profit"
