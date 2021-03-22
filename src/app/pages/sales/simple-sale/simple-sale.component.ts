@@ -68,8 +68,9 @@ export class SimpleSaleComponent extends formMixin() {
         next: () => {
           this.submitInProgressSubject$.next(false);
           this.cartItems.clear();
-          this.addItem();
           this.itemForm.reset();
+          this.addItem();
+          this.triggerValidationSubject$.next(false);
           // this.isDiscounted = false;
           // this.discountType = 'percentage';
           // this.discountAmount = 0;

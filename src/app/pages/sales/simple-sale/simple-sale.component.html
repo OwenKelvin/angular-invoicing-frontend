@@ -13,10 +13,10 @@
        </ng-select>
      </div>
       <div class="col-lg-2">
-        <app-input placeholder="Quantity" label="Quantity" type="number" formControlName="saleQuantity"></app-input>
+        <app-input [triggerValidation]="triggerValidationAction$ | ngrxPush" placeholder="Quantity" label="Quantity" type="number" formControlName="saleQuantity"></app-input>
       </div>
       <div class="col-lg-3">
-        <app-input placeholder="Selling Price" label="Selling Price" type="number" formControlName="salePrice"></app-input>
+        <app-input [triggerValidation]="triggerValidationAction$ | ngrxPush" placeholder="Selling Price" label="Selling Price" type="number" formControlName="salePrice"></app-input>
       </div>
       <div class="col-lg-3">
         <button (click)="deleteItem(i)" type="button" [disabled]="cartItems.controls.length === 1" aria-label="delete item" class="mt-lg-4 btn btn-danger btn-sm"><i class="icon-trash"></i></button>
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="col-12 p-2">
-    <app-validate-submit-buttons [isSubmitting]='submitInProgressSubject$ | ngrxPush' [formItem]='itemForm'>
+    <app-validate-submit-buttons (validationButtonClicked)="triggerValidationSubject$.next(true)" [isSubmitting]='submitInProgressSubject$ | ngrxPush' [formItem]='itemForm'>
     </app-validate-submit-buttons>
   </div>
 </form>
